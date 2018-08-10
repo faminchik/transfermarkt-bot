@@ -1,4 +1,4 @@
 {
     "transfermarkt-url":
-        "https://www.transfermarkt.com/transfers/neuestetransfers/statistik?land_id=0&plus=2"
+        "https://www.transfermarkt.com/transfers/letztetransfers/statistik?ajax=yw1&land_id=0&page=*&plus=1"
 }

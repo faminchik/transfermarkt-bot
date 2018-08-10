@@ -1,14 +1,9 @@
-import env from 'dotenv';
+require('dotenv').load();
 import _ from 'lodash';
 import TelegramBot from 'node-telegram-bot-api';
-import config from 'config';
-import { fetchHtmlRequest } from './utils/fetchRequests';
-import { CLASS_NAME } from './constants/transfermarkt';
-import convertData from './helpers/convertData';
-import getTableDataFromHTML from './helpers/getTableDataFromHTML';
-import getInterestingTransfers from './helpers/getInterestingTransfers';
+import transfersProcess from './helpers/transfersProcess';
+import { sendTransferMessage } from './helpers/telegramBotHelpers';
 
-env.load();
 const { TELEGRAM_BOT_TOKEN } = process.env;
 
 if (!TELEGRAM_BOT_TOKEN) {
@@ -16,37 +11,38 @@ if (!TELEGRAM_BOT_TOKEN) {
     process.exit(1);
 }
 
-const URL = config.get('transfermarkt-url');
 const bot = new TelegramBot(TELEGRAM_BOT_TOKEN, { polling: true });
 
-// const setIntervalDuraion = 600000;
-const setIntervalDuraion = 10000;
+// const intervalDuraion = 600000;
+const intervalDuraion = 10000;
 
-bot.onText(/\/start/, async msg => {
+const users = {};
+const displayedData = [];
+
+bot.onText(/\/start/, msg => {
     const {
         chat: { id }
     } = msg;
 
-    start(id);
+    if (!users[id]) {
+        users[id] = msg;
+    }
+
+    _.forEach(displayedData, transferInfo => {
+        sendTransferMessage(bot, id, transferInfo);
+    });
 });
 
-const start = async id => {
-    const displayedData = [];
+bot.onText(/\/stop/, msg => {
+    let {
+        chat: { id }
+    } = msg;
 
-    let iterations = 0;
-    await mainProcess(id, displayedData);
-    console.log('iterations', ++iterations);
+    if (users[id]) delete users[id];
+});
 
-    setInterval(async () => {
-        await mainProcess(id, displayedData);
-
-        console.log('iterations', ++iterations);
-    }, setIntervalDuraion);
-};
-
-const mainProcess = async (id, displayedData) => {
+const mainProcess = async () => {
     const result = await transfersProcess();
-
     if (!result) return;
 
     const transfersToShow = _.filter(result, item => {
@@ -58,26 +54,29 @@ const mainProcess = async (id, displayedData) => {
         return false;
     });
 
+    const ids = _.keys(users);
+
     _.forEach(transfersToShow, transferInfo => {
-        const { name, marketValue, leftTeam, joinedTeam, fee } = transferInfo;
-        bot.sendMessage(
-            // '@transfers_transfermarkt',
-            id,
-            `*${name}* (${marketValue})\r\n\r\n*${leftTeam}* → *${joinedTeam}*\r\n*${fee}*`,
-            { parse_mode: 'Markdown' }
-        );
+        _.forEach(ids, id => {
+            sendTransferMessage(bot, id, transferInfo);
+        });
     });
 
-    console.log('viewedData', displayedData);
-    console.log('transfersToShow', transfersToShow);
+    console.log('viewedData', _.cloneDeep(displayedData));
+    console.log('transfersToShow', _.cloneDeep(transfersToShow));
+    console.log('users', _.cloneDeep(users));
 };
 
-const transfersProcess = async () => {
-    const html = await fetchHtmlRequest(URL);
-    if (!html) return null;
+const start = async () => {
+    let iterations = 0;
+    await mainProcess();
+    console.log('iterations', ++iterations);
 
-    const data = getTableDataFromHTML(html, CLASS_NAME);
-    const transfersInfo = convertData(data);
+    setInterval(async () => {
+        await mainProcess();
 
-    return getInterestingTransfers(transfersInfo);
+        console.log('iterations', ++iterations);
+    }, intervalDuraion);
 };
+
+start();

@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import { MINIMUM_VALUE, MILLION } from '../constants/transfermarkt';
+import { MINIMUM_VALUE, MILLION, LOAN_FEE } from '../constants/transfermarkt';
 
 export default transfersInfo =>
     _.filter(transfersInfo, transferInfo => {
@@ -7,8 +7,11 @@ export default transfersInfo =>
 
         if (!_.includes(marketValue, MILLION)) return false;
 
-        const marketValueNumber = parseFloat(_.replace(marketValue, ',', '.'));
-        const feeNumber = parseFloat(_.replace(fee, ',', '.'));
+        const marketValueNumber = parseFloat(marketValue.replace(',', '.'));
+
+        const feeNumber = _.includes(fee, LOAN_FEE)
+            ? parseFloat(fee.replace(LOAN_FEE, '').replace(',', '.'))
+            : parseFloat(fee.replace(',', '.'));
 
         if (marketValueNumber < MINIMUM_VALUE) {
             if (!_.isNaN(feeNumber) && _.includes(fee, MILLION) && feeNumber >= MINIMUM_VALUE) {

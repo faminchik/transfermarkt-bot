@@ -9,6 +9,7 @@
     "author": "",
     "license": "ISC",
     "dependencies": {
+        "bluebird": "^3.5.1",
         "build-url": "^1.1.2",
         "cheerio": "^1.0.0-rc.2",
         "cheerio-tableparser": "^1.0.1",
