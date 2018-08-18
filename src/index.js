@@ -1,8 +1,11 @@
 require('dotenv').load();
 import _ from 'lodash';
+import BPromise from 'bluebird';
+import moment from 'moment';
 import TelegramBot from 'node-telegram-bot-api';
 import transfersProcess from './helpers/transfersProcess';
 import { sendTransferMessage } from './helpers/telegramBotHelpers';
+import getLowLimitDate from './helpers/getLowLimitDate';
 
 const { TELEGRAM_BOT_TOKEN } = process.env;
 
@@ -19,18 +22,29 @@ const intervalDuraion = 10000;
 const users = {};
 const displayedData = [];
 
-bot.onText(/\/start/, msg => {
+bot.onText(/\/start/, async msg => {
     const {
         chat: { id }
     } = msg;
 
-    if (!users[id]) {
-        users[id] = msg;
-    }
+    if (!users[id]) users[id] = msg;
 
-    _.forEach(displayedData, transferInfo => {
-        sendTransferMessage(bot, id, transferInfo);
+    const lowLimitDate = getLowLimitDate();
+
+    await BPromise.each(_.reverse(_.cloneDeep(displayedData)), async transferInfo => {
+        const transferDate = moment(_.get(transferInfo, 'transferDate'), 'MMM DD, YYYY');
+        if (transferDate >= lowLimitDate) {
+            await sendTransferMessage(bot, id, transferInfo);
+        }
     });
+});
+
+bot.onText(/\/simplestart/, msg => {
+    const {
+        chat: { id }
+    } = msg;
+
+    if (!users[id]) users[id] = msg;
 });
 
 bot.onText(/\/stop/, msg => {
@@ -45,15 +59,7 @@ const mainProcess = async () => {
     const result = await transfersProcess();
     if (!result) return;
 
-    const transfersToShow = _.filter(result, item => {
-        const foundElement = _.find(displayedData, item);
-        if (!foundElement) {
-            displayedData.push(item);
-            return true;
-        }
-        return false;
-    });
-
+    const transfersToShow = _.filter(result, item => !_.find(displayedData, item));
     const ids = _.keys(users);
 
     _.forEach(transfersToShow, transferInfo => {
@@ -62,7 +68,9 @@ const mainProcess = async () => {
         });
     });
 
-    console.log('viewedData', _.cloneDeep(displayedData));
+    displayedData.push(...transfersToShow);
+
+    console.log('displayedData', _.cloneDeep(displayedData));
     console.log('transfersToShow', _.cloneDeep(transfersToShow));
     console.log('users', _.cloneDeep(users));
 };

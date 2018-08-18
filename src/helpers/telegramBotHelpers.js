@@ -1,10 +1,10 @@
-export const sendTransferMessage = (botClient, chatId, transferInfo) => {
-    const { name, marketValue, leftTeam, joinedTeam, fee } = transferInfo;
+export const sendTransferMessage = async (botClient, chatId, transferInfo) => {
+    const { name, marketValue, leftTeam, joinedTeam, fee, transferDate } = transferInfo;
 
-    botClient.sendMessage(
+    await botClient.sendMessage(
         // '@transfers_transfermarkt',
         chatId,
-        `*${name}* (${marketValue})\r\n\r\n*${leftTeam}* → *${joinedTeam}*\r\n*${fee}*`,
+        `*${transferDate}*\r\n*${name}* (${marketValue})\r\n\r\n*${leftTeam}* → *${joinedTeam}*\r\n*${fee}*`,
         { parse_mode: 'Markdown' }
     );
 };
