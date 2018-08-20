@@ -1,7 +1,7 @@
 import _ from 'lodash';
 import moment from 'moment';
 
-const DAYS_NUMBER = 1;
+const DAYS_NUMBER = 2;
 
 export default () => {
     const currentDate = moment(moment().format('ll'), 'MMM DD, YYYY');

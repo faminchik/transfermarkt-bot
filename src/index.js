@@ -3,6 +3,7 @@ import _ from 'lodash';
 import BPromise from 'bluebird';
 import moment from 'moment';
 import TelegramBot from 'node-telegram-bot-api';
+import './server';
 import transfersProcess from './helpers/transfersProcess';
 import { sendTransferMessage } from './helpers/telegramBotHelpers';
 import getLowLimitDate from './helpers/getLowLimitDate';
@@ -16,8 +17,8 @@ if (!TELEGRAM_BOT_TOKEN) {
 
 const bot = new TelegramBot(TELEGRAM_BOT_TOKEN, { polling: true });
 
-// const intervalDuraion = 600000;
-const intervalDuraion = 10000;
+const intervalDuration = 600000;
+// const intervalDuration = 10000;
 
 const users = {};
 const displayedData = [];
@@ -30,6 +31,7 @@ bot.onText(/\/start/, async msg => {
     if (!users[id]) users[id] = msg;
 
     const lowLimitDate = getLowLimitDate();
+    console.log('new user', msg);
 
     await BPromise.each(_.reverse(_.cloneDeep(displayedData)), async transferInfo => {
         const transferDate = moment(_.get(transferInfo, 'transferDate'), 'MMM DD, YYYY');
@@ -70,21 +72,22 @@ const mainProcess = async () => {
 
     displayedData.push(...transfersToShow);
 
-    console.log('displayedData', _.cloneDeep(displayedData));
-    console.log('transfersToShow', _.cloneDeep(transfersToShow));
+    // console.log('displayedData', _.reverse(_.cloneDeep(displayedData)));
+    console.log('transfersToShow', _.reverse(_.cloneDeep(transfersToShow)));
     console.log('users', _.cloneDeep(users));
 };
 
 const start = async () => {
-    let iterations = 0;
+    let iteration = 0;
+
     await mainProcess();
-    console.log('iterations', ++iterations);
+    console.log('iteration', ++iteration);
 
     setInterval(async () => {
         await mainProcess();
 
-        console.log('iterations', ++iterations);
-    }, intervalDuraion);
+        console.log('iteration', ++iteration);
+    }, intervalDuration);
 };
 
 start();

@@ -10,7 +10,7 @@ import getInterestingTransfers from '../helpers/getInterestingTransfers';
 const URL = config.get('transfermarkt-url');
 
 export default async () => {
-    const transfers = await BPromise.map(_.range(1, 2), async number => {
+    const transfers = await BPromise.map(_.range(1, 11), async number => {
         const url = _.replace(URL, '*', number);
         const html = await fetchHtmlRequest(url);
         if (!html) return [];
