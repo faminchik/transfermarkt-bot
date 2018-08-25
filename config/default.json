@@ -1,4 +1,6 @@
 {
-    "transfermarkt-url":
-        "https://www.transfermarkt.com/transfers/letztetransfers/statistik?ajax=yw1&land_id=0&page=*&plus=1"
+    "transfermarkt-url": "https://www.transfermarkt.com/transfers/letztetransfers/statistik?ajax=yw1&land_id=0&page=*&plus=1",
+    "jsonbin-bins-core-url": "https://api.jsonbin.io/b",
+    "users-bin-id": "5b818a09db948c6863571626",
+    "displayed-data-bin-id": "5b81850a3ffac56f4bd4a079"
 }

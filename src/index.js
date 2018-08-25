@@ -7,6 +7,8 @@ import './server';
 import transfersProcess from './helpers/transfersProcess';
 import { sendTransferMessage } from './helpers/telegramBotHelpers';
 import getLowLimitDate from './helpers/getLowLimitDate';
+import { getUsers, updateUsers, updateAndGetUsers } from './helpers/jsonbin/usersCollection';
+import { getDisplayedData, updateDisplayedData } from './helpers/jsonbin/displayedDataCollection';
 
 const { TELEGRAM_BOT_TOKEN } = process.env;
 
@@ -20,17 +22,26 @@ const bot = new TelegramBot(TELEGRAM_BOT_TOKEN, { polling: true });
 const intervalDuration = 600000;
 // const intervalDuration = 10000;
 
-const users = {};
-const displayedData = [];
+const handleStart = async msg => {
+    const { chat, from, date, text } = msg;
+    const { id } = chat;
+
+    let users = await getUsers();
+
+    if (!users[id]) {
+        users[id] = { chat, from, date, text };
+        users = await updateAndGetUsers({ users });
+    }
+
+    return id;
+};
 
 bot.onText(/\/start/, async msg => {
-    const {
-        chat: { id }
-    } = msg;
+    const id = await handleStart(msg);
 
-    if (!users[id]) users[id] = msg;
-
+    const displayedData = await getDisplayedData();
     const lowLimitDate = getLowLimitDate();
+
     console.log('new user', msg);
 
     await BPromise.each(_.reverse(_.cloneDeep(displayedData)), async transferInfo => {
@@ -41,44 +52,26 @@ bot.onText(/\/start/, async msg => {
     });
 });
 
-bot.onText(/\/simplestart/, msg => {
+bot.onText(/\/simplestart/, async msg => {
+    await handleStart(msg);
+});
+
+bot.onText(/\/stop/, async msg => {
     const {
         chat: { id }
     } = msg;
 
-    if (!users[id]) users[id] = msg;
+    const users = await getUsers();
+
+    if (users[id]) {
+        delete users[id];
+        await updateUsers({ users });
+    }
 });
-
-bot.onText(/\/stop/, msg => {
-    let {
-        chat: { id }
-    } = msg;
-
-    if (users[id]) delete users[id];
-});
-
-const mainProcess = async () => {
-    const result = await transfersProcess();
-    if (!result) return;
-
-    const transfersToShow = _.filter(result, item => !_.find(displayedData, item));
-    const ids = _.keys(users);
-
-    _.forEach(transfersToShow, transferInfo => {
-        _.forEach(ids, id => {
-            sendTransferMessage(bot, id, transferInfo);
-        });
-    });
-
-    displayedData.push(...transfersToShow);
-
-    // console.log('displayedData', _.reverse(_.cloneDeep(displayedData)));
-    console.log('transfersToShow', _.reverse(_.cloneDeep(transfersToShow)));
-    console.log('users', _.cloneDeep(users));
-};
 
 const start = async () => {
     let iteration = 0;
+    console.log('displayedData size', _.size(await getDisplayedData()));
 
     await mainProcess();
     console.log('iteration', ++iteration);
@@ -91,3 +84,28 @@ const start = async () => {
 };
 
 start();
+
+const mainProcess = async () => {
+    const result = await transfersProcess();
+    if (!result) return;
+
+    const users = await getUsers();
+    const displayedData = await getDisplayedData();
+
+    const transfersToShow = _.filter(result, item => !_.find(displayedData, item));
+    const ids = _.keys(users);
+
+    _.forEach(transfersToShow, transferInfo => {
+        _.forEach(ids, id => {
+            sendTransferMessage(bot, id, transferInfo);
+        });
+    });
+
+    if (!_.isEmpty(transfersToShow)) {
+        displayedData.push(...transfersToShow);
+        await updateDisplayedData({ displayedData });
+    }
+
+    console.log('transfersToShow', _.reverse(_.cloneDeep(transfersToShow)));
+    console.log('users', _.cloneDeep(users));
+};

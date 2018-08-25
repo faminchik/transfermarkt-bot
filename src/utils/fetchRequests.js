@@ -1,7 +1,7 @@
 import buildUrl from 'build-url';
 import fetch from 'node-fetch';
 
-export const fetchApiRequest = async (url, headers, path, queryParams) => {
+export const fetchApiRequest = async (url, headers, path, queryParams, method = 'GET') => {
     const finalUrl = buildUrl(url, {
         path,
         queryParams
@@ -10,41 +10,41 @@ export const fetchApiRequest = async (url, headers, path, queryParams) => {
     try {
         return await fetch(finalUrl, {
             headers,
-            method: 'GET'
+            method
         }).then(response => {
             const { ok } = response;
             const { status } = response;
 
             if (!ok) {
-                console.log('GET Api Request status: ', status);
+                console.log('Api Request status: ', status);
                 return null;
             }
             return response.json();
         });
     } catch (e) {
-        console.log('GET Api Request error', e);
+        console.log('Api Request error', e);
         return null;
     }
 };
 
-export const fetchPostApiRequest = async (url, headers, body) => {
+export const fetchBodyApiRequest = async (url, headers, body, method = 'POST') => {
     try {
         return await fetch(url, {
             headers,
-            method: 'POST',
+            method,
             body: JSON.stringify(body)
         }).then(response => {
             const { ok } = response;
             const { status } = response;
 
             if (!ok) {
-                console.log('POST Api Request status: ', status);
+                console.log('Api Body Request status: ', status);
                 return null;
             }
             return response.json();
         });
     } catch (e) {
-        console.log('POST Api Request error', e);
+        console.log('Api Body Request error', e);
         return null;
     }
 };
@@ -69,11 +69,11 @@ export const fetchHtmlRequest = async url => {
     }
 };
 
-export const fetchPostHtmlRequest = async (url, headers, body) => {
+export const fetchBodyHtmlRequest = async (url, headers, body, method = 'POST') => {
     try {
         return await fetch(url, {
             headers,
-            method: 'POST',
+            method,
             body: JSON.stringify(body)
         }).then(response => {
             const { ok } = response;
