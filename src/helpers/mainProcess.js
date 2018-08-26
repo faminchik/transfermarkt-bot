@@ -1,6 +1,8 @@
 import _ from 'lodash';
+import BPromise from 'bluebird';
 import moment from 'moment';
 import transfersProcess from './transfersProcess';
+import { sendTransferMessage } from './telegramBotHelpers';
 import { getUsers } from './jsonbin/usersCollection';
 import { getDisplayedData, updateDisplayedData } from './jsonbin/displayedDataCollection';
 
@@ -15,9 +17,9 @@ export default async botClient => {
     const ids = _.keys(users);
     let shouldResortDisplayedData = false;
 
-    _.forEach(_.reverse(_.cloneDeep(transfersToShow)), transferInfo => {
-        _.forEach(ids, id => {
-            sendTransferMessage(botClient, id, transferInfo);
+    await BPromise.each(_.reverse(_.cloneDeep(transfersToShow)), async transferInfo => {
+        await BPromise.each(ids, async id => {
+            await sendTransferMessage(botClient, id, transferInfo);
         });
 
         const { name, leftTeam, joinedTeam } = transferInfo;

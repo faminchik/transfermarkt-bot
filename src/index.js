@@ -77,11 +77,11 @@ bot.onText(/\/stop/, async msg => {
     let iteration = 0;
     console.log('displayedData size', _.size(await getDisplayedData()));
 
-    await mainProcess();
+    await mainProcess(bot);
     console.log('iteration', ++iteration);
 
     setInterval(async () => {
-        await mainProcess();
+        await mainProcess(bot);
 
         console.log('iteration', ++iteration);
     }, intervalDuration);
