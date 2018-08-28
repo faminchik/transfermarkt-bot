@@ -15,7 +15,6 @@ export default async botClient => {
 
     const transfersToShow = _.filter(transfers, item => !_.find(displayedData, item));
     const ids = _.keys(users);
-    let shouldResortDisplayedData = false;
 
     await BPromise.each(_.reverse(_.cloneDeep(transfersToShow)), async transferInfo => {
         await BPromise.each(ids, async id => {
@@ -25,22 +24,11 @@ export default async botClient => {
         const { name, leftTeam, joinedTeam } = transferInfo;
         const index = _.findIndex(displayedData, { name, leftTeam, joinedTeam });
 
-        if (index === -1) {
-            displayedData.push(transferInfo);
-        } else {
-            // if 'transferDate' was changed, I need to re-sort 'displayedData'
-            if (displayedData[index].transferDate !== transferInfo.transferDate) {
-                shouldResortDisplayedData = true;
-            }
-            displayedData[index] = transferInfo;
-        }
+        index === -1 ? displayedData.push(transferInfo) : (displayedData[index] = transferInfo);
     });
 
-    if (shouldResortDisplayedData) {
-        displayedData = _.sortBy(displayedData, item => moment(item.transferDate, 'MMM DD, YYYY'));
-    }
-
     if (!_.isEmpty(transfersToShow)) {
+        displayedData = _.sortBy(displayedData, item => moment(item.transferDate, 'MMM DD, YYYY'));
         await updateDisplayedData({ displayedData });
     }
 
