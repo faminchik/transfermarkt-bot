@@ -7,59 +7,40 @@ const UserSchema = new Schema({
         required: true
     },
     chatFirstName: {
-        type: String,
-        required: true,
-        default: ''
+        type: String
     },
     chatLastName: {
-        type: String,
-        required: true,
-        default: ''
+        type: String
     },
     chatUserName: {
-        type: String,
-        required: true,
-        default: ''
+        type: String
     },
     chatType: {
-        type: String,
-        required: true
+        type: String
     },
     fromId: {
-        type: Number,
-        required: true
+        type: Number
     },
     fromIsBot: {
-        type: Boolean,
-        required: true
+        type: Boolean
     },
     fromFirstName: {
-        type: String,
-        required: true,
-        default: ''
+        type: String
     },
     fromLastName: {
-        type: String,
-        required: true,
-        default: ''
+        type: String
     },
     fromUserName: {
-        type: String,
-        required: true,
-        default: ''
+        type: String
     },
     fromLanguageCode: {
-        type: String,
-        required: true,
-        default: ''
+        type: String
     },
     date: {
-        type: Number,
-        required: true
+        type: Number
     },
     command: {
-        type: String,
-        required: true
+        type: String
     }
 });
 
