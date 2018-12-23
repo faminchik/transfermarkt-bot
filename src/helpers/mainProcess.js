@@ -1,31 +1,30 @@
 import _ from 'lodash';
 import BPromise from 'bluebird';
-import moment from 'moment';
 import transfersProcess from './transfersProcess';
+import { getUsersIds, getTransfersToShow } from '../db/utils';
+import {
+    upsertTransfers,
+    deleteUsersByChatIds,
+    isNewTransfer as isNewTransferFunc
+} from '../db/helpers';
 import { sendTransferMessage } from './telegramBotHelpers';
-import { getUsers } from './jsonbin/usersCollection';
-import { getDisplayedData, updateDisplayedData } from './jsonbin/displayedDataCollection';
 import { BLOCKED } from '../constants/statuses';
 
 export default async botClient => {
     const transfers = await transfersProcess();
-    if (!transfers) return;
+    if (_.isEmpty(transfers)) return;
 
-    const users = await getUsers();
-    let displayedData = await getDisplayedData();
     const blockedIds = [];
+    const transfersToShow = await getTransfersToShow(transfers);
 
-    const transfersToShow = _.filter(transfers, item => !_.find(displayedData, item));
-    const ids = _.keys(users);
+    if (_.isEmpty(transfersToShow)) return;
+
+    const usersIds = await getUsersIds();
 
     await BPromise.each(_.reverse(_.cloneDeep(transfersToShow)), async transferInfo => {
-        const { name, leftTeam, joinedTeam } = transferInfo;
-        const index = _.findIndex(displayedData, { name, leftTeam, joinedTeam });
+        const isNewTransfer = await isNewTransferFunc(transferInfo);
 
-        const isNewTransfer = index === -1;
-        isNewTransfer ? displayedData.push(transferInfo) : (displayedData[index] = transferInfo);
-
-        await BPromise.each(ids, async id => {
+        await BPromise.each(usersIds, async id => {
             const status = await sendTransferMessage(botClient, id, transferInfo, isNewTransfer);
 
             if (status === BLOCKED) blockedIds.push(id);
@@ -35,10 +34,12 @@ export default async botClient => {
     console.log('blockedIds', blockedIds);
 
     if (!_.isEmpty(transfersToShow)) {
-        displayedData = _.sortBy(displayedData, item => moment(item.transferDate, 'MMM DD, YYYY'));
-        await updateDisplayedData({ displayedData });
+        upsertTransfers(transfersToShow);
+    }
+
+    if (!_.isEmpty(blockedIds)) {
+        deleteUsersByChatIds(blockedIds);
     }
 
     console.log('transfersToShow', _.reverse(_.cloneDeep(transfersToShow)));
-    console.log('users', _.cloneDeep(users));
 };

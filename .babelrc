@@ -1,14 +1,10 @@
 {
-    "presets": ["env"],
+    "presets": ["@babel/preset-env"],
     "plugins": [
-        "transform-decorators-legacy",
-        "transform-object-rest-spread",
-        "transform-class-properties",
-        "transform-es2015-classes",
+        "@babel/plugin-proposal-object-rest-spread",
         [
-            "transform-runtime",
+            "@babel/plugin-transform-runtime",
             {
-                "polyfill": false,
                 "regenerator": true
             }
         ]

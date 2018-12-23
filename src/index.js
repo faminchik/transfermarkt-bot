@@ -3,12 +3,13 @@ import _ from 'lodash';
 import BPromise from 'bluebird';
 import moment from 'moment';
 import TelegramBot from 'node-telegram-bot-api';
+import './db';
 import './server';
 import mainProcess from './helpers/mainProcess';
+import { addUser, deleteUser } from './db/helpers';
+import { getAllTransfers } from './db/utils';
 import { sendTransferMessage } from './helpers/telegramBotHelpers';
 import getLowLimitDate from './helpers/getLowLimitDate';
-import { getUsers, updateUsers } from './helpers/jsonbin/usersCollection';
-import { getDisplayedData } from './helpers/jsonbin/displayedDataCollection';
 
 const { TELEGRAM_BOT_TOKEN } = process.env;
 
@@ -22,30 +23,14 @@ const bot = new TelegramBot(TELEGRAM_BOT_TOKEN, { polling: true });
 const intervalDuration = 600000;
 // const intervalDuration = 10000;
 
-const addUserToCollection = async msg => {
-    const { chat, from, date, text } = msg;
-    const { id } = chat;
-
-    let users = await getUsers();
-
-    if (!users[id]) {
-        users[id] = { chat, from, date, text };
-        await updateUsers({ users });
-
-        console.log('new user', msg);
-    }
-
-    return id;
-};
-
 bot.onText(/\/start/, async msg => {
-    const id = await addUserToCollection(msg);
+    const id = addUser(msg);
 
-    const displayedData = await getDisplayedData();
+    const displayedTransfers = await getAllTransfers();
     const lowLimitDate = getLowLimitDate();
 
     // send messages with recently transfers
-    await BPromise.each(displayedData, async transferInfo => {
+    await BPromise.each(displayedTransfers, async transferInfo => {
         const transferDate = moment(transferInfo.transferDate, 'MMM DD, YYYY');
 
         if (transferDate >= lowLimitDate) {
@@ -54,28 +39,17 @@ bot.onText(/\/start/, async msg => {
     });
 });
 
-bot.onText(/\/simplestart/, async msg => {
-    await addUserToCollection(msg);
+bot.onText(/\/simplestart/, msg => {
+    addUser(msg);
 });
 
-bot.onText(/\/stop/, async msg => {
-    // delete user from 'users' collection
-    const {
-        chat: { id }
-    } = msg;
-
-    const users = await getUsers();
-
-    if (users[id]) {
-        delete users[id];
-        await updateUsers({ users });
-    }
+bot.onText(/\/stop/, msg => {
+    deleteUser(msg);
 });
 
 // start
 (async () => {
     let iteration = 0;
-    console.log('displayedData size', _.size(await getDisplayedData()));
 
     await mainProcess(bot);
     console.log('iteration', ++iteration);
