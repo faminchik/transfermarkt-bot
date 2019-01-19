@@ -10,6 +10,10 @@ const TransferSchema = new Schema({
         type: String,
         required: true
     },
+    nationality: {
+        type: String,
+        required: true
+    },
     leftTeam: {
         type: String,
         required: true

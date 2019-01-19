@@ -15,8 +15,8 @@ export default async () => {
         const html = await fetchHtmlRequest(url);
         if (!html) return [];
 
-        const data = getTableDataFromHTML(html, CLASS_NAME);
-        const transfersInfo = convertData(data);
+        const { textData, htmlData } = getTableDataFromHTML(html, CLASS_NAME);
+        const transfersInfo = convertData({ textData, htmlData });
 
         return getInterestingTransfers(transfersInfo);
     });

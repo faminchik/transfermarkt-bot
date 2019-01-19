@@ -75,11 +75,29 @@ export const deleteUsersByChatIds = ids => {
 
 export const upsertTransfers = transfersToUpsert => {
     _.each(transfersToUpsert, transfer => {
-        const { name, age, leftTeam, joinedTeam, transferDate, marketValue, fee } = transfer;
+        const {
+            name,
+            age,
+            nationality,
+            leftTeam,
+            joinedTeam,
+            transferDate,
+            marketValue,
+            fee
+        } = transfer;
 
         Transfer.findOne({ name, leftTeam, joinedTeam }).then(transfer => {
             if (transfer) {
-                transfer.set({ name, age, leftTeam, joinedTeam, transferDate, marketValue, fee });
+                transfer.set({
+                    name,
+                    age,
+                    nationality,
+                    leftTeam,
+                    joinedTeam,
+                    transferDate,
+                    marketValue,
+                    fee
+                });
 
                 transfer
                     .save()
@@ -97,6 +115,7 @@ export const upsertTransfers = transfersToUpsert => {
                 const newTransfer = new Transfer({
                     name,
                     age,
+                    nationality,
                     leftTeam,
                     joinedTeam,
                     transferDate,
