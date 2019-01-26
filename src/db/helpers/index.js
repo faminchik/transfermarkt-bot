@@ -81,6 +81,8 @@ export const upsertTransfers = transfersToUpsert => {
             nationality,
             leftTeam,
             joinedTeam,
+            leftTeamCountry,
+            joinedTeamCountry,
             transferDate,
             marketValue,
             fee
@@ -94,6 +96,8 @@ export const upsertTransfers = transfersToUpsert => {
                     nationality,
                     leftTeam,
                     joinedTeam,
+                    leftTeamCountry,
+                    joinedTeamCountry,
                     transferDate,
                     marketValue,
                     fee
@@ -118,6 +122,8 @@ export const upsertTransfers = transfersToUpsert => {
                     nationality,
                     leftTeam,
                     joinedTeam,
+                    leftTeamCountry,
+                    joinedTeamCountry,
                     transferDate,
                     marketValue,
                     fee

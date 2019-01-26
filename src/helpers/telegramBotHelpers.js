@@ -1,6 +1,5 @@
 import { BLOCKED, ERROR, SUCCESS } from '../constants/statuses';
-import emoji from '../constants/emoji';
-import flags from '../constants/flags';
+import getFlagEmoji from './getFlagEmoji';
 
 export const sendTransferMessage = async (botClient, chatId, transferInfo, isNew = true) => {
     const {
@@ -8,6 +7,8 @@ export const sendTransferMessage = async (botClient, chatId, transferInfo, isNew
         marketValue,
         leftTeam,
         joinedTeam,
+        leftTeamCountry,
+        joinedTeamCountry,
         fee,
         transferDate,
         age,
@@ -16,20 +17,15 @@ export const sendTransferMessage = async (botClient, chatId, transferInfo, isNew
 
     const additionalInfo = isNew ? '' : '\r\n(transfer info has been updated)';
 
-    let flag = '';
-    const flagEmojiKey = flags[nationality];
-
-    if (flagEmojiKey) {
-        const flagEmoji = emoji[flagEmojiKey];
-
-        if (flagEmoji) flag = `${flagEmoji} `;
-    }
+    const flag = getFlagEmoji(nationality);
+    const leftTeamFlag = getFlagEmoji(leftTeamCountry);
+    const joinedTeamFlag = getFlagEmoji(joinedTeamCountry, false);
 
     return await botClient
         .sendMessage(
             // '@transfers_transfermarkt',
             chatId,
-            `*${transferDate}*\r\n${flag}*${name}* (${marketValue} | ${age} y.o.)\r\n\r\n*${leftTeam}* → *${joinedTeam}*\r\n*${fee}*${additionalInfo}`,
+            `*${transferDate}*\r\n${flag}*${name}* (${marketValue} | ${age} y.o.)\r\n\r\n${leftTeamFlag}*${leftTeam}* → *${joinedTeam}*${joinedTeamFlag}\r\n*${fee}*${additionalInfo}`,
             { parse_mode: 'Markdown' }
         )
         .then(res => SUCCESS)

@@ -22,6 +22,12 @@ const TransferSchema = new Schema({
         type: String,
         required: true
     },
+    leftTeamCountry: {
+        type: String
+    },
+    joinedTeamCountry: {
+        type: String
+    },
     transferDate: {
         type: String,
         required: true
