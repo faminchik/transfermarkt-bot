@@ -20,11 +20,12 @@ if (!TELEGRAM_BOT_TOKEN) {
 
 const bot = new TelegramBot(TELEGRAM_BOT_TOKEN, { polling: true });
 
-const intervalDuration = 600000;
-// const intervalDuration = 10000;
+const intervalDuration = 10 * 1000 * 60; // 10 min in ms
+// const intervalDuration = 10 * 1000; // 10 s in ms
 
 bot.onText(/\/start/, async msg => {
-    const id = addUser(msg);
+    const id = await addUser(msg);
+    if (!id) return;
 
     const displayedTransfers = await getAllTransfers();
     const lowLimitDate = getLowLimitDate();

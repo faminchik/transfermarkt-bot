@@ -34,7 +34,7 @@ export default async botClient => {
     console.log('blockedIds', blockedIds);
 
     if (!_.isEmpty(transfersToShow)) {
-        upsertTransfers(transfersToShow);
+        await upsertTransfers(transfersToShow);
     }
 
     if (!_.isEmpty(blockedIds)) {

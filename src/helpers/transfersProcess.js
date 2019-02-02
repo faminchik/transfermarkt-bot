@@ -21,5 +21,5 @@ export default async () => {
         return getInterestingTransfers(transfersInfo);
     });
 
-    return _.flatten(transfers);
+    return _.uniqWith(_.flatten(transfers), _.isEqual);
 };

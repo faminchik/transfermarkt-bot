@@ -1,4 +1,5 @@
 import _ from 'lodash';
+import BPromise from 'bluebird';
 import User from 'models/User';
 import Transfer from 'models/Transfer';
 
@@ -16,7 +17,7 @@ export const addUser = msg => {
     const fromUserName = _.get(from, 'username', '');
     const fromLanguageCode = _.get(from, 'language_code', '');
 
-    User.findOne({ chatId }).then(user => {
+    return User.findOne({ chatId }).then(user => {
         if (!user) {
             const newUser = new User({
                 chatId,
@@ -38,6 +39,7 @@ export const addUser = msg => {
                 .save()
                 .then(user =>
                     console.log(
+                        'add',
                         user.chatId,
                         user.chatFirstName,
                         user.chatLastName,
@@ -45,10 +47,12 @@ export const addUser = msg => {
                     )
                 )
                 .catch(err => console.log(err));
-        }
-    });
 
-    return chatId;
+            return chatId;
+        }
+
+        return null;
+    });
 };
 
 export const deleteUser = msg => {
@@ -58,7 +62,15 @@ export const deleteUser = msg => {
 
     User.findOne({ chatId }).then(user => {
         if (user) {
-            user.remove();
+            user.remove().then(user =>
+                console.log(
+                    'remove',
+                    user.chatId,
+                    user.chatFirstName,
+                    user.chatLastName,
+                    user.chatUserName
+                )
+            );
         }
     });
 };
@@ -73,8 +85,8 @@ export const deleteUsersByChatIds = ids => {
     });
 };
 
-export const upsertTransfers = transfersToUpsert => {
-    _.each(transfersToUpsert, transfer => {
+export const upsertTransfers = async transfersToUpsert => {
+    await BPromise.each(transfersToUpsert, async transfer => {
         const {
             name,
             age,
@@ -88,7 +100,7 @@ export const upsertTransfers = transfersToUpsert => {
             fee
         } = transfer;
 
-        Transfer.findOne({ name, leftTeam, joinedTeam }).then(transfer => {
+        await Transfer.findOne({ name, leftTeam, joinedTeam }).then(transfer => {
             if (transfer) {
                 transfer.set({
                     name,
