@@ -6,10 +6,10 @@ import TelegramBot from 'node-telegram-bot-api';
 import './db';
 import './server';
 import mainProcess from './mainProcess';
-import { addUser, deleteUser } from './db/helpers';
-import { getAllTransfers } from './db/utils';
-import { sendTransferMessage } from './helpers/telegramBotHelpers';
-import getLowLimitDate from './helpers/getLowLimitDate';
+import { addUser, deleteUser } from 'db/helpers';
+import { getAllTransfers } from 'db/utils';
+import { sendTransferMessage } from 'helpers/telegramBotHelpers';
+import getLowLimitDate from 'helpers/getLowLimitDate';
 
 const { TELEGRAM_BOT_TOKEN } = process.env;
 

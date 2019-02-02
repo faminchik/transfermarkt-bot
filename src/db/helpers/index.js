@@ -1,6 +1,6 @@
 import _ from 'lodash';
-import User from '../../models/User';
-import Transfer from '../../models/Transfer';
+import User from 'models/User';
+import Transfer from 'models/Transfer';
 
 export const addUser = msg => {
     const { chat, from, date, text: command } = msg;

@@ -1,5 +1,5 @@
-import getInterestingTransfers from '../getInterestingTransfers';
-import { MILLIONS, THOUSANDS, LOAN_FEE } from '../../constants/transfermarkt';
+import getInterestingTransfers from 'helpers/getInterestingTransfers';
+import { MILLIONS, THOUSANDS, LOAN_FEE } from 'constants/transfermarkt';
 
 const data = [
     {

@@ -1,11 +1,11 @@
 import _ from 'lodash';
 import BPromise from 'bluebird';
 import config from 'config';
-import { fetchHtmlRequest } from '../utils/fetchRequests';
-import { CLASS_NAME } from '../constants/transfermarkt';
-import convertData from '../helpers/convertData';
-import getTableDataFromHTML from '../helpers/getTableDataFromHTML';
-import getInterestingTransfers from '../helpers/getInterestingTransfers';
+import { fetchHtmlRequest } from 'utils/fetchRequests';
+import { CLASS_NAME } from 'constants/transfermarkt';
+import convertData from 'helpers/convertData';
+import getTableDataFromHTML from 'helpers/getTableDataFromHTML';
+import getInterestingTransfers from 'helpers/getInterestingTransfers';
 
 const URL = config.get('transfermarkt-url');
 

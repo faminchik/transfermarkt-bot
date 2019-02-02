@@ -1,5 +1,5 @@
 import { Schema, model } from 'mongoose';
-import { TRANSFER } from '../constants/models';
+import { TRANSFER } from 'constants/models';
 
 const TransferSchema = new Schema({
     name: {

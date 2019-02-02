@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import { MINIMUM_VALUE, MILLIONS, LOAN_FEE } from '../constants/transfermarkt';
+import { MINIMUM_VALUE, MILLIONS, LOAN_FEE } from 'constants/transfermarkt';
 
 export default transfersInfo =>
     _.filter(transfersInfo, transferInfo => {

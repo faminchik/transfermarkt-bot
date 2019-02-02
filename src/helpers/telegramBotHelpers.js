@@ -1,5 +1,5 @@
-import { BLOCKED, ERROR, SUCCESS } from '../constants/statuses';
-import getFlagEmoji from './getFlagEmoji';
+import { BLOCKED, ERROR, SUCCESS } from 'constants/statuses';
+import getFlagEmoji from 'helpers/getFlagEmoji';
 
 export const sendTransferMessage = async (botClient, chatId, transferInfo, isNew = true) => {
     const {

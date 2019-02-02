@@ -1,8 +1,8 @@
 import _ from 'lodash';
 import moment from 'moment';
 import BPromise from 'bluebird';
-import User from '../../models/User';
-import Transfer from '../../models/Transfer';
+import User from 'models/User';
+import Transfer from 'models/Transfer';
 
 export const getUsersIds = async () => {
     const users = await User.find({}).select(['chatId', '-_id']);

@@ -1,5 +1,5 @@
-import emoji from '../constants/emoji';
-import flags from '../constants/flags';
+import emoji from 'constants/emoji';
+import flags from 'constants/flags';
 
 export default (country, isSpaceOnTheRight = true) => {
     let flag = '';
