@@ -5,7 +5,8 @@
     "main": "index.js",
     "scripts": {
         "start": "node -r @babel/register src/index",
-        "dev": "nodemon -r @babel/register src/index"
+        "dev": "nodemon -r @babel/register src/index",
+        "unit-tests": "jest --config=\"./jest.config.unit.js\""
     },
     "author": "",
     "license": "ISC",
@@ -31,6 +32,7 @@
         "@babel/preset-env": "^7.2.3",
         "@babel/register": "^7.0.0",
         "@babel/runtime": "^7.2.0",
+        "jest": "^24.0.0",
         "nodemon": "^1.18.9"
     }
 }
