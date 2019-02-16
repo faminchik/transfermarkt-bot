@@ -6,7 +6,7 @@ import { CLASS_NAME } from 'constants/transfermarkt';
 import convertData from 'helpers/convertData';
 import getTableDataFromHTML from 'helpers/getTableDataFromHTML';
 import getInterestingTransfers from 'helpers/getInterestingTransfers';
-import getPlayersDataFromProfile from 'helpers/getPlayersDataFromProfile';
+import addPlayerProfileData from 'helpers/addPlayerProfileData';
 
 const URL = config.get('transfermarkt-url');
 
@@ -18,7 +18,7 @@ export default async () => {
 
         const { textData, htmlData } = getTableDataFromHTML(html, CLASS_NAME);
         const transfersInfo = convertData({ textData, htmlData });
-        const fullTransfersInfo = await getPlayersDataFromProfile(transfersInfo);
+        const fullTransfersInfo = await addPlayerProfileData(transfersInfo);
 
         return getInterestingTransfers(fullTransfersInfo);
     });

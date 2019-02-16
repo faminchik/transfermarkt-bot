@@ -5,6 +5,7 @@ import moment from 'moment';
 import TelegramBot from 'node-telegram-bot-api';
 import './db';
 import './server';
+import 'utils/formMemoizedFunctions';
 import mainProcess from './mainProcess';
 import { addUser, deleteUser } from 'db/helpers';
 import { getAllTransfers } from 'db/utils';
