@@ -9,7 +9,7 @@ import mainProcess from './mainProcess';
 import { addUser, deleteUser } from 'db/helpers';
 import { getAllTransfers } from 'db/utils';
 import { sendTransferMessage } from 'helpers/telegramBotHelpers';
-import getLowLimitDate from 'helpers/getLowLimitDate';
+import getBottomDate from 'helpers/getBottomDate';
 
 const { TELEGRAM_BOT_TOKEN } = process.env;
 
@@ -28,13 +28,13 @@ bot.onText(/\/start/, async msg => {
     if (!id) return;
 
     const displayedTransfers = await getAllTransfers();
-    const lowLimitDate = getLowLimitDate();
+    const bottomDate = getBottomDate();
 
     // send messages with recently transfers
     await BPromise.each(displayedTransfers, async transferInfo => {
         const transferDate = moment(transferInfo.transferDate, 'MMM DD, YYYY');
 
-        if (transferDate >= lowLimitDate) {
+        if (transferDate >= bottomDate) {
             await sendTransferMessage(bot, id, transferInfo);
         }
     });

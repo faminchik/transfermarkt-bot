@@ -6,12 +6,12 @@ const DAYS_NUMBER = 2;
 export default () => {
     const currentDate = moment(moment().format('ll'), 'MMM DD, YYYY');
     console.log('currentDate', currentDate);
-    const lowLimitDate = moment(
+    const bottomDate = moment(
         _.cloneDeep(currentDate)
             .subtract(DAYS_NUMBER, 'day')
             .format('ll'),
         'MMM DD, YYYY'
     );
-    console.log('lowLimitDate', lowLimitDate);
-    return lowLimitDate;
+    console.log('bottomDate', bottomDate);
+    return bottomDate;
 };

@@ -29,3 +29,5 @@ export const getTransfersToShow = async transfers =>
         });
         return !transferToShow;
     });
+
+export const getUserCount = async () => await User.countDocuments();
