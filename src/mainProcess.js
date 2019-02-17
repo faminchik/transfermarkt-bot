@@ -7,7 +7,7 @@ import {
     deleteUsersByChatIds,
     isNewTransfer as isNewTransferFunc
 } from 'db/helpers';
-import { sendTransferMessage } from 'helpers/telegramBotHelpers';
+import { sendTransferMessage } from 'helpers/telegram/telegramBotHelpers';
 import { BLOCKED } from 'constants/statuses';
 
 export default async botClient => {

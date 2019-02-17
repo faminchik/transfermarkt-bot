@@ -1,15 +1,12 @@
 require('dotenv').load();
 import _ from 'lodash';
-import BPromise from 'bluebird';
-import moment from 'moment';
 import TelegramBot from 'node-telegram-bot-api';
 import './db';
 import './server';
 import mainProcess from './mainProcess';
 import { addUser, deleteUser } from 'db/helpers';
-import { getAllTransfers } from 'db/utils';
-import { sendTransferMessage } from 'helpers/telegramBotHelpers';
-import getBottomDate from 'helpers/getBottomDate';
+import { getRecentTransfers } from 'db/utils';
+import { sendJoinedTransferMessages } from 'helpers/telegram/telegramBotHelpers';
 
 const { TELEGRAM_BOT_TOKEN } = process.env;
 
@@ -27,17 +24,10 @@ bot.onText(/\/start/, async msg => {
     const id = await addUser(msg);
     if (!id) return;
 
-    const displayedTransfers = await getAllTransfers();
-    const bottomDate = getBottomDate();
+    const recentTransfers = await getRecentTransfers();
 
     // send messages with recently transfers
-    await BPromise.each(displayedTransfers, async transferInfo => {
-        const transferDate = moment(transferInfo.transferDate, 'MMM DD, YYYY');
-
-        if (transferDate >= bottomDate) {
-            await sendTransferMessage(bot, id, transferInfo);
-        }
-    });
+    await sendJoinedTransferMessages(bot, id, recentTransfers);
 });
 
 bot.onText(/\/simplestart/, msg => {
