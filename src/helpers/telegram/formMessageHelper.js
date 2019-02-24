@@ -28,28 +28,24 @@ export const formTransferMessage = (transferInfo, isNewTransfer = true) => {
 };
 
 export const joinTransferMessages = transfersMessages => {
-    let messageItems = [];
-
-    const messageArrays = _.reduce(
+    const { messageArrays } = _.reduce(
         transfersMessages,
-        (acc, msg, index) => {
+        ({ messageItems, messageArrays }, msg, index) => {
             messageItems.push(msg);
 
             if ((index + 1) % MESSAGE_COUNT_PER_MESSAGE === 0) {
-                acc.push(messageItems);
+                messageArrays.push(messageItems);
                 messageItems = [];
             }
 
             if (index + 1 === _.size(transfersMessages)) {
-                acc.push(messageItems);
+                messageArrays.push(messageItems);
             }
 
-            return acc;
+            return { messageItems, messageArrays };
         },
-        []
+        { messageItems: [], messageArrays: [] }
     );
 
-    const messages = _.map(messageArrays, msgArray => _.join(msgArray, MESSAGE_DELIMITER));
-
-    return messages;
+    return _.map(messageArrays, msgArray => _.join(msgArray, MESSAGE_DELIMITER));
 };

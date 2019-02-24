@@ -1,4 +1,4 @@
-import getInterestingTransfers from 'helpers/getInterestingTransfers';
+import getInterestingTransfers from 'helpers/allLatestTransfers/getInterestingTransfers';
 import { MILLIONS, THOUSANDS, LOAN_FEE } from 'constants/transfermarkt';
 
 const data = [

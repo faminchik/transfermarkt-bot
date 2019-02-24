@@ -3,7 +3,7 @@ import moment from 'moment';
 import BPromise from 'bluebird';
 import User from 'models/User';
 import Transfer from 'models/Transfer';
-import getBottomDate from 'helpers/getBottomDate';
+import { getBottomDate } from 'helpers/dateHelper';
 
 export const getUsersIds = async () => {
     const users = await User.find({}).select(['chatId', '-_id']);

@@ -1,6 +1,6 @@
 import _ from 'lodash';
 import BPromise from 'bluebird';
-import transfersProcess from 'helpers/transfersProcess';
+import transfersProcess from 'helpers/allLatestTransfers/transfersProcess';
 import { getUsersIds, getTransfersToShow } from 'db/utils';
 import {
     upsertTransfers,
