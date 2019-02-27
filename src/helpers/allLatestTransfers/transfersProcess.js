@@ -2,10 +2,11 @@ import _ from 'lodash';
 import BPromise from 'bluebird';
 import config from 'config';
 import { fetchHtmlRequest } from 'utils/fetchRequests';
-import { CLASS_NAME } from 'constants/transfermarkt';
-import convertData from 'helpers/allLatestTransfers/convertData';
-import getTableDataFromHTML from 'helpers/getTableDataFromHTML';
+import convertData from 'helpers/convertData';
+import getTableDataFromHTML from 'helpers/allLatestTransfers/getTableDataFromHTML';
 import getInterestingTransfers from 'helpers/allLatestTransfers/getInterestingTransfers';
+import convertDataConfig from 'configs/convertDataConfig';
+import { ALL_LATEST_TRANSFERS } from 'constants/transfermarkt/ConvertDataTypes';
 
 const URL = config.get('latest-transfers-url');
 
@@ -15,8 +16,11 @@ export default async () => {
         const html = await fetchHtmlRequest(url);
         if (!html) return [];
 
-        const { textData, htmlData } = getTableDataFromHTML(html, CLASS_NAME);
-        const transfersInfo = convertData({ textData, htmlData });
+        const { textData, htmlData } = getTableDataFromHTML(html);
+        const transfersInfo = convertData(
+            { textData, htmlData },
+            convertDataConfig[ALL_LATEST_TRANSFERS]
+        );
 
         return getInterestingTransfers(transfersInfo);
     });

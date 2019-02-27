@@ -1,3 +1,4 @@
 {
-    "latest-transfers-url": "https://www.transfermarkt.com/transfers/letztetransfers/statistik?ajax=yw1&land_id=0&page=*&plus=1"
+    "latest-transfers-url": "https://www.transfermarkt.com/transfers/letztetransfers/statistik?ajax=yw1&land_id=0&page=*&plus=1",
+    "search-url": "https://www.transfermarkt.com/schnellsuche/ergebnis/schnellsuche?query="
 }

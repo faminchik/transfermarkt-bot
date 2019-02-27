@@ -1,8 +1,6 @@
-import cheerio from 'cheerio';
 import cheerioTableParser from 'cheerio-tableparser';
 
-export default (html, searhParam = 'table') => {
-    const $ = cheerio.load(html);
+export default ($, searhParam = 'table') => {
     cheerioTableParser($);
 
     const textData = $(searhParam).parsetable(false, false, true);
