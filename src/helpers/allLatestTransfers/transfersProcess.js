@@ -5,7 +5,7 @@ import { fetchHtmlRequest } from 'utils/fetchRequests';
 import convertData from 'helpers/convertData';
 import getTableDataFromHTML from 'helpers/allLatestTransfers/getTableDataFromHTML';
 import getInterestingTransfers from 'helpers/allLatestTransfers/getInterestingTransfers';
-import convertDataConfig from 'configs/convertDataConfig';
+import ConvertDataConfig from 'configs/ConvertDataConfig';
 import { ALL_LATEST_TRANSFERS } from 'constants/transfermarkt/ConvertDataTypes';
 
 const URL = config.get('latest-transfers-url');
@@ -19,7 +19,7 @@ export default async () => {
         const { textData, htmlData } = getTableDataFromHTML(html);
         const transfersInfo = convertData(
             { textData, htmlData },
-            convertDataConfig[ALL_LATEST_TRANSFERS]
+            ConvertDataConfig[ALL_LATEST_TRANSFERS]
         );
 
         return getInterestingTransfers(transfersInfo);

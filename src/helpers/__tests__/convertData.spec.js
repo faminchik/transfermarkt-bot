@@ -1,6 +1,6 @@
 import getTableDataFromHTML from 'helpers/allLatestTransfers/getTableDataFromHTML';
 import convertData from 'helpers/convertData';
-import config from 'configs/convertDataConfig';
+import config from 'configs/ConvertDataConfig';
 import { ALL_LATEST_TRANSFERS } from 'constants/transfermarkt/ConvertDataTypes';
 import html from './data/convertData_data';
 

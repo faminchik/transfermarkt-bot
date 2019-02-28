@@ -1,11 +1,11 @@
 import _ from 'lodash';
 import cheerio from 'cheerio';
-import { ALL_LATEST_TRANSFERS, CLUBS_SEARCH } from 'constants/transfermarkt/ConvertDataTypes';
+import * as cdt from 'constants/transfermarkt/ConvertDataTypes';
 import { TEXT, HTML } from 'constants/transfermarkt/TableDataTypes';
 
 // TODO create constants for everything
 export default {
-    [ALL_LATEST_TRANSFERS]: {
+    [cdt.ALL_LATEST_TRANSFERS]: {
         [TEXT]: {
             2: {
                 key: 'name',
@@ -67,10 +67,10 @@ export default {
             }
         }
     },
-    [CLUBS_SEARCH]: {
+    [cdt.CLUBS_SEARCH]: {
         [TEXT]: {
             2: {
-                key: 'club',
+                key: 'clubName',
                 handler: data => {
                     return _.slice(data, 1);
                 }
