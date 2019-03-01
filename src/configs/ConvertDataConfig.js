@@ -30,9 +30,6 @@ export default {
             },
             15: {
                 key: 'marketValue'
-            },
-            16: {
-                key: 'fee'
             }
         },
         [HTML]: {
@@ -62,6 +59,15 @@ export default {
                         const $ = cheerio.load(item);
                         const result = $('img').attr('alt');
                         return result ? result : '';
+                    });
+                }
+            },
+            16: {
+                key: 'fee',
+                handler: data => {
+                    return _.map(data, item => {
+                        const $ = cheerio.load(item);
+                        return $('a').text();
                     });
                 }
             }
