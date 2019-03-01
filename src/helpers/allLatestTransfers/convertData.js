@@ -26,11 +26,11 @@ const formArrayWithConfig = (array, config) =>
         )
     );
 
-const validTextDataIndexes = [2, 4, 8, 12, 14, 15, 16];
-const configText = ['name', 'age', 'leftTeam', 'joinedTeam', 'transferDate', 'marketValue', 'fee'];
+const validTextDataIndexes = [2, 4, 8, 12, 14, 15];
+const configText = ['name', 'age', 'leftTeam', 'joinedTeam', 'transferDate', 'marketValue'];
 
-const validHtmlDataIndexes = [5, 9, 13];
-const configHtml = ['nationality', 'leftTeamCountry', 'joinedTeamCountry'];
+const validHtmlDataIndexes = [5, 9, 13, 16];
+const configHtml = ['nationality', 'leftTeamCountry', 'joinedTeamCountry', 'fee'];
 
 const convertTextData = textData => {
     const compactedTextData = _.map(textData, item => _.compact(item));
@@ -73,6 +73,12 @@ const convertHtmlData = htmlData => {
         const $ = cheerio.load(item);
         const result = $('img').attr('alt');
         return result ? result : '';
+    });
+
+    // fee
+    neededHtmlData[3] = _.map(neededHtmlData[3], item => {
+        const $ = cheerio.load(item);
+        return $('a').text();
     });
 
     const transformedHtmlData = transposeArrays(neededHtmlData);
