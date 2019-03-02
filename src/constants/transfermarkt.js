@@ -6,3 +6,5 @@ export const THOUSANDS = 'Th.';
 export const LOAN_FEE = 'Loan fee:';
 export const SUMMER_TRANSFERS = 's';
 export const WINTER_TRANSFERS = 'w';
+export const START_PAGE = 'startseite';
+export const TRANSFERS = 'transfers';

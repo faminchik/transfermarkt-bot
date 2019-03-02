@@ -108,5 +108,55 @@ export default {
                 }
             }
         }
+    },
+    [cdt.TEAM_TRANSFERS]: {
+        [TEXT]: {
+            3: {
+                key: 'name',
+                handler: data => _.slice(data, 1)
+            },
+            5: {
+                key: 'age',
+                handler: data => _.slice(data, 1)
+            },
+            6: {
+                key: 'marketValue',
+                handler: data => _.slice(data, 1)
+            },
+            10: {
+                key: 'secondPartyTeam'
+            }
+        },
+        [HTML]: {
+            7: {
+                key: 'nationality',
+                handler: data => {
+                    return _.map(data, item => {
+                        const $ = cheerio.load(item);
+                        return $('img').attr('alt');
+                    });
+                }
+            },
+            11: {
+                key: 'secondPartyTeamCountry',
+                handler: data => {
+                    return _.map(data, item => {
+                        const $ = cheerio.load(item);
+                        const result = $('img').attr('alt');
+                        return result ? result : '';
+                    });
+                }
+            },
+            12: {
+                key: 'fee',
+                handler: data => {
+                    return _.map(data, item => {
+                        const $ = cheerio.load(item);
+                        $('a > .normaler-text').remove();
+                        return $('a').text();
+                    });
+                }
+            }
+        }
     }
 };

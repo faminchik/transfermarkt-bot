@@ -16,6 +16,8 @@ export default (html, type) => {
 
     if (_.isEmpty(resultNode)) return {};
 
-    const root = $(resultNode).next();
+    const root = $(resultNode)
+        .next()
+        .next();
     return parseTable($, root);
 };

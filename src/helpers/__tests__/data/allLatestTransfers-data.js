@@ -235,7 +235,7 @@ export default `
 			<img src="https://tmssl.akamaized.net//images/flagge/tiny/184.png?lm=1520611569" title="United States" alt="United States" class="flaggenrahmen" /> <a title="MLS" href="/major-league-soccer/transfers/wettbewerb/MLS1/saison_id/2018">MLS</a>		</td>
 	</tr>
 </table>
-</td><td class="zentriert">Feb 23, 2019</td><td class="rechts">1,25 Mill. €</td><td class="rechts hauptlink"><a href="/jumplist/transfers/spieler/174724/transfer_id/2412957">400 Th. €</a></td></tr>
+</td><td class="zentriert">Feb 23, 2019</td><td class="rechts">1,25 Mill. €</td><td class="rechts hauptlink"><a href="/jumplist/transfers/spieler/174724/transfer_id/2412957"></a></td></tr>
 <tr class="odd">
 <td class=""><table class="inline-table">
 	<tr>
