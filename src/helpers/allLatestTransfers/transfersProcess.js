@@ -2,27 +2,20 @@ import _ from 'lodash';
 import BPromise from 'bluebird';
 import config from 'config';
 import { fetchHtmlRequest } from 'utils/fetchRequests';
-import convertData from 'helpers/convertData';
-import getTableDataFromHTML from 'helpers/allLatestTransfers/getTableDataFromHTML';
+import parsingProcess from 'helpers/parsingProcess';
 import getInterestingTransfers from 'helpers/allLatestTransfers/getInterestingTransfers';
-import ConvertDataConfig from 'configs/ConvertDataConfig';
-import { ALL_LATEST_TRANSFERS } from 'constants/transfermarkt/ConvertDataTypes';
+import { ALL_LATEST_TRANSFERS } from 'constants/transfermarkt/ParsingTypes';
 
 const URL = config.get('latest-transfers-url');
 
-export default async () => {
+export default async types => {
     const transfers = await BPromise.map(_.range(1, 11), async number => {
         const url = _.replace(URL, '*', number);
         const html = await fetchHtmlRequest(url);
         if (!html) return [];
 
-        const { textData, htmlData } = getTableDataFromHTML(html);
-        const transfersInfo = convertData(
-            { textData, htmlData },
-            ConvertDataConfig[ALL_LATEST_TRANSFERS]
-        );
-
-        return getInterestingTransfers(transfersInfo);
+        const parsingResult = parsingProcess(html, types);
+        return getInterestingTransfers(parsingResult[ALL_LATEST_TRANSFERS]);
     });
 
     return _.uniqWith(_.flatten(transfers), _.isEqual);

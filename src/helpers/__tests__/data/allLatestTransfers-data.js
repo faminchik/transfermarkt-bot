@@ -7,7 +7,36 @@ export default `
 </head>
 <body x-ms-format-detection="none" style="overflow-y: scroll;"
       class="" itemscope
-      itemtype="http://schema.org/WebPage">
+	  itemtype="http://schema.org/WebPage">
+
+<div id="main">
+
+<div id="modalHolder"></div>
+
+<div class="row">
+<div class="large-12 columns">
+	<div class="box">
+
+	  <div class="table-header">
+		<h2>Latest Transfers</h2>
+		<div class="header-social">
+		  <div class="teilen-desktop-link" name="teilen-desktop" onclick="ga('send','event','teilen-desktop','click','teilen');
+"><ul><li><a href="mailto:?to=&amp;subject=Latest Transfers&amp;body=https%3A%2F%2Fwww.transfermarkt.com%2Ftransfers%2Fneuestetransfers%2Fstatistik%3Fland_id%3D0%26plus%3D1" class="MailToLink" name="teilen-mail-desktop" onclick="ga('send','event','teilen-mail-desktop','click','teilen');
+"><img src="https://tmsi.akamaized.net/icons/mail-schwarz.svg" alt="Mail"></a></li><li><a href="https://twitter.com/share?url=https%3A%2F%2Fwww.transfermarkt.com%2Ftransfers%2Fneuestetransfers%2Fstatistik%3Fland_id%3D0%26plus%3D1&amp;text=Latest Transfers" target="_blank" class="TwitterLink" name="teilen-twitter-desktop" onclick="ga('send','event','teilen-twitter-desktop','click','teilen');
+"><img src="https://tmsi.akamaized.net/icons/Twitter-Blau.svg" alt="Twitter"></a></li><li><a href="http://www.facebook.com/share.php?u=https%3A%2F%2Fwww.transfermarkt.com%2Ftransfers%2Fneuestetransfers%2Fstatistik%3Fland_id%3D0%26plus%3D1" target="_blank" class="FacebookLink" name="teilen-facebook-desktop" onclick="ga('send','event','teilen-facebook-desktop','click','teilen');
+"><img src="https://tmsi.akamaized.net/icons/Facebook-Blau.svg" alt="Facebook"></a></li></ul></div>                </div>
+  		</div>
+
+	  <p class="info-content">
+                This worldwide overview shows all latest completed and confirmed transfers. All relevant data such as the involved clubs, transfer fee, market value and transfer date are listed.            </p>
+	  
+	  <div class="kartei-button-bar">
+	  <a href="/transfers/neuestetransfers/statistik?land_id=0"><div class="kartei-button kartei-number-1"><span class="kartei-button-body">Compact</span></div></a><a href="/transfers/neuestetransfers/statistik?land_id=0&amp;plus=1"><div class="kartei-button second-kartei kartei-number-2 active-kartei"><span class="kartei-button-body">Detailed</span></div></a></div>
+
+<div class="responsive-table">
+	<div id="yw1" class="grid-view">
+	<div class="summary"></div>
+	  
 <table class="items">
 <thead>
 <tr>
@@ -955,6 +984,13 @@ export default `
 <li  class="page" title="Page 10"><a href="/transfers/letztetransfers/statistik?ajax=yw1&amp;land_id=0&amp;page=10&amp;plus=1">10</a></li>
 <li  class="naechste-seite" title="Go to next page"><a href="/transfers/letztetransfers/statistik?ajax=yw1&amp;land_id=0&amp;page=2&amp;plus=1">&nbsp;&nbsp;</a></li>
 <li  class="letzte-seite" title="Go the last page (page 10)"><a href="/transfers/letztetransfers/statistik?ajax=yw1&amp;land_id=0&amp;page=10&amp;plus=1">&nbsp;&nbsp;</a></li></ul></div><div class="keys" style="display:none" title="/transfers/letztetransfers/statistik?ajax=yw1&amp;land_id=0&amp;page=1&amp;plus=1"><span>33934</span><span>186593</span><span>264429</span><span>113192</span><span>42198</span><span>174724</span><span>69006</span><span>58150</span><span>104509</span><span>104511</span><span>213980</span><span>288957</span><span>281773</span><span>70176</span><span>187490</span><span>146712</span><span>331963</span><span>148485</span><span>250573</span><span>67339</span><span>62983</span><span>67721</span><span>264429</span><span>197999</span><span>131250</span></div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
 
 </body>
 </html>

@@ -1,4 +1,4 @@
-export const TABLE_CLASS_NAME = '.items';
+export const TABLE_CLASS_NAME = 'responsive-table';
 export const TABLE_HEADER_CLASS_NAME = '.table-header';
 export const MINIMUM_VALUE = 5.0;
 export const MILLIONS = 'Mill.';

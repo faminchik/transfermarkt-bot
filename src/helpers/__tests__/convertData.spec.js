@@ -1,12 +1,5 @@
-import getTableDataFromHTML from 'helpers/allLatestTransfers/getTableDataFromHTML';
-import getTableDataFromHTMLSeacrh from 'helpers/search/getTableDataFromHTML';
-import getTableDataFromHTMLTeam from 'helpers/teamTransfers/getTableDataFromHTML';
-import convertData from 'helpers/convertData';
-import ConvertDataConfig from 'configs/ConvertDataConfig';
-import ConvertDataStrategies from 'configs/ConvertDataStrategies';
-import { ALL_LATEST_TRANSFERS } from 'constants/transfermarkt/ConvertDataTypes';
-import * as st from 'constants/transfermarkt/SearchTypes';
-import * as ttt from 'constants/transfermarkt/TeamTransfersTypes';
+import parsingProcess from 'helpers/parsingProcess';
+import * as pt from 'constants/transfermarkt/ParsingTypes';
 
 import allLatestTransfersHtml from './data/allLatestTransfers-data';
 import searchResultHtml from './data/searchResult-data';
@@ -22,11 +15,10 @@ import {
 describe('convertData', () => {
     describe('allLatestTransfers', () => {
         test('should convert html data in a correct way', () => {
-            const { textData, htmlData } = getTableDataFromHTML(allLatestTransfersHtml);
+            const types = [pt.ALL_LATEST_TRANSFERS];
+            const parsingResult = parsingProcess(allLatestTransfersHtml, types);
 
-            const config = ConvertDataConfig[ALL_LATEST_TRANSFERS];
-            const transfersInfo = convertData({ textData, htmlData }, config);
-
+            const transfersInfo = parsingResult[pt.ALL_LATEST_TRANSFERS];
             expect(transfersInfo).toEqual(allLatestTransfersExpectedResult);
         });
     });
@@ -34,13 +26,10 @@ describe('convertData', () => {
     describe('search', () => {
         describe('clubsSearch', () => {
             test('should convert html data in a correct way', () => {
-                const type = st.SEARCH_CLUBS;
-                const { textData, htmlData } = getTableDataFromHTMLSeacrh(searchResultHtml, type);
+                const types = [pt.SEARCH_CLUBS];
+                const parsingResult = parsingProcess(searchResultHtml, types);
 
-                const strategy = ConvertDataStrategies[type];
-                const config = ConvertDataConfig[strategy];
-                const clubs = convertData({ textData, htmlData }, config);
-
+                const clubs = parsingResult[pt.SEARCH_CLUBS];
                 expect(clubs).toEqual(clubsSeacrhExpectedResult);
             });
         });
@@ -49,26 +38,20 @@ describe('convertData', () => {
     describe('teamTransfers', () => {
         describe('arrivals transfers', () => {
             test('should convert html data in a correct way', () => {
-                const type = ttt.TEAM_TRANSFERS_ARRIVALS;
-                const { textData, htmlData } = getTableDataFromHTMLTeam(teamTransfersHtml, type);
+                const types = [pt.TEAM_TRANSFERS_ARRIVALS];
+                const parsingResult = parsingProcess(teamTransfersHtml, types);
 
-                const strategy = ConvertDataStrategies[type];
-                const config = ConvertDataConfig[strategy];
-                const arrivalsTeamTransfers = convertData({ textData, htmlData }, config);
-
+                const arrivalsTeamTransfers = parsingResult[pt.TEAM_TRANSFERS_ARRIVALS];
                 expect(arrivalsTeamTransfers).toEqual(arrivalsTeamTransfersExpectedResult);
             });
         });
 
         describe('departures transfers', () => {
             test('should convert html data in a correct way', () => {
-                const type = ttt.TEAM_TRANSFERS_DEPARTURES;
-                const { textData, htmlData } = getTableDataFromHTMLTeam(teamTransfersHtml, type);
+                const types = [pt.TEAM_TRANSFERS_DEPARTURES];
+                const parsingResult = parsingProcess(teamTransfersHtml, types);
 
-                const strategy = ConvertDataStrategies[type];
-                const config = ConvertDataConfig[strategy];
-                const departuresTeamTransfers = convertData({ textData, htmlData }, config);
-
+                const departuresTeamTransfers = parsingResult[pt.TEAM_TRANSFERS_DEPARTURES];
                 expect(departuresTeamTransfers).toEqual(departuresTeamTransfersExpectedResult);
             });
         });

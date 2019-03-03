@@ -1,9 +1,9 @@
-import * as st from 'constants/transfermarkt/SearchTypes';
+import * as pt from 'constants/transfermarkt/ParsingTypes';
 import * as cdt from 'constants/transfermarkt/ConvertDataTypes';
-import * as ttt from 'constants/transfermarkt/TeamTransfersTypes';
 
 export default {
-    [st.SEARCH_CLUBS]: cdt.CLUBS_SEARCH,
-    [ttt.TEAM_TRANSFERS_ARRIVALS]: cdt.TEAM_TRANSFERS,
-    [ttt.TEAM_TRANSFERS_DEPARTURES]: cdt.TEAM_TRANSFERS
+    [pt.ALL_LATEST_TRANSFERS]: cdt.ALL_LATEST_TRANSFERS,
+    [pt.SEARCH_CLUBS]: cdt.CLUBS_SEARCH,
+    [pt.TEAM_TRANSFERS_ARRIVALS]: cdt.TEAM_TRANSFERS,
+    [pt.TEAM_TRANSFERS_DEPARTURES]: cdt.TEAM_TRANSFERS
 };

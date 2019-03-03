@@ -1,9 +1,9 @@
-import * as tb from 'constants/transfermarkt/TableHeaders';
-import * as st from 'constants/transfermarkt/SearchTypes';
-import * as ttt from 'constants/transfermarkt/TeamTransfersTypes';
+import * as th from 'constants/transfermarkt/TableHeaders';
+import * as pt from 'constants/transfermarkt/ParsingTypes';
 
 export default {
-    [st.SEARCH_CLUBS]: tb.SEARCH_RESULTS_HEADER_CLUBS,
-    [ttt.TEAM_TRANSFERS_ARRIVALS]: tb.TEAM_TRANSFERS_HEADER_ARRIVALS,
-    [ttt.TEAM_TRANSFERS_DEPARTURES]: tb.TEAM_TRANSFERS_HEADER_DEPARTURES
+    [pt.ALL_LATEST_TRANSFERS]: th.ALL_LATEST_TRANSFERS_HEADER,
+    [pt.SEARCH_CLUBS]: th.SEARCH_RESULTS_HEADER_CLUBS,
+    [pt.TEAM_TRANSFERS_ARRIVALS]: th.TEAM_TRANSFERS_HEADER_ARRIVALS,
+    [pt.TEAM_TRANSFERS_DEPARTURES]: th.TEAM_TRANSFERS_HEADER_DEPARTURES
 };

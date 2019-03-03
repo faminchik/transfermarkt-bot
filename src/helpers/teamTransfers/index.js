@@ -1,8 +1,11 @@
 import transfersProcess from 'helpers/teamTransfers/transfersProcess';
-import * as ttt from 'constants/transfermarkt/TeamTransfersTypes';
+import {
+    TEAM_TRANSFERS_ARRIVALS,
+    TEAM_TRANSFERS_DEPARTURES
+} from 'constants/transfermarkt/ParsingTypes';
 
 export default async clubLink => {
-    const types = [ttt.TEAM_TRANSFERS_ARRIVALS, ttt.TEAM_TRANSFERS_DEPARTURES];
+    const types = [TEAM_TRANSFERS_ARRIVALS, TEAM_TRANSFERS_DEPARTURES];
 
     return await transfersProcess(clubLink, types);
 };
