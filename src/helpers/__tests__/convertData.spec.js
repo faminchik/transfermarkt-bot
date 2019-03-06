@@ -5,13 +5,6 @@ import allLatestTransfersHtml from './data/allLatestTransfers-data';
 import searchResultHtml from './data/searchResult-data';
 import teamTransfersHtml from './data/teamTransfers-data';
 
-import allLatestTransfersExpectedResult from './results/allLatestTransfers-results';
-import { clubsSeacrhExpectedResult } from './results/searchResult-results';
-import {
-    arrivalsTeamTransfersExpectedResult,
-    departuresTeamTransfersExpectedResult
-} from './results/teamTransfers-results';
-
 describe('convertData', () => {
     describe('allLatestTransfers', () => {
         test('should convert html data in a correct way', () => {
@@ -19,7 +12,7 @@ describe('convertData', () => {
             const parsingResult = parsingProcess(allLatestTransfersHtml, types);
 
             const transfersInfo = parsingResult[pt.ALL_LATEST_TRANSFERS];
-            expect(transfersInfo).toEqual(allLatestTransfersExpectedResult);
+            expect(transfersInfo).toMatchSnapshot();
         });
     });
 
@@ -30,7 +23,7 @@ describe('convertData', () => {
                 const parsingResult = parsingProcess(searchResultHtml, types);
 
                 const clubs = parsingResult[pt.SEARCH_CLUBS];
-                expect(clubs).toEqual(clubsSeacrhExpectedResult);
+                expect(clubs).toMatchSnapshot();
             });
         });
     });
@@ -42,7 +35,7 @@ describe('convertData', () => {
                 const parsingResult = parsingProcess(teamTransfersHtml, types);
 
                 const arrivalsTeamTransfers = parsingResult[pt.TEAM_TRANSFERS_ARRIVALS];
-                expect(arrivalsTeamTransfers).toEqual(arrivalsTeamTransfersExpectedResult);
+                expect(arrivalsTeamTransfers).toMatchSnapshot();
             });
         });
 
@@ -52,7 +45,7 @@ describe('convertData', () => {
                 const parsingResult = parsingProcess(teamTransfersHtml, types);
 
                 const departuresTeamTransfers = parsingResult[pt.TEAM_TRANSFERS_DEPARTURES];
-                expect(departuresTeamTransfers).toEqual(departuresTeamTransfersExpectedResult);
+                expect(departuresTeamTransfers).toMatchSnapshot();
             });
         });
     });
