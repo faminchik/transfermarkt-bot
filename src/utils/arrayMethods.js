@@ -24,3 +24,26 @@ export const formArrayByKeys = (array, keys) =>
             {}
         )
     );
+
+export const splitByQuantity = (array = [], number) => {
+    if (!_.isNumber(number)) number = _.size(array);
+
+    const { result } = _.reduce(
+        array,
+        ({ result, arrayItems }, item, index) => {
+            arrayItems.push(item);
+
+            if ((index + 1) % number === 0) {
+                result.push(arrayItems);
+                arrayItems = [];
+            } else if (index + 1 === _.size(array)) {
+                result.push(arrayItems);
+            }
+
+            return { arrayItems, result };
+        },
+        { arrayItems: [], result: [] }
+    );
+
+    return result;
+};
