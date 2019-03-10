@@ -4,7 +4,7 @@ import config from 'config';
 import { fetchHtmlRequest } from 'utils/fetchRequests';
 import parsingProcess from 'helpers/parsingProcess';
 import getInterestingTransfers from 'helpers/allLatestTransfers/getInterestingTransfers';
-import addPlayerProfileData from 'helpers/addPlayerProfileData';
+import addPlayerProfileData from 'helpers/allLatestTransfers/addPlayerProfileData';
 import { ALL_LATEST_TRANSFERS } from 'constants/transfermarkt/ParsingTypes';
 
 const URL = config.get('latest-transfers-url');

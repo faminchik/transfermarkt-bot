@@ -37,7 +37,7 @@ export default {
             2: {
                 key: 'profileLink',
                 handler: data => {
-                    const filtered = _.filter(_.slice(data, 1), (item, index) => index % 2 === 0);
+                    const filtered = _.filter(data, (item, index) => index % 2 === 1);
                     return _.map(filtered, item => {
                         const $ = cheerio.load(item);
                         return $('a').attr('href');
