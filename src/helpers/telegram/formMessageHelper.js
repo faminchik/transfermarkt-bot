@@ -1,6 +1,7 @@
 import _ from 'lodash';
 import getFlagEmoji from 'helpers/getFlagEmoji';
-import { MESSAGE_DELIMITER, MESSAGE_COUNT_PER_MESSAGE } from 'constants/telegram';
+import { splitByQuantity } from 'utils/arrayMethods';
+import { MESSAGE_DELIMITER, ITEMS_COUNT_PER_MESSAGE } from 'constants/telegram';
 
 export const formTransferMessage = (transferInfo, isNewTransfer = true) => {
     const {
@@ -22,30 +23,48 @@ export const formTransferMessage = (transferInfo, isNewTransfer = true) => {
     const leftTeamFlag = getFlagEmoji(leftTeamCountry);
     const joinedTeamFlag = getFlagEmoji(joinedTeamCountry, false);
 
-    const message = `*${transferDate}*\r\n${flag}*${name}* (${marketValue} | ${age} y.o.)\r\n\r\n${leftTeamFlag}*${leftTeam}* → *${joinedTeam}*${joinedTeamFlag}\r\n*${fee}*${additionalInfo}`;
-
-    return message;
+    return `*${transferDate}*\r\n${flag}*${name}* (${marketValue} | ${age} y.o.)\r\n\r\n${leftTeamFlag}*${leftTeam}* → *${joinedTeam}*${joinedTeamFlag}\r\n*${fee}*${additionalInfo}`;
 };
 
-export const joinTransferMessages = transfersMessages => {
-    const { messageArrays } = _.reduce(
-        transfersMessages,
-        ({ messageItems, messageArrays }, msg, index) => {
-            messageItems.push(msg);
+export const formTeamTransferMessage = (teamTransferInfo, arrow = '', index) => {
+    const {
+        name,
+        age,
+        marketValue,
+        secondPartyTeam,
+        secondPartyTeamCountry,
+        fee,
+        nationality
+    } = teamTransferInfo;
 
-            if ((index + 1) % MESSAGE_COUNT_PER_MESSAGE === 0) {
-                messageArrays.push(messageItems);
-                messageItems = [];
-            }
+    const flag = getFlagEmoji(nationality);
+    const secondPartyFlag = getFlagEmoji(secondPartyTeamCountry);
+    const indexStr = _.isNumber(index) ? `*${index}*. ` : '';
 
-            if (index + 1 === _.size(transfersMessages)) {
-                messageArrays.push(messageItems);
-            }
+    return `${indexStr}${flag}*${name}* (${marketValue} | ${age} y.o.)\r\n\r\n${arrow}${secondPartyFlag}*${secondPartyTeam}* | *${fee}*`;
+};
 
-            return { messageItems, messageArrays };
-        },
-        { messageItems: [], messageArrays: [] }
-    );
+export const joinMessages = (messages, header = '') => {
+    const messageArrays = splitByQuantity(messages, ITEMS_COUNT_PER_MESSAGE);
+    return _.map(messageArrays, (msgArray, index) => {
+        const msg = _.join(msgArray, MESSAGE_DELIMITER);
+        return index === 0 ? header + msg : msg;
+    });
+};
 
-    return _.map(messageArrays, msgArray => _.join(msgArray, MESSAGE_DELIMITER));
+export const formClubsSearchResultMessage = searchResult => {
+    const messageArray = _.map(searchResult, ({ clubName, country, totalMarketValue }, index) => {
+        const flag = getFlagEmoji(country);
+        const totalMarketValueStr = totalMarketValue === '-' ? '' : `(${totalMarketValue})`;
+        return `*${index + 1}. ${flag}${clubName}* ${totalMarketValueStr}`;
+    });
+
+    return _.join(messageArray, '\r\n');
+};
+
+export const formTeamTransferHeader = (clubInfo, type) => {
+    const { clubName, country } = clubInfo;
+    const flag = getFlagEmoji(country);
+
+    return `${flag}*${clubName}* | *${type}*:\r\n\r\n`;
 };

@@ -120,6 +120,6 @@ describe('getInterestingTransfers', () => {
     test('should return interesting transfers correctly', () => {
         const result = getInterestingTransfers(data);
 
-        expect(expectedResult).toEqual(result);
+        expect(result).toEqual(expectedResult);
     });
 });

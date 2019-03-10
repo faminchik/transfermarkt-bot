@@ -1,17 +1,11 @@
-const CLASS_NAME = '.items';
-const MINIMUM_VALUE = 5.0;
-const MILLIONS = 'Mill.';
-const THOUSANDS = 'Th.';
-const LOAN_FEE = 'Loan fee:';
-const SUMMER_TRANSFERS = 's';
-const WINTER_TRANSFERS = 'w';
-
-export {
-    CLASS_NAME,
-    MINIMUM_VALUE,
-    MILLIONS,
-    THOUSANDS,
-    LOAN_FEE,
-    SUMMER_TRANSFERS,
-    WINTER_TRANSFERS
-};
+export const TABLE_CLASS_NAME = 'responsive-table';
+export const TABLE_HEADER_CLASS_NAME = '.table-header';
+export const MINIMUM_VALUE = 5.0;
+export const MILLIONS = 'Mill.';
+export const THOUSANDS = 'Th.';
+export const LOAN_FEE = 'Loan fee:';
+export const END_OF_LOAN = 'End of loan';
+export const SUMMER_TRANSFERS = 's';
+export const WINTER_TRANSFERS = 'w';
+export const START_PAGE = 'startseite';
+export const TRANSFERS = 'transfers';
