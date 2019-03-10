@@ -1,4 +1,4 @@
-import getInterestingTransfers from 'helpers/getInterestingTransfers';
+import getInterestingTransfers from 'helpers/allLatestTransfers/getInterestingTransfers';
 import { MILLIONS, THOUSANDS, LOAN_FEE } from 'constants/transfermarkt';
 
 const data = [
@@ -166,6 +166,6 @@ describe('getInterestingTransfers', () => {
     test('should return interesting transfers correctly', () => {
         const result = getInterestingTransfers(data);
 
-        expect(expectedResult).toEqual(result);
+        expect(result).toEqual(expectedResult);
     });
 });

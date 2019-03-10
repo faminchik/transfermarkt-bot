@@ -1,17 +1,17 @@
 import _ from 'lodash';
 import BPromise from 'bluebird';
-import transfersProcess from 'helpers/transfersProcess';
+import allLatestTransfersProcess from 'helpers/allLatestTransfers';
 import { getUsersIds, getTransfersToShow } from 'db/utils';
 import {
     upsertTransfers,
     deleteUsersByChatIds,
     isNewTransfer as isNewTransferFunc
 } from 'db/helpers';
-import { sendTransferMessage } from 'helpers/telegramBotHelpers';
+import { sendTransferMessage } from 'helpers/telegram/telegramBotHelpers';
 import { BLOCKED } from 'constants/statuses';
 
 export default async botClient => {
-    const transfers = await transfersProcess();
+    const transfers = await allLatestTransfersProcess();
     if (_.isEmpty(transfers)) return;
 
     const blockedIds = [];

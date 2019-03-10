@@ -3,18 +3,28 @@ import moment from 'moment';
 import BPromise from 'bluebird';
 import User from 'models/User';
 import Transfer from 'models/Transfer';
+import { getBottomDate } from 'helpers/dateHelper';
 
 export const getUsersIds = async () => {
     const users = await User.find({}).select(['chatId', '-_id']);
-    const usersIds = _.map(users, user => user.chatId);
+    const usersIds = _.map(users, 'chatId');
     return usersIds;
 };
 
-export const getAllTransfers = async () => {
+export const getRecentTransfers = async () => {
     const transfers = await Transfer.find({}).select(['-_id', '-__v']);
-    const sortedTransfers = _.sortBy(transfers, item => moment(item.transferDate, 'MMM DD, YYYY'));
 
-    return sortedTransfers;
+    const bottomDate = getBottomDate();
+    const recentTransfers = _.filter(transfers, transferInfo => {
+        const transferDate = moment(transferInfo.transferDate, 'MMM DD, YYYY');
+        return transferDate >= bottomDate;
+    });
+
+    const sortedRecentTransfers = _.sortBy(recentTransfers, item =>
+        moment(item.transferDate, 'MMM DD, YYYY')
+    );
+
+    return sortedRecentTransfers;
 };
 
 export const getTransfersToShow = async transfers =>
@@ -29,3 +39,5 @@ export const getTransfersToShow = async transfers =>
         });
         return !transferToShow;
     });
+
+export const getUserCount = async () => await User.countDocuments();

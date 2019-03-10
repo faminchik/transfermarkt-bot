@@ -5,7 +5,7 @@ import config from 'config';
 import { memoizedFormPlayerProfileData } from 'utils/formMemoizedFunctions';
 import { fetchHtmlRequest } from 'utils/fetchRequests';
 
-const BASE_URL = config.get('transfermarkt-base-url');
+const BASE_URL = config.get('base-url');
 
 export default async transfersInfo =>
     await BPromise.map(transfersInfo, async transferInfo => {
