@@ -32,6 +32,7 @@ export default bot => {
     });
 
     bot.onText(/\/test (.+)/, async (msg, match) => {
+        return;
         const chatId = _.get(msg, 'chat.id');
         const query = match[1];
 
@@ -42,6 +43,7 @@ export default bot => {
     });
 
     bot.on('callback_query', async response => {
+        return;
         const splittedResponse = _.split(response.data, ' ');
         const type = splittedResponse.shift();
 
