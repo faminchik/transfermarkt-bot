@@ -2,6 +2,7 @@ import _ from 'lodash';
 import cheerio from 'cheerio';
 import * as cdt from 'constants/transfermarkt/ConvertDataTypes';
 import { TEXT, HTML } from 'constants/transfermarkt/TableDataTypes';
+import { END_OF_LOAN } from 'constants/transfermarkt';
 
 // TODO create constants for everything
 export default {
@@ -152,8 +153,12 @@ export default {
                 handler: data => {
                     return _.map(data, item => {
                         const $ = cheerio.load(item);
-                        $('a > .normaler-text').remove();
-                        return $('a').text();
+                        const text = $('a').text();
+                        if (_.includes(text, END_OF_LOAN)) {
+                            $('a > .normaler-text').remove();
+                            return $('a').text();
+                        }
+                        return text;
                     });
                 }
             }

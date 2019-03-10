@@ -586,7 +586,7 @@ Array [
   },
   Object {
     "age": "22",
-    "fee": "Loan fee:",
+    "fee": "Loan fee:2,00 Mill. €",
     "marketValue": "30,00 Mill. €",
     "name": "Giovani Lo Celso",
     "nationality": "Argentina",
@@ -595,7 +595,7 @@ Array [
   },
   Object {
     "age": "28",
-    "fee": "Loan fee:",
+    "fee": "Loan fee:1,00 Mill. €",
     "marketValue": "18,00 Mill. €",
     "name": "Grzegorz Krychowiak",
     "nationality": "Poland",
