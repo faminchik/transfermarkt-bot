@@ -4,9 +4,7 @@ import TelegramBot from 'node-telegram-bot-api';
 import './db';
 import './server';
 import mainProcess from './mainProcess';
-import { addUser, deleteUser } from 'db/helpers';
-import { getRecentTransfers } from 'db/utils';
-import { sendJoinedTransferMessages } from 'helpers/telegram/telegramBotHelpers';
+import botHandlers from './botHandlers';
 
 const { TELEGRAM_BOT_TOKEN } = process.env;
 
@@ -16,27 +14,10 @@ if (!TELEGRAM_BOT_TOKEN) {
 }
 
 const bot = new TelegramBot(TELEGRAM_BOT_TOKEN, { polling: true });
+botHandlers(bot);
 
 const intervalDuration = 10 * 1000 * 60; // 10 min in ms
 // const intervalDuration = 10 * 1000; // 10 s in ms
-
-bot.onText(/\/start/, async msg => {
-    const id = await addUser(msg);
-    if (!id) return;
-
-    const recentTransfers = await getRecentTransfers();
-
-    // send messages with recently transfers
-    await sendJoinedTransferMessages(bot, id, recentTransfers);
-});
-
-bot.onText(/\/simplestart/, msg => {
-    addUser(msg);
-});
-
-bot.onText(/\/stop/, msg => {
-    deleteUser(msg);
-});
 
 // start
 (async () => {
