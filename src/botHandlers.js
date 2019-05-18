@@ -31,8 +31,7 @@ export default bot => {
         deleteUser(msg);
     });
 
-    bot.onText(/\/test (.+)/, async (msg, match) => {
-        return;
+    bot.onText(/\/team (.+)/, async (msg, match) => {
         const chatId = _.get(msg, 'chat.id');
         const query = match[1];
 
@@ -43,7 +42,6 @@ export default bot => {
     });
 
     bot.on('callback_query', async response => {
-        return;
         const splittedResponse = _.split(response.data, ' ');
         const type = splittedResponse.shift();
 
