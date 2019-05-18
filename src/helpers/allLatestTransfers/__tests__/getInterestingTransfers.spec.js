@@ -135,12 +135,12 @@ const data = [
     {
         marketValue: `2,00 ${MILLIONS} €`, // - 26
         fee: `2,00 ${MILLIONS} €`,
-        highestMarketValue: `4,00 ${MILLIONS} €`
+        highestMarketValue: `9,00 ${MILLIONS} €`
     },
     {
         marketValue: `3,00 ${MILLIONS} €`, // + 27
         fee: 'Free Transfer',
-        highestMarketValue: `5,50 ${MILLIONS} €`
+        highestMarketValue: `10,50 ${MILLIONS} €`
     }
 ];
 

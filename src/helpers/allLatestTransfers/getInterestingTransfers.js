@@ -20,7 +20,7 @@ export default transfersInfo =>
 
             if (
                 _.includes(highestMarketValue, MILLIONS) &&
-                highestMarketValueNumber > MINIMUM_VALUE
+                highestMarketValueNumber >= MINIMUM_VALUE * 2
             ) {
                 return true;
             }
