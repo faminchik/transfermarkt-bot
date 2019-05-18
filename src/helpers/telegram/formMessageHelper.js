@@ -1,6 +1,5 @@
 import _ from 'lodash';
 import getFlagEmoji from 'helpers/getFlagEmoji';
-import { splitByQuantity } from 'utils/arrayMethods';
 import { MESSAGE_DELIMITER, ITEMS_COUNT_PER_MESSAGE } from 'constants/telegram';
 
 export const formTransferMessage = (transferInfo, isNewTransfer = true) => {
@@ -45,7 +44,7 @@ export const formTeamTransferMessage = (teamTransferInfo, arrow = '', index) => 
 };
 
 export const joinMessages = (messages, header = '') => {
-    const messageArrays = splitByQuantity(messages, ITEMS_COUNT_PER_MESSAGE);
+    const messageArrays = _.chunk(messages, ITEMS_COUNT_PER_MESSAGE);
     return _.map(messageArrays, (msgArray, index) => {
         const msg = _.join(msgArray, MESSAGE_DELIMITER);
         return index === 0 ? header + msg : msg;
