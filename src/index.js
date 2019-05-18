@@ -3,6 +3,7 @@ import _ from 'lodash';
 import TelegramBot from 'node-telegram-bot-api';
 import './db';
 import './server';
+import 'utils/formMemoizedFunctions';
 import mainProcess from './mainProcess';
 import botHandlers from './botHandlers';
 

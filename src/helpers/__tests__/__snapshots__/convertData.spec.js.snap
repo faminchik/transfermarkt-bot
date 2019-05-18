@@ -12,6 +12,7 @@ Array [
     "marketValue": "600 Th. €",
     "name": "Quentin Westberg",
     "nationality": "United States",
+    "profileLink": "/quentin-westberg/profil/spieler/33934",
     "transferDate": "Feb 25, 2019",
   },
   Object {
@@ -24,6 +25,7 @@ Array [
     "marketValue": "1,20 Mill. €",
     "name": "Kévin Boli",
     "nationality": "Cote d'Ivoire",
+    "profileLink": "/kevin-boli/profil/spieler/186593",
     "transferDate": "Feb 24, 2019",
   },
   Object {
@@ -36,6 +38,7 @@ Array [
     "marketValue": "1,50 Mill. €",
     "name": "Yuning Zhang",
     "nationality": "China",
+    "profileLink": "/yuning-zhang/profil/spieler/264429",
     "transferDate": "Feb 24, 2019",
   },
   Object {
@@ -48,6 +51,7 @@ Array [
     "marketValue": "1,50 Mill. €",
     "name": "Anton Maglica",
     "nationality": "Croatia",
+    "profileLink": "/anton-maglica/profil/spieler/113192",
     "transferDate": "Feb 24, 2019",
   },
   Object {
@@ -60,6 +64,7 @@ Array [
     "marketValue": "3,50 Mill. €",
     "name": "Sone Aluko",
     "nationality": "Nigeria",
+    "profileLink": "/sone-aluko/profil/spieler/42198",
     "transferDate": "Feb 23, 2019",
   },
   Object {
@@ -72,6 +77,7 @@ Array [
     "marketValue": "1,25 Mill. €",
     "name": "C.J. Sapong",
     "nationality": "United States",
+    "profileLink": "/c-j-sapong/profil/spieler/174724",
     "transferDate": "Feb 23, 2019",
   },
   Object {
@@ -84,6 +90,7 @@ Array [
     "marketValue": "2,50 Mill. €",
     "name": "Lacina Traoré",
     "nationality": "Cote d'Ivoire",
+    "profileLink": "/lacina-traore/profil/spieler/69006",
     "transferDate": "Feb 23, 2019",
   },
   Object {
@@ -96,6 +103,7 @@ Array [
     "marketValue": "600 Th. €",
     "name": "Andrii Tkachuk",
     "nationality": "Ukraine",
+    "profileLink": "/andrii-tkachuk/profil/spieler/58150",
     "transferDate": "Feb 23, 2019",
   },
   Object {
@@ -108,6 +116,7 @@ Array [
     "marketValue": "2,75 Mill. €",
     "name": "André",
     "nationality": "Brazil",
+    "profileLink": "/andre/profil/spieler/104509",
     "transferDate": "Feb 22, 2019",
   },
   Object {
@@ -120,6 +129,7 @@ Array [
     "marketValue": "700 Th. €",
     "name": "Alan Chochiev",
     "nationality": "Russia",
+    "profileLink": "/alan-chochiev/profil/spieler/104511",
     "transferDate": "Feb 22, 2019",
   },
   Object {
@@ -132,6 +142,7 @@ Array [
     "marketValue": "500 Th. €",
     "name": "Viacheslav Tankovskyi",
     "nationality": "Ukraine",
+    "profileLink": "/viacheslav-tankovskyi/profil/spieler/213980",
     "transferDate": "Feb 22, 2019",
   },
   Object {
@@ -144,6 +155,7 @@ Array [
     "marketValue": "600 Th. €",
     "name": "Javokhir Sidikov",
     "nationality": "Uzbekistan",
+    "profileLink": "/javokhir-sidikov/profil/spieler/288957",
     "transferDate": "Feb 22, 2019",
   },
   Object {
@@ -156,6 +168,7 @@ Array [
     "marketValue": "800 Th. €",
     "name": "José León",
     "nationality": "Spain",
+    "profileLink": "/jose-leon/profil/spieler/281773",
     "transferDate": "Feb 22, 2019",
   },
   Object {
@@ -168,6 +181,7 @@ Array [
     "marketValue": "600 Th. €",
     "name": "Muris Mesanovic",
     "nationality": "Bosnia-Herzegovina",
+    "profileLink": "/muris-mesanovic/profil/spieler/70176",
     "transferDate": "Feb 22, 2019",
   },
   Object {
@@ -180,6 +194,7 @@ Array [
     "marketValue": "1,25 Mill. €",
     "name": "Jan Sykora",
     "nationality": "Czech Republic",
+    "profileLink": "/jan-sykora/profil/spieler/187490",
     "transferDate": "Feb 22, 2019",
   },
   Object {
@@ -192,6 +207,7 @@ Array [
     "marketValue": "1,25 Mill. €",
     "name": "Jakub Jugas",
     "nationality": "Czech Republic",
+    "profileLink": "/jakub-jugas/profil/spieler/146712",
     "transferDate": "Feb 22, 2019",
   },
   Object {
@@ -204,6 +220,7 @@ Array [
     "marketValue": "800 Th. €",
     "name": "Filip Panak",
     "nationality": "Czech Republic",
+    "profileLink": "/filip-panak/profil/spieler/331963",
     "transferDate": "Feb 22, 2019",
   },
   Object {
@@ -216,6 +233,7 @@ Array [
     "marketValue": "500 Th. €",
     "name": "Timofey Margasov",
     "nationality": "Russia",
+    "profileLink": "/timofey-margasov/profil/spieler/148485",
     "transferDate": "Feb 22, 2019",
   },
   Object {
@@ -228,6 +246,7 @@ Array [
     "marketValue": "1,00 Mill. €",
     "name": "Dorin Rotariu",
     "nationality": "Romania",
+    "profileLink": "/dorin-rotariu/profil/spieler/250573",
     "transferDate": "Feb 22, 2019",
   },
   Object {
@@ -240,6 +259,7 @@ Array [
     "marketValue": "1,00 Mill. €",
     "name": "David Stockdale",
     "nationality": "England",
+    "profileLink": "/david-stockdale/profil/spieler/67339",
     "transferDate": "Feb 22, 2019",
   },
   Object {
@@ -252,6 +272,7 @@ Array [
     "marketValue": "2,00 Mill. €",
     "name": "Borek Dockal",
     "nationality": "Czech Republic",
+    "profileLink": "/borek-dockal/profil/spieler/62983",
     "transferDate": "Feb 22, 2019",
   },
   Object {
@@ -264,6 +285,7 @@ Array [
     "marketValue": "600 Th. €",
     "name": "Mohammed Rabiu",
     "nationality": "Ghana",
+    "profileLink": "/mohammed-rabiu/profil/spieler/67721",
     "transferDate": "Feb 22, 2019",
   },
   Object {
@@ -276,6 +298,7 @@ Array [
     "marketValue": "1,50 Mill. €",
     "name": "Yuning Zhang",
     "nationality": "China",
+    "profileLink": "/yuning-zhang/profil/spieler/264429",
     "transferDate": "Feb 22, 2019",
   },
   Object {
@@ -288,6 +311,7 @@ Array [
     "marketValue": "700 Th. €",
     "name": "Filipe Nascimento",
     "nationality": "Portugal",
+    "profileLink": "/filipe-nascimento/profil/spieler/197999",
     "transferDate": "Feb 21, 2019",
   },
   Object {
@@ -300,6 +324,7 @@ Array [
     "marketValue": "700 Th. €",
     "name": "Dylan Flores",
     "nationality": "Costa Rica",
+    "profileLink": "/dylan-flores/profil/spieler/131250",
     "transferDate": "Feb 21, 2019",
   },
 ]

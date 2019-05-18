@@ -34,6 +34,16 @@ export default {
             }
         },
         [HTML]: {
+            2: {
+                key: 'profileLink',
+                handler: data => {
+                    const filtered = _.filter(data, (item, index) => index % 2 === 1);
+                    return _.map(filtered, item => {
+                        const $ = cheerio.load(item);
+                        return $('a').attr('href');
+                    });
+                }
+            },
             5: {
                 key: 'nationality',
                 handler: data => {
