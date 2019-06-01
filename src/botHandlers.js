@@ -6,7 +6,9 @@ import { getRecentTransfers } from 'db/utils';
 import {
     sendJoinedTransferMessages,
     sendClubsSearchResultWithOptions,
-    sendTeamTransfersMessages
+    sendTeamTransfersMessages,
+    sendMessageOnStart,
+    sendMessageOnStop
 } from 'helpers/telegram/telegramBotHelpers';
 import { CLUB } from 'constants/CallbackQueryTypes';
 import searchProcess from 'helpers/search';
@@ -17,18 +19,25 @@ export default bot => {
         const id = await addUser(msg);
         if (!id) return;
 
+        await sendMessageOnStart(bot, id);
         const recentTransfers = await getRecentTransfers();
 
         // send messages with recently transfers
         await sendJoinedTransferMessages(bot, id, recentTransfers);
     });
 
-    bot.onText(/\/simplestart/, msg => {
-        addUser(msg);
+    bot.onText(/\/simplestart/, async msg => {
+        const id = await addUser(msg);
+        if (!id) return;
+
+        await sendMessageOnStart(bot, id);
     });
 
-    bot.onText(/\/stop/, msg => {
-        deleteUser(msg);
+    bot.onText(/\/stop/, async msg => {
+        const id = await deleteUser(msg);
+        if (!id) return;
+
+        await sendMessageOnStop(bot, id);
     });
 
     bot.onText(/\/team (.+)/, async (msg, match) => {

@@ -35,20 +35,19 @@ export const addUser = msg => {
                 command
             });
 
-            newUser
+            return newUser
                 .save()
-                .then(user =>
+                .then(user => {
                     console.log(
                         'add',
                         user.chatId,
                         user.chatFirstName,
                         user.chatLastName,
                         user.chatUserName
-                    )
-                )
+                    );
+                    return user.chatId;
+                })
                 .catch(err => console.log(err));
-
-            return chatId;
         }
 
         return null;
@@ -60,18 +59,21 @@ export const deleteUser = msg => {
         chat: { id: chatId }
     } = msg;
 
-    User.findOne({ chatId }).then(user => {
+    return User.findOne({ chatId }).then(user => {
         if (user) {
-            user.remove().then(user =>
+            return user.remove().then(user => {
                 console.log(
                     'remove',
                     user.chatId,
                     user.chatFirstName,
                     user.chatLastName,
                     user.chatUserName
-                )
-            );
+                );
+                return user.chatId;
+            });
         }
+
+        return null;
     });
 };
 

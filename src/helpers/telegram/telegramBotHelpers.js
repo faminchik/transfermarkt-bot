@@ -65,3 +65,14 @@ export const sendTeamTransfersMessages = async (botClient, chatId, { teamTransfe
     await joinAndSendMessages(botClient, chatId, arrivalsMessages, arrivalsHeader);
     await joinAndSendMessages(botClient, chatId, departuresMessages, departuresHeader);
 };
+
+export const sendMessageOnStart = async (botClient, chatId) => {
+    const START_MESSAGE = `You've been successfully subscribed`;
+
+    await sendMessage(botClient, chatId, START_MESSAGE);
+};
+export const sendMessageOnStop = async (botClient, chatId) => {
+    const STOP_MESSAGE = `You've been successfully unsubscribed`;
+
+    await sendMessage(botClient, chatId, STOP_MESSAGE);
+};
