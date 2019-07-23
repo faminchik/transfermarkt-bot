@@ -90,16 +90,16 @@ export const deleteUsersByChatIds = ids => {
 export const upsertTransfers = async transfersToUpsert => {
     await BPromise.each(transfersToUpsert, async transfer => {
         const {
-            name,
-            age,
-            nationality,
-            leftTeam,
-            joinedTeam,
+            name = '',
+            age = '',
+            nationality = '',
+            leftTeam = '',
+            joinedTeam = '',
             leftTeamCountry,
             joinedTeamCountry,
-            transferDate,
-            marketValue,
-            fee
+            transferDate = '',
+            marketValue = '',
+            fee = ''
         } = transfer;
 
         await Transfer.findOne({ name, leftTeam, joinedTeam }).then(transfer => {

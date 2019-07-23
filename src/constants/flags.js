@@ -149,6 +149,7 @@ export default {
     Madagascar: 'flag-mg',
     'Marshall Islands': 'flag-mh',
     Macedonia: 'flag-mk',
+    'North Macedonia': 'flag-mk',
     Mali: 'flag-ml',
     Myanmar: 'flag-mm',
     Mongolia: 'flag-mn',
