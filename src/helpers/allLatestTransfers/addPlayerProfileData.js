@@ -7,6 +7,9 @@ import { fetchHtmlRequest } from 'utils/fetchRequests';
 
 const BASE_URL = config.get('base-url');
 
+let u = 0;
+let r = 0;
+
 export default async transfersInfo =>
     await BPromise.map(transfersInfo, async transferInfo => {
         const { profileLink } = transferInfo;
@@ -17,8 +20,10 @@ export default async transfersInfo =>
 
 export const formPlayerProfileData = async profileLink => {
     const url = BASE_URL + profileLink;
+    console.log('url', u++);
 
     const html = await fetchHtmlRequest(url);
+    console.log('res', r++);
     if (!html) return { highestMarketValue: '' };
 
     const $ = cheerio.load(html);
