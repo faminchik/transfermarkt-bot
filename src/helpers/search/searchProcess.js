@@ -1,4 +1,3 @@
-import _ from 'lodash';
 import config from 'config';
 import { fetchHtmlRequest } from 'utils/fetchRequests';
 import parsingProcess from 'helpers/parsingProcess';

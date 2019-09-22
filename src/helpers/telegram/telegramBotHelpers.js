@@ -11,6 +11,8 @@ import { formClubsSearchResultButtons } from 'helpers/telegram/formButtonsForKey
 import { formInlineKeyboard } from 'helpers/telegram/formKeyboards';
 import { BLOCKED, ERROR, SUCCESS } from 'constants/statuses';
 
+/* eslint @typescript-eslint/camelcase: 0 */
+
 const sendMessage = async (botClient, chatId, message, options = {}) =>
     await botClient
         .sendMessage(
@@ -19,7 +21,7 @@ const sendMessage = async (botClient, chatId, message, options = {}) =>
             message,
             { parse_mode: 'Markdown', ...options }
         )
-        .then(res => SUCCESS)
+        .then(() => SUCCESS)
         .catch(err => (err.response && err.response.statusCode === 403 ? BLOCKED : ERROR));
 
 const joinAndSendMessages = async (botClient, chatId, messages, header) => {

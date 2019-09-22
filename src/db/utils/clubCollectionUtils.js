@@ -1,4 +1,3 @@
-import _ from 'lodash';
 import BPromise from 'bluebird';
 import Club from 'models/Club';
 

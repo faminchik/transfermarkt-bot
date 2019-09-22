@@ -6,7 +6,10 @@
     "scripts": {
         "start": "node -r @babel/register src/index",
         "dev": "nodemon -r @babel/register src/index",
-        "unit-tests": "jest --config=\"./jest.config.unit.js\""
+        "unit-tests": "jest --config=\"./jest.config.unit.js\"",
+        "eslint": "node_modules/.bin/eslint -c .eslintrc.js src/**/*.{ts,js}",
+        "check-types": "tsc --noEmit",
+        "lint": "npm-run-all eslint check-types"
     },
     "author": "",
     "license": "ISC",
@@ -26,7 +29,7 @@
         "config": "^2.0.1",
         "dotenv": "^6.0.0",
         "express": "^4.16.3",
-        "lodash": "^4.17.11",
+        "lodash": "^4.17.15",
         "moment": "^2.22.2",
         "mongoose": "^5.4.0",
         "node-fetch": "^2.2.0",
@@ -34,8 +37,21 @@
     },
     "devDependencies": {
         "@babel/node": "^7.2.2",
+        "@babel/preset-typescript": "^7.6.0",
+        "@typescript-eslint/eslint-plugin": "^2.3.0",
+        "@typescript-eslint/parser": "^2.3.0",
+        "eslint": "^6.4.0",
+        "husky": "^3.0.5",
         "jest": "^24.0.0",
+        "lint-staged": "^9.3.0",
         "mockdate": "^2.0.2",
-        "nodemon": "^1.18.9"
+        "nodemon": "^1.18.9",
+        "npm-run-all": "^4.1.5",
+        "typescript": "^3.6.3"
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "lint-staged --config \"lint-staged.config.js\""
+        }
     }
 }
