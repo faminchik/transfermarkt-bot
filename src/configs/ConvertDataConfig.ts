@@ -1,24 +1,21 @@
 import _ from 'lodash';
 import cheerio from 'cheerio';
-import * as cdt from 'constants/transfermarkt/ConvertDataTypes';
-import { TEXT, HTML } from 'constants/transfermarkt/TableDataTypes';
-import { END_OF_LOAN } from 'constants/transfermarkt';
+import { ConvertDataConfig } from 'ts/types/ConvertDataConfig.types';
+import cdt from 'constants/transfermarkt/ConvertDataTypes';
+import tdt from 'constants/transfermarkt/TableDataTypes';
+import { END_OF_LOAN } from 'constants/Transfermarkt';
 
 // TODO create constants for everything
-export default {
+const config: ConvertDataConfig = {
     [cdt.ALL_LATEST_TRANSFERS]: {
-        [TEXT]: {
+        [tdt.TEXT]: {
             2: {
                 key: 'name',
-                handler: data => {
-                    return _.filter(data, (player, index) => index % 2 === 1);
-                }
+                handler: (data: string[]) => _.filter(data, (player, index) => index % 2 === 1)
             },
             4: {
                 key: 'age',
-                handler: data => {
-                    return _.slice(data, 1);
-                }
+                handler: (data: string[]) => _.slice(data, 1)
             },
             8: {
                 key: 'leftTeam'
@@ -33,10 +30,10 @@ export default {
                 key: 'marketValue'
             }
         },
-        [HTML]: {
+        [tdt.HTML]: {
             2: {
                 key: 'profileLink',
-                handler: data => {
+                handler: (data: string[]) => {
                     const filtered = _.filter(data, (item, index) => index % 2 === 1);
                     return _.map(filtered, item => {
                         const $ = cheerio.load(item);
@@ -46,7 +43,7 @@ export default {
             },
             5: {
                 key: 'nationality',
-                handler: data => {
+                handler: (data: string[]) => {
                     return _.map(_.slice(data, 1), item => {
                         const $ = cheerio.load(item);
                         return $('img').attr('alt');
@@ -55,7 +52,7 @@ export default {
             },
             9: {
                 key: 'leftTeamCountry',
-                handler: data => {
+                handler: (data: string[]) => {
                     return _.map(data, item => {
                         const $ = cheerio.load(item);
                         const result = $('img').attr('alt');
@@ -65,7 +62,7 @@ export default {
             },
             13: {
                 key: 'joinedTeamCountry',
-                handler: data => {
+                handler: (data: string[]) => {
                     return _.map(data, item => {
                         const $ = cheerio.load(item);
                         const result = $('img').attr('alt');
@@ -75,7 +72,7 @@ export default {
             },
             16: {
                 key: 'fee',
-                handler: data => {
+                handler: (data: string[]) => {
                     return _.map(data, item => {
                         const $ = cheerio.load(item);
                         return $('a').text();
@@ -85,24 +82,20 @@ export default {
         }
     },
     [cdt.CLUBS_SEARCH]: {
-        [TEXT]: {
+        [tdt.TEXT]: {
             2: {
                 key: 'clubName',
-                handler: data => {
-                    return _.slice(data, 1);
-                }
+                handler: (data: string[]) => _.slice(data, 1)
             },
             6: {
                 key: 'totalMarketValue',
-                handler: data => {
-                    return _.slice(data, 1);
-                }
+                handler: (data: string[]) => _.slice(data, 1)
             }
         },
-        [HTML]: {
+        [tdt.HTML]: {
             2: {
                 key: 'clubLink',
-                handler: data => {
+                handler: (data: string[]) => {
                     return _.map(_.slice(data, 1), item => {
                         const $ = cheerio.load(item);
                         return $('a').attr('href');
@@ -111,7 +104,7 @@ export default {
             },
             4: {
                 key: 'country',
-                handler: data => {
+                handler: (data: string[]) => {
                     return _.map(_.slice(data, 1), item => {
                         const $ = cheerio.load(item);
                         return $('img').attr('alt');
@@ -121,27 +114,27 @@ export default {
         }
     },
     [cdt.TEAM_TRANSFERS]: {
-        [TEXT]: {
+        [tdt.TEXT]: {
             3: {
                 key: 'name',
-                handler: data => _.slice(data, 1)
+                handler: (data: string[]) => _.slice(data, 1)
             },
             5: {
                 key: 'age',
-                handler: data => _.slice(data, 1)
+                handler: (data: string[]) => _.slice(data, 1)
             },
             6: {
                 key: 'marketValue',
-                handler: data => _.slice(data, 1)
+                handler: (data: string[]) => _.slice(data, 1)
             },
             10: {
                 key: 'secondPartyTeam'
             }
         },
-        [HTML]: {
+        [tdt.HTML]: {
             7: {
                 key: 'nationality',
-                handler: data => {
+                handler: (data: string[]) => {
                     return _.map(data, item => {
                         const $ = cheerio.load(item);
                         return $('img').attr('alt');
@@ -150,7 +143,7 @@ export default {
             },
             11: {
                 key: 'secondPartyTeamCountry',
-                handler: data => {
+                handler: (data: string[]) => {
                     return _.map(data, item => {
                         const $ = cheerio.load(item);
                         const result = $('img').attr('alt');
@@ -160,7 +153,7 @@ export default {
             },
             12: {
                 key: 'fee',
-                handler: data => {
+                handler: (data: string[]) => {
                     return _.map(data, item => {
                         const $ = cheerio.load(item);
                         const text = $('a').text();
@@ -175,3 +168,5 @@ export default {
         }
     }
 };
+
+export default config;

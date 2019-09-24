@@ -1,13 +1,13 @@
 import _ from 'lodash';
 import moment from 'moment';
-import { SUMMER_TRANSFERS, WINTER_TRANSFERS } from 'constants/transfermarkt';
+import { SUMMER_TRANSFERS, WINTER_TRANSFERS } from 'constants/Transfermarkt';
 
 const DAYS_NUMBER = 2;
 
 const getCurrentDate = () => moment(moment().format('ll'), 'MMM DD, YYYY');
 
-export const getBottomDate = (daysNumber = DAYS_NUMBER) => {
-    if (!_.isNumber(daysNumber) || daysNumber < 0) daysNumber = DAYS_NUMBER;
+export const getBottomDate = (daysNumber = DAYS_NUMBER): moment.Moment => {
+    if (daysNumber < 0) daysNumber = DAYS_NUMBER;
 
     const currentDate = getCurrentDate();
     console.log('currentDate', currentDate);

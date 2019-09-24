@@ -1,5 +1,5 @@
-import * as th from 'constants/transfermarkt/TableHeaders';
-import * as pt from 'constants/transfermarkt/ParsingTypes';
+import th from 'constants/transfermarkt/TableHeaders';
+import pt from 'constants/transfermarkt/ParsingTypes';
 
 export default {
     [pt.ALL_LATEST_TRANSFERS]: th.ALL_LATEST_TRANSFERS_HEADER,
