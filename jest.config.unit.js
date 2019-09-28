@@ -8,12 +8,11 @@ module.exports = {
     // Automatically restore mock state between every test
     restoreMocks: true,
 
-    // The path to a module that runs some code to configure or set up the testing framework before each test
-    // setupTestFrameworkScriptFile: './resources/unit-tests-setup-script.js'
+    testPathIgnorePatterns: ['<rootDir>/node_modules/', '<rootDir>/dist/'],
 
     // The test environment that will be used for testing
     testEnvironment: 'node',
 
     // The glob patterns Jest uses to detect test files
-    testMatch: ['**/__tests__/**/?(*.)+(spec).js']
+    testMatch: ['**/__tests__/**/?(*.)+(spec).[jt]s']
 };
