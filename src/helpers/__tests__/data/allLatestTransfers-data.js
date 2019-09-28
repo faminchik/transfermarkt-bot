@@ -79,7 +79,7 @@ export default `
 			<img src="https://tmssl.akamaized.net//images/flagge/tiny/80.png?lm=1520611569" title="Canada" alt="Canada" class="flaggenrahmen" /> <a title="MLS" href="/major-league-soccer/transfers/wettbewerb/MLS1/saison_id/2018">MLS</a>		</td>
 	</tr>
 </table>
-</td><td class="zentriert">Feb 25, 2019</td><td class="rechts">600 Th. €</td><td class="rechts hauptlink"><a href="/jumplist/transfers/spieler/33934/transfer_id/2414030">?</a></td></tr>
+</td><td class="zentriert">Feb 25, 2019</td><td class="rechts">600 thousand €</td><td class="rechts hauptlink"><a href="/jumplist/transfers/spieler/33934/transfer_id/2414030">?</a></td></tr>
 <tr class="even">
 <td class=""><table class="inline-table">
 	<tr>
@@ -116,7 +116,7 @@ export default `
 			<img src="https://tmssl.akamaized.net//images/flagge/tiny/140.png?lm=1520611569" title="Romania" alt="Romania" class="flaggenrahmen" /> <a title="Liga 1" href="/liga-1/transfers/wettbewerb/RO1/saison_id/2018">Liga 1</a>		</td>
 	</tr>
 </table>
-</td><td class="zentriert">Feb 24, 2019</td><td class="rechts">1,20 Mill. €</td><td class="rechts hauptlink"><a href="/jumplist/transfers/spieler/186593/transfer_id/2413526">Loan</a></td></tr>
+</td><td class="zentriert">Feb 24, 2019</td><td class="rechts">1,20 mil. €</td><td class="rechts hauptlink"><a href="/jumplist/transfers/spieler/186593/transfer_id/2413526">Loan</a></td></tr>
 <tr class="odd">
 <td class=""><table class="inline-table">
 	<tr>
@@ -153,7 +153,7 @@ export default `
 			<img src="https://tmssl.akamaized.net//images/flagge/tiny/34.png?lm=1520611569" title="China" alt="China" class="flaggenrahmen" /> <a title="Super League" href="/chinese-super-league/transfers/wettbewerb/CSL/saison_id/2018">Super League</a>		</td>
 	</tr>
 </table>
-</td><td class="zentriert">Feb 24, 2019</td><td class="rechts">1,50 Mill. €</td><td class="rechts hauptlink"><a href="/jumplist/transfers/spieler/264429/transfer_id/2413177">?</a></td></tr>
+</td><td class="zentriert">Feb 24, 2019</td><td class="rechts">1,50 mil. €</td><td class="rechts hauptlink"><a href="/jumplist/transfers/spieler/264429/transfer_id/2413177">?</a></td></tr>
 <tr class="even">
 <td class=""><table class="inline-table">
 	<tr>
@@ -190,7 +190,7 @@ export default `
 			<img src="https://tmssl.akamaized.net//images/flagge/tiny/34.png?lm=1520611569" title="China" alt="China" class="flaggenrahmen" /> <a title="League One" href="/china-league-one/transfers/wettbewerb/CLO/saison_id/2018">League One</a>		</td>
 	</tr>
 </table>
-</td><td class="zentriert">Feb 24, 2019</td><td class="rechts">1,50 Mill. €</td><td class="rechts hauptlink"><a href="/jumplist/transfers/spieler/113192/transfer_id/2412966">450 Th. €</a></td></tr>
+</td><td class="zentriert">Feb 24, 2019</td><td class="rechts">1,50 mil. €</td><td class="rechts hauptlink"><a href="/jumplist/transfers/spieler/113192/transfer_id/2412966">450 thousand €</a></td></tr>
 <tr class="odd">
 <td class=""><table class="inline-table">
 	<tr>
@@ -227,7 +227,7 @@ export default `
 			<img src="https://tmssl.akamaized.net//images/flagge/tiny/34.png?lm=1520611569" title="China" alt="China" class="flaggenrahmen" /> <a title="Super League" href="/chinese-super-league/transfers/wettbewerb/CSL/saison_id/2018">Super League</a>		</td>
 	</tr>
 </table>
-</td><td class="zentriert">Feb 23, 2019</td><td class="rechts">3,50 Mill. €</td><td class="rechts hauptlink"><a href="/jumplist/transfers/spieler/42198/transfer_id/2412967">?</a></td></tr>
+</td><td class="zentriert">Feb 23, 2019</td><td class="rechts">3,50 mil. €</td><td class="rechts hauptlink"><a href="/jumplist/transfers/spieler/42198/transfer_id/2412967">?</a></td></tr>
 <tr class="even">
 <td class=""><table class="inline-table">
 	<tr>
@@ -264,7 +264,7 @@ export default `
 			<img src="https://tmssl.akamaized.net//images/flagge/tiny/184.png?lm=1520611569" title="United States" alt="United States" class="flaggenrahmen" /> <a title="MLS" href="/major-league-soccer/transfers/wettbewerb/MLS1/saison_id/2018">MLS</a>		</td>
 	</tr>
 </table>
-</td><td class="zentriert">Feb 23, 2019</td><td class="rechts">1,25 Mill. €</td><td class="rechts hauptlink"><a href="/jumplist/transfers/spieler/174724/transfer_id/2412957"></a></td></tr>
+</td><td class="zentriert">Feb 23, 2019</td><td class="rechts">1,25 mil. €</td><td class="rechts hauptlink"><a href="/jumplist/transfers/spieler/174724/transfer_id/2412957"></a></td></tr>
 <tr class="odd">
 <td class=""><table class="inline-table">
 	<tr>
@@ -301,7 +301,7 @@ export default `
 			<img src="https://tmssl.akamaized.net//images/flagge/tiny/178.png?lm=1521635893" title="Hungary" alt="Hungary" class="flaggenrahmen" /> <a title="NB I." href="/nemzeti-bajnoksag/transfers/wettbewerb/UNG1/saison_id/2018">NB I.</a>		</td>
 	</tr>
 </table>
-</td><td class="zentriert">Feb 23, 2019</td><td class="rechts">2,50 Mill. €</td><td class="rechts hauptlink"><a href="/jumplist/transfers/spieler/69006/transfer_id/2408615">-</a></td></tr>
+</td><td class="zentriert">Feb 23, 2019</td><td class="rechts">2,50 mil. €</td><td class="rechts hauptlink"><a href="/jumplist/transfers/spieler/69006/transfer_id/2408615">-</a></td></tr>
 <tr class="even">
 <td class=""><table class="inline-table">
 	<tr>
@@ -338,7 +338,7 @@ export default `
 			<img src="https://tmssl.akamaized.net//images/flagge/tiny/81.png?lm=1520611569" title="Kazakhstan" alt="Kazakhstan" class="flaggenrahmen" /> <a title="Premier Liga" href="/premier-liga/transfers/wettbewerb/KAS1/saison_id/2018">Premier Liga</a>		</td>
 	</tr>
 </table>
-</td><td class="zentriert">Feb 23, 2019</td><td class="rechts">600 Th. €</td><td class="rechts hauptlink"><a href="/jumplist/transfers/spieler/58150/transfer_id/2322091">Free Transfer</a></td></tr>
+</td><td class="zentriert">Feb 23, 2019</td><td class="rechts">600 thousand €</td><td class="rechts hauptlink"><a href="/jumplist/transfers/spieler/58150/transfer_id/2322091">Free Transfer</a></td></tr>
 <tr class="odd">
 <td class=""><table class="inline-table">
 	<tr>
@@ -375,7 +375,7 @@ export default `
 			<img src="https://tmssl.akamaized.net//images/flagge/tiny/26.png?lm=1520611569" title="Brazil" alt="Brazil" class="flaggenrahmen" /> <a title="Série A" href="/campeonato-brasileiro-serie-a/transfers/wettbewerb/BRA1/saison_id/2018">Série A</a>		</td>
 	</tr>
 </table>
-</td><td class="zentriert">Feb 22, 2019</td><td class="rechts">2,75 Mill. €</td><td class="rechts hauptlink"><a href="/jumplist/transfers/spieler/104509/transfer_id/2413852">2,50 Mill. €</a></td></tr>
+</td><td class="zentriert">Feb 22, 2019</td><td class="rechts">2,75 mil. €</td><td class="rechts hauptlink"><a href="/jumplist/transfers/spieler/104509/transfer_id/2413852">2,50 mil. €</a></td></tr>
 <tr class="even">
 <td class=""><table class="inline-table">
 	<tr>
@@ -412,7 +412,7 @@ export default `
 					</td>
 	</tr>
 </table>
-</td><td class="zentriert">Feb 22, 2019</td><td class="rechts">700 Th. €</td><td class="rechts hauptlink"><a href="/jumplist/transfers/spieler/104511/transfer_id/2413722">-</a></td></tr>
+</td><td class="zentriert">Feb 22, 2019</td><td class="rechts">700 thousand €</td><td class="rechts hauptlink"><a href="/jumplist/transfers/spieler/104511/transfer_id/2413722">-</a></td></tr>
 <tr class="odd">
 <td class=""><table class="inline-table">
 	<tr>
@@ -449,7 +449,7 @@ export default `
 			<img src="https://tmssl.akamaized.net//images/flagge/tiny/177.png?lm=1520611569" title="Ukraine" alt="Ukraine" class="flaggenrahmen" /> <a title="Premier Liga" href="/premier-liga/transfers/wettbewerb/UKR1/saison_id/2018">Premier Liga</a>		</td>
 	</tr>
 </table>
-</td><td class="zentriert">Feb 22, 2019</td><td class="rechts">500 Th. €</td><td class="rechts hauptlink"><a href="/jumplist/transfers/spieler/213980/transfer_id/2412255">Loan</a></td></tr>
+</td><td class="zentriert">Feb 22, 2019</td><td class="rechts">500 thousand €</td><td class="rechts hauptlink"><a href="/jumplist/transfers/spieler/213980/transfer_id/2412255">Loan</a></td></tr>
 <tr class="even">
 <td class=""><table class="inline-table">
 	<tr>
@@ -486,7 +486,7 @@ export default `
 			<img src="https://tmssl.akamaized.net//images/flagge/tiny/180.png?lm=1520611569" title="Uzbekistan" alt="Uzbekistan" class="flaggenrahmen" /> <a title="Superliga" href="/o%CA%BBzbekiston-professional-futbol-ligasi/transfers/wettbewerb/UZ1/saison_id/2018">Superliga</a>		</td>
 	</tr>
 </table>
-</td><td class="zentriert">Feb 22, 2019</td><td class="rechts">600 Th. €</td><td class="rechts hauptlink"><a href="/jumplist/transfers/spieler/288957/transfer_id/2411942">?</a></td></tr>
+</td><td class="zentriert">Feb 22, 2019</td><td class="rechts">600 thousand €</td><td class="rechts hauptlink"><a href="/jumplist/transfers/spieler/288957/transfer_id/2411942">?</a></td></tr>
 <tr class="odd">
 <td class=""><table class="inline-table">
 	<tr>
@@ -523,7 +523,7 @@ export default `
 			<img src="https://tmssl.akamaized.net//images/flagge/tiny/147.png?lm=1520611569" title="Sweden" alt="Sweden" class="flaggenrahmen" /> <a title="Allsvenskan" href="/allsvenskan/transfers/wettbewerb/SE1/saison_id/2018">Allsvenskan</a>		</td>
 	</tr>
 </table>
-</td><td class="zentriert">Feb 22, 2019</td><td class="rechts">800 Th. €</td><td class="rechts hauptlink"><a href="/jumplist/transfers/spieler/281773/transfer_id/2411892">Loan</a></td></tr>
+</td><td class="zentriert">Feb 22, 2019</td><td class="rechts">800 thousand €</td><td class="rechts hauptlink"><a href="/jumplist/transfers/spieler/281773/transfer_id/2411892">Loan</a></td></tr>
 <tr class="even">
 <td class=""><table class="inline-table">
 	<tr>
@@ -560,7 +560,7 @@ export default `
 			<img src="https://tmssl.akamaized.net//images/flagge/tiny/172.png?lm=1520611569" title="Czech Republic" alt="Czech Republic" class="flaggenrahmen" /> <a title="Fortuna Liga" href="/gambrinus-liga/transfers/wettbewerb/TS1/saison_id/2018">Fortuna Liga</a>		</td>
 	</tr>
 </table>
-</td><td class="zentriert">Feb 22, 2019</td><td class="rechts">600 Th. €</td><td class="rechts hauptlink"><a href="/jumplist/transfers/spieler/70176/transfer_id/2411763">?</a></td></tr>
+</td><td class="zentriert">Feb 22, 2019</td><td class="rechts">600 thousand €</td><td class="rechts hauptlink"><a href="/jumplist/transfers/spieler/70176/transfer_id/2411763">?</a></td></tr>
 <tr class="odd">
 <td class=""><table class="inline-table">
 	<tr>
@@ -597,7 +597,7 @@ export default `
 			<img src="https://tmssl.akamaized.net//images/flagge/tiny/172.png?lm=1520611569" title="Czech Republic" alt="Czech Republic" class="flaggenrahmen" /> <a title="Fortuna Liga" href="/gambrinus-liga/transfers/wettbewerb/TS1/saison_id/2018">Fortuna Liga</a>		</td>
 	</tr>
 </table>
-</td><td class="zentriert">Feb 22, 2019</td><td class="rechts">1,25 Mill. €</td><td class="rechts hauptlink"><a href="/jumplist/transfers/spieler/187490/transfer_id/2411754">Loan</a></td></tr>
+</td><td class="zentriert">Feb 22, 2019</td><td class="rechts">1,25 mil. €</td><td class="rechts hauptlink"><a href="/jumplist/transfers/spieler/187490/transfer_id/2411754">Loan</a></td></tr>
 <tr class="even">
 <td class=""><table class="inline-table">
 	<tr>
@@ -634,7 +634,7 @@ export default `
 			<img src="https://tmssl.akamaized.net//images/flagge/tiny/172.png?lm=1520611569" title="Czech Republic" alt="Czech Republic" class="flaggenrahmen" /> <a title="Fortuna Liga" href="/gambrinus-liga/transfers/wettbewerb/TS1/saison_id/2018">Fortuna Liga</a>		</td>
 	</tr>
 </table>
-</td><td class="zentriert">Feb 22, 2019</td><td class="rechts">1,25 Mill. €</td><td class="rechts hauptlink"><a href="/jumplist/transfers/spieler/146712/transfer_id/2411750">Loan</a></td></tr>
+</td><td class="zentriert">Feb 22, 2019</td><td class="rechts">1,25 mil. €</td><td class="rechts hauptlink"><a href="/jumplist/transfers/spieler/146712/transfer_id/2411750">Loan</a></td></tr>
 <tr class="odd">
 <td class=""><table class="inline-table">
 	<tr>
@@ -671,7 +671,7 @@ export default `
 			<img src="https://tmssl.akamaized.net//images/flagge/tiny/172.png?lm=1520611569" title="Czech Republic" alt="Czech Republic" class="flaggenrahmen" /> <a title="Fortuna Liga" href="/gambrinus-liga/transfers/wettbewerb/TS1/saison_id/2018">Fortuna Liga</a>		</td>
 	</tr>
 </table>
-</td><td class="zentriert">Feb 22, 2019</td><td class="rechts">800 Th. €</td><td class="rechts hauptlink"><a href="/jumplist/transfers/spieler/331963/transfer_id/2411679">?</a></td></tr>
+</td><td class="zentriert">Feb 22, 2019</td><td class="rechts">800 thousand €</td><td class="rechts hauptlink"><a href="/jumplist/transfers/spieler/331963/transfer_id/2411679">?</a></td></tr>
 <tr class="even">
 <td class=""><table class="inline-table">
 	<tr>
@@ -708,7 +708,7 @@ export default `
 			<img src="https://tmssl.akamaized.net//images/flagge/tiny/141.png?lm=1520611569" title="Russia" alt="Russia" class="flaggenrahmen" /> <a title="1.Division" href="/1-division/transfers/wettbewerb/RU2/saison_id/2018">1.Division</a>		</td>
 	</tr>
 </table>
-</td><td class="zentriert">Feb 22, 2019</td><td class="rechts">500 Th. €</td><td class="rechts hauptlink"><a href="/jumplist/transfers/spieler/148485/transfer_id/2411608">Loan</a></td></tr>
+</td><td class="zentriert">Feb 22, 2019</td><td class="rechts">500 thousand €</td><td class="rechts hauptlink"><a href="/jumplist/transfers/spieler/148485/transfer_id/2411608">Loan</a></td></tr>
 <tr class="odd">
 <td class=""><table class="inline-table">
 	<tr>
@@ -745,7 +745,7 @@ export default `
 			<img src="https://tmssl.akamaized.net//images/flagge/tiny/81.png?lm=1520611569" title="Kazakhstan" alt="Kazakhstan" class="flaggenrahmen" /> <a title="Premier Liga" href="/premier-liga/transfers/wettbewerb/KAS1/saison_id/2018">Premier Liga</a>		</td>
 	</tr>
 </table>
-</td><td class="zentriert">Feb 22, 2019</td><td class="rechts">1,00 Mill. €</td><td class="rechts hauptlink"><a href="/jumplist/transfers/spieler/250573/transfer_id/2407024">?</a></td></tr>
+</td><td class="zentriert">Feb 22, 2019</td><td class="rechts">1,00 mil. €</td><td class="rechts hauptlink"><a href="/jumplist/transfers/spieler/250573/transfer_id/2407024">?</a></td></tr>
 <tr class="even">
 <td class=""><table class="inline-table">
 	<tr>
@@ -782,7 +782,7 @@ export default `
 			<img src="https://tmssl.akamaized.net//images/flagge/tiny/189.png?lm=1520611569" title="England" alt="England" class="flaggenrahmen" /> <a title="Championship" href="/championship/transfers/wettbewerb/GB2/saison_id/2018">Championship</a>		</td>
 	</tr>
 </table>
-</td><td class="zentriert">Feb 22, 2019</td><td class="rechts">1,00 Mill. €</td><td class="rechts hauptlink"><a href="/jumplist/transfers/spieler/67339/transfer_id/2404405">End of loan</a></td></tr>
+</td><td class="zentriert">Feb 22, 2019</td><td class="rechts">1,00 mil. €</td><td class="rechts hauptlink"><a href="/jumplist/transfers/spieler/67339/transfer_id/2404405">End of loan</a></td></tr>
 <tr class="odd">
 <td class=""><table class="inline-table">
 	<tr>
@@ -819,7 +819,7 @@ export default `
 			<img src="https://tmssl.akamaized.net//images/flagge/tiny/172.png?lm=1520611569" title="Czech Republic" alt="Czech Republic" class="flaggenrahmen" /> <a title="Fortuna Liga" href="/gambrinus-liga/transfers/wettbewerb/TS1/saison_id/2018">Fortuna Liga</a>		</td>
 	</tr>
 </table>
-</td><td class="zentriert">Feb 22, 2019</td><td class="rechts">2,00 Mill. €</td><td class="rechts hauptlink"><a href="/jumplist/transfers/spieler/62983/transfer_id/2402767">1,30 Mill. €</a></td></tr>
+</td><td class="zentriert">Feb 22, 2019</td><td class="rechts">2,00 mil. €</td><td class="rechts hauptlink"><a href="/jumplist/transfers/spieler/62983/transfer_id/2402767">1,30 mil. €</a></td></tr>
 <tr class="even">
 <td class=""><table class="inline-table">
 	<tr>
@@ -856,7 +856,7 @@ export default `
 			<img src="https://tmssl.akamaized.net//images/flagge/tiny/141.png?lm=1520611569" title="Russia" alt="Russia" class="flaggenrahmen" /> <a title="Premier Liga" href="/premier-liga/transfers/wettbewerb/RU1/saison_id/2018">Premier Liga</a>		</td>
 	</tr>
 </table>
-</td><td class="zentriert">Feb 22, 2019</td><td class="rechts">600 Th. €</td><td class="rechts hauptlink"><a href="/jumplist/transfers/spieler/67721/transfer_id/2378439">Free Transfer</a></td></tr>
+</td><td class="zentriert">Feb 22, 2019</td><td class="rechts">600 thousand €</td><td class="rechts hauptlink"><a href="/jumplist/transfers/spieler/67721/transfer_id/2378439">Free Transfer</a></td></tr>
 <tr class="odd">
 <td class=""><table class="inline-table">
 	<tr>
@@ -893,7 +893,7 @@ export default `
 			<img src="https://tmssl.akamaized.net//images/flagge/tiny/189.png?lm=1520611569" title="England" alt="England" class="flaggenrahmen" /> <a title="Championship" href="/championship/transfers/wettbewerb/GB2/saison_id/2018">Championship</a>		</td>
 	</tr>
 </table>
-</td><td class="zentriert">Feb 22, 2019</td><td class="rechts">1,50 Mill. €</td><td class="rechts hauptlink"><a href="/jumplist/transfers/spieler/264429/transfer_id/2144203">End of loan</a></td></tr>
+</td><td class="zentriert">Feb 22, 2019</td><td class="rechts">1,50 mil. €</td><td class="rechts hauptlink"><a href="/jumplist/transfers/spieler/264429/transfer_id/2144203">End of loan</a></td></tr>
 <tr class="even">
 <td class=""><table class="inline-table">
 	<tr>
@@ -930,7 +930,7 @@ export default `
 			<img src="https://tmssl.akamaized.net//images/flagge/tiny/140.png?lm=1520611569" title="Romania" alt="Romania" class="flaggenrahmen" /> Romania		</td>
 	</tr>
 </table>
-</td><td class="zentriert">Feb 21, 2019</td><td class="rechts">700 Th. €</td><td class="rechts hauptlink"><a href="/jumplist/transfers/spieler/197999/transfer_id/2413602">Loan</a></td></tr>
+</td><td class="zentriert">Feb 21, 2019</td><td class="rechts">700 thousand €</td><td class="rechts hauptlink"><a href="/jumplist/transfers/spieler/197999/transfer_id/2413602">Loan</a></td></tr>
 <tr class="odd">
 <td class=""><table class="inline-table">
 	<tr>
@@ -967,7 +967,7 @@ export default `
 			<img src="https://tmssl.akamaized.net//images/flagge/tiny/140.png?lm=1520611569" title="Romania" alt="Romania" class="flaggenrahmen" /> <a title="Liga 1" href="/liga-1/transfers/wettbewerb/RO1/saison_id/2018">Liga 1</a>		</td>
 	</tr>
 </table>
-</td><td class="zentriert">Feb 21, 2019</td><td class="rechts">700 Th. €</td><td class="rechts hauptlink"><a href="/jumplist/transfers/spieler/131250/transfer_id/2413192">90 Th. €</a></td></tr>
+</td><td class="zentriert">Feb 21, 2019</td><td class="rechts">700 thousand €</td><td class="rechts hauptlink"><a href="/jumplist/transfers/spieler/131250/transfer_id/2413192">90 thousand €</a></td></tr>
 </tbody>
 </table>
 <div class="pager"><ul id="yw2" class="yiiPager"><li  class="erste-seite hidden" title="Page &nbsp;&nbsp;"><span>&nbsp;&nbsp;</span></li>
