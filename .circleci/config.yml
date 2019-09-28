@@ -1,0 +1,58 @@
+# Javascript Node CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/language-javascript/ for more details
+#
+version: 2
+
+defaults: &defaults
+    working_directory: ~/faminchik/transfermarkt-bot
+    docker:
+        - image: circleci/node:10.15.3
+
+cache_restore: &cache_restore
+    restore_cache:
+        keys:
+            # fallback to using the latest cache if no exact match is found
+            - node-v7-{{ .Branch }}-{{ checksum "package-lock.json" }}
+            - node-v7-{{ .Branch }}-
+            - node-v7-
+
+jobs:
+    build:
+        <<: *defaults
+        steps:
+            - checkout
+            - <<: *cache_restore
+
+            - run: npm install
+
+            - save_cache:
+                  paths:
+                      - node_modules
+                  key: node-v7-{{ .Branch }}-{{ checksum "package-lock.json" }}
+
+    lint:
+        <<: *defaults
+        steps:
+            - checkout
+            - <<: *cache_restore
+            - run: npm run lint
+
+    unit_tests:
+        <<: *defaults
+        steps:
+            - checkout
+            - <<: *cache_restore
+            - run: npm run unit-tests
+
+workflows:
+    version: 2
+    build_and_test:
+        jobs:
+            - build
+            - lint:
+                  requires:
+                      - build
+            - unit_tests:
+                  requires:
+                      - build
