@@ -1,15 +1,23 @@
 import _ from 'lodash';
+import {
+    TConvertDataConfigItem,
+    TConvertDataConfigElement
+} from 'ts/types/ConvertDataConfig.types';
+import { IParsedTable } from 'ts/interfaces/ParseTable.interfaces';
+import { TConvertedData } from 'ts/types/ConvertData.types';
 import { transposeArrays, formArrayByKeys } from 'utils/arrayMethods';
-import { TEXT, HTML } from 'constants/transfermarkt/TableDataTypes';
+import tdt from 'constants/transfermarkt/TableDataTypes';
 
-const convertData = (data, congfig) => {
+type ParsedData = { [key: string]: string[] };
+
+const convertData = (data: CheerioParsedTable, config: TConvertDataConfigElement) => {
     const compactedData = _.map(data, _.compact);
 
-    const convertedData = _.reduce(
-        _.keys(congfig),
-        (acc, indexItem) => {
-            const { key, handler } = congfig[indexItem];
-            const data = compactedData[indexItem];
+    const parsedData = _.reduce(
+        _.keys(config),
+        (acc: ParsedData, indexItem) => {
+            const { key, handler } = config[_.toNumber(indexItem)];
+            const data = compactedData[_.toNumber(indexItem)];
 
             acc[key] = _.isFunction(handler) ? handler(data) : data;
             return acc;
@@ -17,13 +25,16 @@ const convertData = (data, congfig) => {
         {}
     );
 
-    const transposedData = transposeArrays(_.values(convertedData));
-    return formArrayByKeys(transposedData, _.keys(convertedData));
+    const transposedData = transposeArrays(_.values(parsedData));
+    return formArrayByKeys(transposedData, _.keys(parsedData));
 };
 
-export default ({ textData, htmlData }, congfig) => {
-    const convertedHtmlData = convertData(htmlData, congfig[HTML]);
-    const convertedTextData = convertData(textData, congfig[TEXT]);
+export default (
+    { textData, htmlData }: IParsedTable,
+    config: TConvertDataConfigItem
+): TConvertedData => {
+    const convertedHtmlData = convertData(htmlData, config[tdt.HTML]);
+    const convertedTextData = convertData(textData, config[tdt.TEXT]);
 
     return _.merge([], convertedTextData, convertedHtmlData);
 };

@@ -8,7 +8,10 @@ import { START_PAGE, TRANSFERS } from 'constants/Transfermarkt';
 
 const URL: string = config.get('team-latest-transfers-url');
 
-export default async (clubLink: string, types: pt[]) => {
+export default async (
+    clubLink: string,
+    types: readonly [pt.TEAM_TRANSFERS_ARRIVALS, pt.TEAM_TRANSFERS_DEPARTURES]
+) => {
     const year = getYearForTransferPeriod();
     const transferPeriodType = getTransferPeriodType();
 

@@ -1,10 +1,12 @@
 import _ from 'lodash';
 
-export const transposeArrays = arrays =>
-    _.reduce(
+export function transposeArrays<T>(arrays: T[][]): T[][] {
+    if (!arrays) return [];
+
+    return _.reduce(
         arrays,
-        (acc, array) => {
-            _.map(array, (item, i) => {
+        (acc: T[][], array) => {
+            _.each(array, (item, i) => {
                 if (!_.isArray(acc[i])) acc[i] = [];
                 acc[i].push(item);
             });
@@ -12,15 +14,17 @@ export const transposeArrays = arrays =>
         },
         []
     );
+}
 
-export const formArrayByKeys = (array, keys) =>
-    _.map(array, item =>
+export function formArrayByKeys<T>(array: T[][], keys: string[]): { [key: string]: T }[] {
+    return _.map(array, item =>
         _.reduce(
             item,
-            (acc, param, index) => ({
+            (acc: { [param: string]: T }, param, index) => ({
                 ...acc,
                 [keys[index]]: param
             }),
             {}
         )
     );
+}

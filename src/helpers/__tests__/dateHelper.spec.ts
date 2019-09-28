@@ -1,7 +1,7 @@
 import _ from 'lodash';
 import MockDate from 'mockdate';
 import { getTransferPeriodType, getYearForTransferPeriod } from 'helpers/dateHelper';
-import { SUMMER_TRANSFERS, WINTER_TRANSFERS } from 'constants/transfermarkt';
+import { SUMMER_TRANSFERS, WINTER_TRANSFERS } from 'constants/Transfermarkt';
 
 describe('dateHelper', () => {
     beforeEach(() => {

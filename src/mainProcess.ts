@@ -1,5 +1,6 @@
 import _ from 'lodash';
 import BPromise from 'bluebird';
+import TelegramBot from 'node-telegram-bot-api';
 import allLatestTransfersProcess from 'helpers/allLatestTransfers';
 import { getUsersIds, getTransfersToShow } from 'db/utils';
 import {
@@ -8,13 +9,13 @@ import {
     isNewTransfer as isNewTransferFunc
 } from 'db/helpers';
 import { sendTransferMessage } from 'helpers/telegram/telegramBotHelpers';
-import { BLOCKED } from 'constants/statuses';
+import Statuses from 'constants/Statuses';
 
-export default async botClient => {
+export default async (botClient: TelegramBot) => {
     const transfers = await allLatestTransfersProcess();
     if (_.isEmpty(transfers)) return;
 
-    const blockedIds = [];
+    const blockedIds: number[] = [];
     const transfersToShow = await getTransfersToShow(transfers);
 
     if (_.isEmpty(transfersToShow)) return;
@@ -27,7 +28,7 @@ export default async botClient => {
         await BPromise.each(usersIds, async id => {
             const status = await sendTransferMessage(botClient, id, transferInfo, isNewTransfer);
 
-            if (status === BLOCKED) blockedIds.push(id);
+            if (status === Statuses.BLOCKED) blockedIds.push(id);
         });
     });
 

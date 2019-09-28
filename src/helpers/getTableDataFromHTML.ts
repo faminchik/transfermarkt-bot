@@ -1,10 +1,12 @@
 import _ from 'lodash';
 import cheerio from 'cheerio';
+import { IParsedTable } from 'ts/interfaces/ParseTable.interfaces';
+import pt from 'constants/transfermarkt/ParsingTypes';
 import parseTable from 'helpers/parseTable';
-import { TABLE_HEADER_CLASS_NAME, TABLE_CLASS_NAME } from 'constants/transfermarkt';
+import { TABLE_HEADER_CLASS_NAME, TABLE_CLASS_NAME } from 'constants/Transfermarkt';
 import TableHeadersConfig from 'configs/TableHeadersConfig';
 
-export default (html, type) => {
+export default (html: string, type: pt): IParsedTable => {
     const $ = cheerio.load(html);
     const header = TableHeadersConfig[type];
 
@@ -14,9 +16,9 @@ export default (html, type) => {
         return _.includes(text, header);
     });
 
-    if (_.isEmpty(headerNode)) return {};
+    if (_.isEmpty(headerNode)) return { htmlData: [], textData: [] };
 
-    let nodeClassName = null;
+    let nodeClassName: string;
     let neededNodeRoot = $(headerNode);
 
     do {

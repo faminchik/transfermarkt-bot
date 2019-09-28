@@ -1,7 +1,27 @@
+import _ from 'lodash';
 import getInterestingTransfers from 'helpers/allLatestTransfers/getInterestingTransfers';
-import { MILLIONS, THOUSANDS, LOAN_FEE } from 'constants/transfermarkt';
+import { MILLIONS, THOUSANDS, LOAN_FEE } from 'constants/Transfermarkt';
+import { TTransferFullEntity } from 'ts/types/Entities.types';
 
-const data = [
+const formTransferFullEntity = (data: Partial<TTransferFullEntity>[]): TTransferFullEntity[] =>
+    _.map(data, item => {
+        const { marketValue = '', fee = '', highestMarketValue = '' } = item;
+
+        return {
+            marketValue,
+            fee,
+            highestMarketValue,
+            name: '',
+            age: '',
+            nationality: '',
+            leftTeam: '',
+            joinedTeam: '',
+            transferDate: '',
+            profileLink: ''
+        };
+    });
+
+const data = formTransferFullEntity([
     {
         marketValue: `6,00 ${MILLIONS} €`, // + 0
         fee: `2,00 ${MILLIONS} €`,
@@ -142,7 +162,7 @@ const data = [
         fee: 'Free Transfer',
         highestMarketValue: `10,50 ${MILLIONS} €`
     }
-];
+]);
 
 const expectedResult = [
     data[0],

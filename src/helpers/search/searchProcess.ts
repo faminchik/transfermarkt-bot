@@ -5,7 +5,7 @@ import parsingProcess from 'helpers/parsingProcess';
 
 const URL: string = config.get('search-url');
 
-export default async (query = '', types: pt[]) => {
+export default async (query = '', types: readonly [pt.SEARCH_CLUBS]) => {
     const url = URL + query;
 
     const html = await fetchHtmlRequest(url);

@@ -1,4 +1,8 @@
-export default {
+interface Emoji {
+    [key: string]: string;
+}
+
+const emoji: Emoji = {
     'flag-ac': '🇦🇨',
     'flag-ad': '🇦🇩',
     'flag-ae': '🇦🇪',
@@ -261,3 +265,5 @@ export default {
     scotland: '🏴󠁧󠁢󠁳󠁣󠁴󠁿',
     wales: '🏴󠁧󠁢󠁷󠁬󠁳󠁿'
 };
+
+export default emoji;

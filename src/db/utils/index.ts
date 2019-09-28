@@ -1,6 +1,7 @@
 import _ from 'lodash';
 import moment from 'moment';
 import BPromise from 'bluebird';
+import { TTransferFullEntity } from 'ts/types/Entities.types';
 import User from 'models/User';
 import Transfer from 'models/Transfer';
 import { getBottomDate } from 'helpers/dateHelper';
@@ -27,7 +28,7 @@ export const getRecentTransfers = async () => {
     return sortedRecentTransfers;
 };
 
-export const getTransfersToShow = async transfers =>
+export const getTransfersToShow = async (transfers: TTransferFullEntity[]) =>
     await BPromise.filter(transfers, async transfer => {
         const { name, leftTeam, joinedTeam, transferDate, fee } = transfer;
         const transferToShow = await Transfer.findOne({

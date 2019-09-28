@@ -1,5 +1,5 @@
 import parsingProcess from 'helpers/parsingProcess';
-import * as pt from 'constants/transfermarkt/ParsingTypes';
+import pt from 'constants/transfermarkt/ParsingTypes';
 
 import allLatestTransfersHtml from './data/allLatestTransfers-data';
 import searchResultHtml from './data/searchResult-data';

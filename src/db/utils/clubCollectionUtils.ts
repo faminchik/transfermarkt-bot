@@ -1,7 +1,8 @@
 import BPromise from 'bluebird';
 import Club from 'models/Club';
+import { TClubEntity } from 'ts/types/Entities.types';
 
-export const insertClubs = async clubs => {
+export const insertClubs = async (clubs: TClubEntity[]) => {
     await BPromise.each(clubs, async club => {
         const { clubName, clubLink, country, totalMarketValue } = club;
 

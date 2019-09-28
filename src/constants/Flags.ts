@@ -1,4 +1,8 @@
-export default {
+interface Flags {
+    [key: string]: string;
+}
+
+const flags: Flags = {
     // 'Ascension Island': 'flag-ac',
     Andorra: 'flag-ad',
     'United Arab Emirates': 'flag-ae',
@@ -262,3 +266,5 @@ export default {
     Scotland: 'scotland',
     Wales: 'wales'
 };
+
+export default flags;

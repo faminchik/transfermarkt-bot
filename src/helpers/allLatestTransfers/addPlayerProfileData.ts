@@ -2,15 +2,16 @@ import _ from 'lodash';
 import BPromise from 'bluebird';
 import cheerio from 'cheerio';
 import config from 'config';
+import { TTransferEntity, TTransferFullEntity } from 'ts/types/Entities.types';
 import { memoizedFormPlayerProfileData } from 'utils/formMemoizedFunctions';
 import { fetchHtmlRequest } from 'utils/fetchRequests';
 
-const BASE_URL = config.get('base-url');
+const BASE_URL: string = config.get('base-url');
 
 let u = 0;
 let r = 0;
 
-export default async transfersInfo =>
+export default async (transfersInfo: TTransferEntity[]): Promise<TTransferFullEntity[]> =>
     await BPromise.map(transfersInfo, async transferInfo => {
         const { profileLink } = transferInfo;
         const profileData = await memoizedFormPlayerProfileData(profileLink);
@@ -18,7 +19,7 @@ export default async transfersInfo =>
         return { ...transferInfo, ...profileData };
     });
 
-export const formPlayerProfileData = async profileLink => {
+export const formPlayerProfileData = async (profileLink: TTransferEntity['profileLink']) => {
     const url = BASE_URL + profileLink;
     console.log('url', u++);
 

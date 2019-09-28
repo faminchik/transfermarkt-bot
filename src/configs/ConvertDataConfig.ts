@@ -1,12 +1,11 @@
 import _ from 'lodash';
 import cheerio from 'cheerio';
-import { ConvertDataConfig } from 'ts/types/ConvertDataConfig.types';
+import { TConvertDataConfig } from 'ts/types/ConvertDataConfig.types';
 import cdt from 'constants/transfermarkt/ConvertDataTypes';
 import tdt from 'constants/transfermarkt/TableDataTypes';
 import { END_OF_LOAN } from 'constants/Transfermarkt';
 
-// TODO create constants for everything
-const config: ConvertDataConfig = {
+const config: TConvertDataConfig = {
     [cdt.ALL_LATEST_TRANSFERS]: {
         [tdt.TEXT]: {
             2: {

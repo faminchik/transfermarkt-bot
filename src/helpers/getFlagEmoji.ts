@@ -1,14 +1,16 @@
-import emoji from 'constants/emoji';
-import flags from 'constants/flags';
+import emoji from 'constants/Emoji';
+import flags from 'constants/Flags';
 
-export default (country, isSpaceOnTheRight = true) => {
+export default (country?: string | null, isSpaceOnTheRight = true) => {
     let flag = '';
     const space = ' ';
 
-    const flagEmojiKey = flags[country];
+    if (!country) return flag;
+
+    const flagEmojiKey = flags[country] as string | undefined;
 
     if (flagEmojiKey) {
-        const flagEmoji = emoji[flagEmojiKey];
+        const flagEmoji = emoji[flagEmojiKey] as string | undefined;
 
         if (flagEmoji) {
             flag = flagEmoji;

@@ -1,4 +1,5 @@
 import _ from 'lodash';
+import TelegramBot from 'node-telegram-bot-api';
 import { addUser, deleteUser } from 'db/helpers';
 import { insertClubs } from 'db/utils/clubCollectionUtils';
 import { getClubInfo } from 'db/helpers/clubCollectionHelpers';
@@ -10,11 +11,11 @@ import {
     sendMessageOnStart,
     sendMessageOnStop
 } from 'helpers/telegram/telegramBotHelpers';
-import { CLUB } from 'constants/CallbackQueryTypes';
+import cqt from 'constants/CallbackQueryTypes';
 import searchProcess from 'helpers/search';
 import teamTransfersProcess from 'helpers/teamTransfers';
 
-export default bot => {
+export default (bot: TelegramBot) => {
     bot.onText(/\/start/, async msg => {
         const id = await addUser(msg);
         if (!id) return;
@@ -41,7 +42,9 @@ export default bot => {
     });
 
     bot.onText(/\/team (.+)/, async (msg, match) => {
-        const chatId = _.get(msg, 'chat.id');
+        if (!match) return;
+
+        const chatId = _.get(msg, ['chat', 'id']);
         const query = match[1];
 
         const { clubs } = await searchProcess(query);
@@ -51,17 +54,27 @@ export default bot => {
     });
 
     bot.on('callback_query', async response => {
-        const splittedResponse = _.split(response.data, ' ');
+        const { data: responseData } = response;
+        if (!responseData) return;
+
+        const splittedResponse = _.split(responseData, ' ');
         const type = splittedResponse.shift();
 
-        if (type === CLUB) {
+        if (type === cqt.CLUB) {
             const clubName = _.join(splittedResponse, ' ');
             bot.answerCallbackQuery(response.id, { text: clubName });
 
             const clubInfo = await getClubInfo(clubName);
-            const teamTransfers = await teamTransfersProcess(clubInfo.clubLink);
+            if (!clubInfo) return;
 
-            await sendTeamTransfersMessages(bot, response.from.id, { teamTransfers, clubInfo });
+            const teamTransfers = await teamTransfersProcess(clubInfo.clubLink);
+            const { teamTransfersArrivals, teamTransfersDepartures } = teamTransfers;
+
+            await sendTeamTransfersMessages(bot, response.from.id, {
+                teamTransfersArrivals,
+                teamTransfersDepartures,
+                clubInfo
+            });
         }
     });
 };
