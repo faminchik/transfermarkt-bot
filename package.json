@@ -4,38 +4,66 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "start": "node -r @babel/register src/index",
-        "dev": "nodemon -r @babel/register src/index",
-        "unit-tests": "jest --config=\"./jest.config.unit.js\""
+        "start": "node src/index",
+        "dev": "nodemon src/index",
+        "unit-tests": "jest --config=\"./jest.config.unit.js\"",
+        "eslint": "node_modules/.bin/eslint -c .eslintrc.js src/**/*.{ts,js}",
+        "check-types": "tsc --noEmit",
+        "lint": "npm-run-all eslint check-types"
     },
     "author": "",
     "license": "ISC",
     "dependencies": {
-        "@babel/cli": "^7.2.3",
-        "@babel/core": "^7.3.3",
-        "@babel/plugin-proposal-object-rest-spread": "^7.2.0",
-        "@babel/plugin-transform-runtime": "^7.2.0",
-        "@babel/preset-env": "^7.3.1",
-        "@babel/register": "^7.0.0",
-        "@babel/runtime": "^7.2.0",
+        "@babel/cli": "^7.6.2",
+        "@babel/core": "^7.6.2",
+        "@babel/plugin-proposal-object-rest-spread": "^7.6.2",
+        "@babel/plugin-transform-runtime": "^7.6.2",
+        "@babel/preset-env": "^7.6.2",
+        "@babel/preset-typescript": "^7.6.0",
+        "@babel/register": "^7.6.2",
+        "@babel/runtime": "^7.6.2",
         "babel-plugin-module-resolver": "^3.1.3",
         "bluebird": "^3.5.1",
-        "build-url": "^1.1.2",
         "cheerio": "^1.0.0-rc.2",
         "cheerio-tableparser": "^1.0.1",
         "config": "^2.0.1",
         "dotenv": "^6.0.0",
         "express": "^4.16.3",
-        "lodash": "^4.17.11",
+        "lodash": "^4.17.15",
         "moment": "^2.22.2",
         "mongoose": "^5.4.0",
         "node-fetch": "^2.2.0",
-        "node-telegram-bot-api": "^0.30.0"
+        "node-telegram-bot-api": "^0.30.0",
+        "ts-mongoose": "0.0.19"
     },
     "devDependencies": {
         "@babel/node": "^7.2.2",
+        "@types/bluebird": "^3.5.27",
+        "@types/cheerio": "^0.22.13",
+        "@types/config": "0.0.34",
+        "@types/express": "^4.17.1",
+        "@types/jest": "^24.0.18",
+        "@types/lodash": "^4.14.138",
+        "@types/mockdate": "^2.0.0",
+        "@types/mongoose": "^5.5.17",
+        "@types/node": "^8.10.54",
+        "@types/node-fetch": "^2.5.2",
+        "@types/node-telegram-bot-api": "^0.31.0",
+        "@typescript-eslint/eslint-plugin": "^2.3.0",
+        "@typescript-eslint/parser": "^2.3.0",
+        "eslint": "^6.4.0",
+        "eslint-plugin-import-force-abbr": "^1.1.3",
+        "husky": "^3.0.5",
         "jest": "^24.0.0",
+        "lint-staged": "^9.3.0",
         "mockdate": "^2.0.2",
-        "nodemon": "^1.18.9"
+        "nodemon": "^1.18.9",
+        "npm-run-all": "^4.1.5",
+        "typescript": "^3.6.3"
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "lint-staged --config \"lint-staged.config.js\""
+        }
     }
 }

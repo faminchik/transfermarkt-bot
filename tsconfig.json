@@ -1,0 +1,19 @@
+{
+    "compilerOptions": {
+        "target": "esnext",
+        "module": "commonjs",
+        "allowJs": true,
+        "jsx": "react",
+        // "declaration": true,
+        "outDir": "dist/.tmp",
+        "strict": true,
+        "baseUrl": "./src/",
+        "allowSyntheticDefaultImports": true,
+        "esModuleInterop": true,
+        "experimentalDecorators": true,
+        "resolveJsonModule": true,
+        "typeRoots": ["./node_modules/@types", "./@types"]
+    },
+    "include": ["src/**/*.ts", "src/**/*.js"],
+    "exclude": ["node_modules"]
+}
