@@ -235,7 +235,7 @@ This is an overview of all the club's transfers in the chosen season. It may be 
 									</table>
 								</td>
 								<td class="zentriert">19</td>
-																	<td class="rechts">120,00 mil. €</td>
+																	<td class="rechts">€120.00m</td>
 									<td class="zentriert"><img src="https://tmssl.akamaized.net//images/flagge/verysmall/50.png?lm=1520611569" title="France" alt="France" class="flaggenrahmen" /><br /><img src="https://tmssl.akamaized.net//images/flagge/verysmall/31.png?lm=1520611569" title="Cameroon" alt="Cameroon" class="flaggenrahmen" /></td>
 								<td>
 									<table class="inline-table">
@@ -250,7 +250,7 @@ This is an overview of all the club's transfers in the chosen season. It may be 
 										</tr>
 									</table>
 								</td>
-								<td class="rechts hauptlink "><a href="/jumplist/transfers/spieler/342229/transfer_id/2101599">135,00 mil. €</a></td>
+								<td class="rechts hauptlink "><a href="/jumplist/transfers/spieler/342229/transfer_id/2101599">€135.00m</a></td>
 							</tr>
 													<tr>
 								<td class="bg_Abwehr ma_pos" title="Abwehr"></td>
@@ -268,7 +268,7 @@ This is an overview of all the club's transfers in the chosen season. It may be 
 									</table>
 								</td>
 								<td class="zentriert">21</td>
-																	<td class="rechts">18,00 mil. €</td>
+																	<td class="rechts">€18.00m</td>
 									<td class="zentriert"><img src="https://tmssl.akamaized.net//images/flagge/verysmall/40.png?lm=1520612525" title="Germany" alt="Germany" class="flaggenrahmen" /><br /><img src="https://tmssl.akamaized.net//images/flagge/verysmall/30.png?lm=1520611569" title="Burundi" alt="Burundi" class="flaggenrahmen" /></td>
 								<td>
 									<table class="inline-table">
@@ -283,7 +283,7 @@ This is an overview of all the club's transfers in the chosen season. It may be 
 										</tr>
 									</table>
 								</td>
-								<td class="rechts hauptlink "><a href="/jumplist/transfers/spieler/228948/transfer_id/2226739">37,00 mil. €</a></td>
+								<td class="rechts hauptlink "><a href="/jumplist/transfers/spieler/228948/transfer_id/2226739">€37.00m</a></td>
 							</tr>
 													<tr>
 								<td class="bg_Abwehr ma_pos" title="Abwehr"></td>
@@ -301,7 +301,7 @@ This is an overview of all the club's transfers in the chosen season. It may be 
 									</table>
 								</td>
 								<td class="zentriert">25</td>
-																	<td class="rechts">12,00 mil. €</td>
+																	<td class="rechts">€12.00m</td>
 									<td class="zentriert"><img src="https://tmssl.akamaized.net//images/flagge/verysmall/157.png?lm=1520611569" title="Spain" alt="Spain" class="flaggenrahmen" /></td>
 								<td>
 									<table class="inline-table">
@@ -316,7 +316,7 @@ This is an overview of all the club's transfers in the chosen season. It may be 
 										</tr>
 									</table>
 								</td>
-								<td class="rechts hauptlink "><a href="/jumplist/transfers/spieler/126719/transfer_id/2247647">5,00 mil. €</a></td>
+								<td class="rechts hauptlink "><a href="/jumplist/transfers/spieler/126719/transfer_id/2247647">€5.00m</a></td>
 							</tr>
 													<tr>
 								<td class="bg_Torwart ma_pos" title="Torwart"></td>
@@ -334,7 +334,7 @@ This is an overview of all the club's transfers in the chosen season. It may be 
 									</table>
 								</td>
 								<td class="zentriert">40</td>
-																	<td class="rechts">2,00 mil. €</td>
+																	<td class="rechts">€2.00m</td>
 									<td class="zentriert"><img src="https://tmssl.akamaized.net//images/flagge/verysmall/75.png?lm=1520611569" title="Italy" alt="Italy" class="flaggenrahmen" /></td>
 								<td>
 									<table class="inline-table">
@@ -367,7 +367,7 @@ This is an overview of all the club's transfers in the chosen season. It may be 
 									</table>
 								</td>
 								<td class="zentriert">29</td>
-																	<td class="rechts">8,00 mil. €</td>
+																	<td class="rechts">€8.00m</td>
 									<td class="zentriert"><img src="https://tmssl.akamaized.net//images/flagge/verysmall/31.png?lm=1520611569" title="Cameroon" alt="Cameroon" class="flaggenrahmen" /><br /><img src="https://tmssl.akamaized.net//images/flagge/verysmall/40.png?lm=1520612525" title="Germany" alt="Germany" class="flaggenrahmen" /></td>
 								<td>
 									<table class="inline-table">
@@ -499,7 +499,7 @@ This is an overview of all the club's transfers in the chosen season. It may be 
 									</table>
 								</td>
 								<td class="zentriert">18</td>
-																	<td class="rechts">500 thousand €</td>
+																	<td class="rechts">€500k</td>
 									<td class="zentriert"><img src="https://tmssl.akamaized.net//images/flagge/verysmall/50.png?lm=1520611569" title="France" alt="France" class="flaggenrahmen" /><br /><img src="https://tmssl.akamaized.net//images/flagge/verysmall/105.png?lm=1520611569" title="Mali" alt="Mali" class="flaggenrahmen" /></td>
 								<td>
 									<table class="inline-table">
@@ -532,7 +532,7 @@ This is an overview of all the club's transfers in the chosen season. It may be 
 									</table>
 								</td>
 								<td class="zentriert">18</td>
-																	<td class="rechts">1,00 mil. €</td>
+																	<td class="rechts">€1.00m</td>
 									<td class="zentriert"><img src="https://tmssl.akamaized.net//images/flagge/verysmall/184.png?lm=1520611569" title="United States" alt="United States" class="flaggenrahmen" /><br /><img src="https://tmssl.akamaized.net//images/flagge/verysmall/50.png?lm=1520611569" title="France" alt="France" class="flaggenrahmen" /></td>
 								<td>
 									<table class="inline-table">
@@ -598,7 +598,7 @@ This is an overview of all the club's transfers in the chosen season. It may be 
 									</table>
 								</td>
 								<td class="zentriert">20</td>
-																	<td class="rechts">700 thousand €</td>
+																	<td class="rechts">€700k</td>
 									<td class="zentriert"><img src="https://tmssl.akamaized.net//images/flagge/verysmall/50.png?lm=1520611569" title="France" alt="France" class="flaggenrahmen" /><br /><img src="https://tmssl.akamaized.net//images/flagge/verysmall/193.png?lm=1520611569" title="DR Congo" alt="DR Congo" class="flaggenrahmen" /></td>
 								<td>
 									<table class="inline-table">
@@ -631,7 +631,7 @@ This is an overview of all the club's transfers in the chosen season. It may be 
 									</table>
 								</td>
 								<td class="zentriert">28</td>
-																	<td class="rechts">18,00 mil. €</td>
+																	<td class="rechts">€18.00m</td>
 									<td class="zentriert"><img src="https://tmssl.akamaized.net//images/flagge/verysmall/135.png?lm=1520611569" title="Poland" alt="Poland" class="flaggenrahmen" /></td>
 								<td>
 									<table class="inline-table">
@@ -664,7 +664,7 @@ This is an overview of all the club's transfers in the chosen season. It may be 
 									</table>
 								</td>
 								<td class="zentriert">22</td>
-																	<td class="rechts">600 thousand €</td>
+																	<td class="rechts">€600k</td>
 									<td class="zentriert"><img src="https://tmssl.akamaized.net//images/flagge/verysmall/50.png?lm=1520611569" title="France" alt="France" class="flaggenrahmen" /></td>
 								<td>
 									<table class="inline-table">
@@ -697,7 +697,7 @@ This is an overview of all the club's transfers in the chosen season. It may be 
 									</table>
 								</td>
 								<td class="zentriert">25</td>
-																	<td class="rechts">7,50 mil. €</td>
+																	<td class="rechts">€7.50m</td>
 									<td class="zentriert"><img src="https://tmssl.akamaized.net//images/flagge/verysmall/157.png?lm=1520611569" title="Spain" alt="Spain" class="flaggenrahmen" /></td>
 								<td>
 									<table class="inline-table">
@@ -730,7 +730,7 @@ This is an overview of all the club's transfers in the chosen season. It may be 
 									</table>
 								</td>
 								<td class="zentriert">21</td>
-																	<td class="rechts">40,00 mil. €</td>
+																	<td class="rechts">€40.00m</td>
 									<td class="zentriert"><img src="https://tmssl.akamaized.net//images/flagge/verysmall/136.png?lm=1520611569" title="Portugal" alt="Portugal" class="flaggenrahmen" /></td>
 								<td>
 									<table class="inline-table">
@@ -763,7 +763,7 @@ This is an overview of all the club's transfers in the chosen season. It may be 
 									</table>
 								</td>
 								<td class="zentriert">25</td>
-																	<td class="rechts">1,50 mil. €</td>
+																	<td class="rechts">€1.50m</td>
 									<td class="zentriert"><img src="https://tmssl.akamaized.net//images/flagge/verysmall/50.png?lm=1520611569" title="France" alt="France" class="flaggenrahmen" /><br /><img src="https://tmssl.akamaized.net//images/flagge/verysmall/31.png?lm=1520611569" title="Cameroon" alt="Cameroon" class="flaggenrahmen" /></td>
 								<td>
 									<table class="inline-table">
@@ -796,7 +796,7 @@ This is an overview of all the club's transfers in the chosen season. It may be 
 									</table>
 								</td>
 								<td class="zentriert">20</td>
-																	<td class="rechts">1,50 mil. €</td>
+																	<td class="rechts">€1.50m</td>
 									<td class="zentriert"><img src="https://tmssl.akamaized.net//images/flagge/verysmall/50.png?lm=1520611569" title="France" alt="France" class="flaggenrahmen" /><br /><img src="https://tmssl.akamaized.net//images/flagge/verysmall/252.png?lm=1520611569" title="French Guiana" alt="French Guiana" class="flaggenrahmen" /></td>
 								<td>
 									<table class="inline-table">
@@ -864,7 +864,7 @@ This is an overview of all the club's transfers in the chosen season. It may be 
 									</table>
 								</td>
 								<td class="zentriert">21</td>
-										<td class="rechts">40,00 mil. €</td>
+										<td class="rechts">€40.00m</td>
 									<td class="zentriert"><img src="https://tmssl.akamaized.net//images/flagge/verysmall/136.png?lm=1520611569" title="Portugal" alt="Portugal" class="flaggenrahmen" /></td>
 								<td>
 									<table class="inline-table">
@@ -879,7 +879,7 @@ This is an overview of all the club's transfers in the chosen season. It may be 
 										</tr>
 									</table>
 								</td>
-								<td class="rechts hauptlink "><a href="/jumplist/transfers/spieler/225122/transfer_id/2241354">40,00 mil. €</a></td>
+								<td class="rechts hauptlink "><a href="/jumplist/transfers/spieler/225122/transfer_id/2241354">€40.00m</a></td>
 							</tr>
 													<tr>
 								<td class="bg_Mittelfeld ma_pos" title="Mittelfeld"></td>
@@ -897,7 +897,7 @@ This is an overview of all the club's transfers in the chosen season. It may be 
 									</table>
 								</td>
 								<td class="zentriert">29</td>
-										<td class="rechts">15,00 mil. €</td>
+										<td class="rechts">€15.00m</td>
 									<td class="zentriert"><img src="https://tmssl.akamaized.net//images/flagge/verysmall/9.png?lm=1520611569" title="Argentina" alt="Argentina" class="flaggenrahmen" /><br /><img src="https://tmssl.akamaized.net//images/flagge/verysmall/75.png?lm=1520611569" title="Italy" alt="Italy" class="flaggenrahmen" /></td>
 								<td>
 									<table class="inline-table">
@@ -912,7 +912,7 @@ This is an overview of all the club's transfers in the chosen season. It may be 
 										</tr>
 									</table>
 								</td>
-								<td class="rechts hauptlink "><a href="/jumplist/transfers/spieler/55215/transfer_id/2149270">24,70 mil. €</a></td>
+								<td class="rechts hauptlink "><a href="/jumplist/transfers/spieler/55215/transfer_id/2149270">€24.70m</a></td>
 							</tr>
 													<tr>
 								<td class="bg_Abwehr ma_pos" title="Abwehr"></td>
@@ -930,7 +930,7 @@ This is an overview of all the club's transfers in the chosen season. It may be 
 									</table>
 								</td>
 								<td class="zentriert">28</td>
-										<td class="rechts">17,00 mil. €</td>
+										<td class="rechts">€17.00m</td>
 									<td class="zentriert"><img src="https://tmssl.akamaized.net//images/flagge/verysmall/157.png?lm=1520611569" title="Spain" alt="Spain" class="flaggenrahmen" /></td>
 								<td>
 									<table class="inline-table">
@@ -945,7 +945,7 @@ This is an overview of all the club's transfers in the chosen season. It may be 
 										</tr>
 									</table>
 								</td>
-								<td class="rechts hauptlink "><a href="/jumplist/transfers/spieler/61812/transfer_id/2156229">24,00 mil. €</a></td>
+								<td class="rechts hauptlink "><a href="/jumplist/transfers/spieler/61812/transfer_id/2156229">€24.00m</a></td>
 							</tr>
 													<tr>
 								<td class="bg_Sturm ma_pos" title="Sturm"></td>
@@ -963,7 +963,7 @@ This is an overview of all the club's transfers in the chosen season. It may be 
 									</table>
 								</td>
 								<td class="zentriert">20</td>
-										<td class="rechts">1,50 mil. €</td>
+										<td class="rechts">€1.50m</td>
 									<td class="zentriert"><img src="https://tmssl.akamaized.net//images/flagge/verysmall/50.png?lm=1520611569" title="France" alt="France" class="flaggenrahmen" /><br /><img src="https://tmssl.akamaized.net//images/flagge/verysmall/252.png?lm=1520611569" title="French Guiana" alt="French Guiana" class="flaggenrahmen" /></td>
 								<td>
 									<table class="inline-table">
@@ -978,7 +978,7 @@ This is an overview of all the club's transfers in the chosen season. It may be 
 										</tr>
 									</table>
 								</td>
-								<td class="rechts hauptlink "><a href="/jumplist/transfers/spieler/344152/transfer_id/2134426">10,30 mil. €</a></td>
+								<td class="rechts hauptlink "><a href="/jumplist/transfers/spieler/344152/transfer_id/2134426">€10.30m</a></td>
 							</tr>
 													<tr>
 								<td class="bg_Mittelfeld ma_pos" title="Mittelfeld"></td>
@@ -996,7 +996,7 @@ This is an overview of all the club's transfers in the chosen season. It may be 
 									</table>
 								</td>
 								<td class="zentriert">20</td>
-										<td class="rechts">700 thousand €</td>
+										<td class="rechts">€700k</td>
 									<td class="zentriert"><img src="https://tmssl.akamaized.net//images/flagge/verysmall/50.png?lm=1520611569" title="France" alt="France" class="flaggenrahmen" /><br /><img src="https://tmssl.akamaized.net//images/flagge/verysmall/193.png?lm=1520611569" title="DR Congo" alt="DR Congo" class="flaggenrahmen" /></td>
 								<td>
 									<table class="inline-table">
@@ -1011,7 +1011,7 @@ This is an overview of all the club's transfers in the chosen season. It may be 
 										</tr>
 									</table>
 								</td>
-								<td class="rechts hauptlink "><a href="/jumplist/transfers/spieler/324690/transfer_id/2156562">5,00 mil. €</a></td>
+								<td class="rechts hauptlink "><a href="/jumplist/transfers/spieler/324690/transfer_id/2156562">€5.00m</a></td>
 							</tr>
 													<tr>
 								<td class="bg_Mittelfeld ma_pos" title="Mittelfeld"></td>
@@ -1029,7 +1029,7 @@ This is an overview of all the club's transfers in the chosen season. It may be 
 									</table>
 								</td>
 								<td class="zentriert">22</td>
-										<td class="rechts">30,00 mil. €</td>
+										<td class="rechts">€30.00m</td>
 									<td class="zentriert"><img src="https://tmssl.akamaized.net//images/flagge/verysmall/9.png?lm=1520611569" title="Argentina" alt="Argentina" class="flaggenrahmen" /><br /><img src="https://tmssl.akamaized.net//images/flagge/verysmall/75.png?lm=1520611569" title="Italy" alt="Italy" class="flaggenrahmen" /></td>
 								<td>
 									<table class="inline-table">
@@ -1044,7 +1044,7 @@ This is an overview of all the club's transfers in the chosen season. It may be 
 										</tr>
 									</table>
 								</td>
-								<td class="rechts hauptlink "><a href="/jumplist/transfers/spieler/348795/transfer_id/2248126">Loan fee:<br /><i class="normaler-text">2,00 mil. €</i></a></td>
+								<td class="rechts hauptlink "><a href="/jumplist/transfers/spieler/348795/transfer_id/2248126">Loan fee:<br /><i class="normaler-text">€2.00m</i></a></td>
 							</tr>
 													<tr>
 								<td class="bg_Mittelfeld ma_pos" title="Mittelfeld"></td>
@@ -1062,7 +1062,7 @@ This is an overview of all the club's transfers in the chosen season. It may be 
 									</table>
 								</td>
 								<td class="zentriert">28</td>
-										<td class="rechts">18,00 mil. €</td>
+										<td class="rechts">€18.00m</td>
 									<td class="zentriert"><img src="https://tmssl.akamaized.net//images/flagge/verysmall/135.png?lm=1520611569" title="Poland" alt="Poland" class="flaggenrahmen" /></td>
 								<td>
 									<table class="inline-table">
@@ -1077,7 +1077,7 @@ This is an overview of all the club's transfers in the chosen season. It may be 
 										</tr>
 									</table>
 								</td>
-								<td class="rechts hauptlink "><a href="/jumplist/transfers/spieler/45184/transfer_id/2193034">Loan fee:<br /><i class="normaler-text">1,00 mil. €</i></a></td>
+								<td class="rechts hauptlink "><a href="/jumplist/transfers/spieler/45184/transfer_id/2193034">Loan fee:<br /><i class="normaler-text">€1.00m</i></a></td>
 							</tr>
 													<tr>
 								<td class="bg_Sturm ma_pos" title="Sturm"></td>
@@ -1095,7 +1095,7 @@ This is an overview of all the club's transfers in the chosen season. It may be 
 									</table>
 								</td>
 								<td class="zentriert">25</td>
-										<td class="rechts">1,50 mil. €</td>
+										<td class="rechts">€1.50m</td>
 									<td class="zentriert"><img src="https://tmssl.akamaized.net//images/flagge/verysmall/50.png?lm=1520611569" title="France" alt="France" class="flaggenrahmen" /><br /><img src="https://tmssl.akamaized.net//images/flagge/verysmall/31.png?lm=1520611569" title="Cameroon" alt="Cameroon" class="flaggenrahmen" /></td>
 								<td>
 									<table class="inline-table">
@@ -1128,7 +1128,7 @@ This is an overview of all the club's transfers in the chosen season. It may be 
 									</table>
 								</td>
 								<td class="zentriert">28</td>
-										<td class="rechts">8,00 mil. €</td>
+										<td class="rechts">€8.00m</td>
 									<td class="zentriert"><img src="https://tmssl.akamaized.net//images/flagge/verysmall/40.png?lm=1520612525" title="Germany" alt="Germany" class="flaggenrahmen" /></td>
 								<td>
 									<table class="inline-table">
@@ -1161,7 +1161,7 @@ This is an overview of all the club's transfers in the chosen season. It may be 
 									</table>
 								</td>
 								<td class="zentriert">22</td>
-										<td class="rechts">600 thousand €</td>
+										<td class="rechts">€600k</td>
 									<td class="zentriert"><img src="https://tmssl.akamaized.net//images/flagge/verysmall/50.png?lm=1520611569" title="France" alt="France" class="flaggenrahmen" /></td>
 								<td>
 									<table class="inline-table">
@@ -1194,7 +1194,7 @@ This is an overview of all the club's transfers in the chosen season. It may be 
 									</table>
 								</td>
 								<td class="zentriert">31</td>
-										<td class="rechts">5,00 mil. €</td>
+										<td class="rechts">€5.00m</td>
 									<td class="zentriert"><img src="https://tmssl.akamaized.net//images/flagge/verysmall/50.png?lm=1520611569" title="France" alt="France" class="flaggenrahmen" /><br /><img src="https://tmssl.akamaized.net//images/flagge/verysmall/173.png?lm=1520611569" title="Tunisia" alt="Tunisia" class="flaggenrahmen" /></td>
 								<td>
 									<table class="inline-table">
@@ -1227,7 +1227,7 @@ This is an overview of all the club's transfers in the chosen season. It may be 
 									</table>
 								</td>
 								<td class="zentriert">35</td>
-										<td class="rechts">1,00 mil. €</td>
+										<td class="rechts">€1.00m</td>
 									<td class="zentriert"><img src="https://tmssl.akamaized.net//images/flagge/verysmall/75.png?lm=1520611569" title="Italy" alt="Italy" class="flaggenrahmen" /><br /><img src="https://tmssl.akamaized.net//images/flagge/verysmall/26.png?lm=1520611569" title="Brazil" alt="Brazil" class="flaggenrahmen" /></td>
 								<td>
 									<table class="inline-table">
@@ -1260,7 +1260,7 @@ This is an overview of all the club's transfers in the chosen season. It may be 
 									</table>
 								</td>
 								<td class="zentriert">19</td>
-										<td class="rechts">120,00 mil. €</td>
+										<td class="rechts">€120.00m</td>
 									<td class="zentriert"><img src="https://tmssl.akamaized.net//images/flagge/verysmall/50.png?lm=1520611569" title="France" alt="France" class="flaggenrahmen" /><br /><img src="https://tmssl.akamaized.net//images/flagge/verysmall/31.png?lm=1520611569" title="Cameroon" alt="Cameroon" class="flaggenrahmen" /></td>
 								<td>
 									<table class="inline-table">

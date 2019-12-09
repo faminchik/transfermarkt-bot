@@ -1,6 +1,6 @@
 import _ from 'lodash';
 import getInterestingTransfers from 'helpers/allLatestTransfers/getInterestingTransfers';
-import { MILLIONS, THOUSANDS, LOAN_FEE } from 'constants/Transfermarkt';
+import { MILLIONS, THOUSANDS, LOAN_FEE, EURO, DELIMITER } from 'constants/Transfermarkt';
 import { TTransferFullEntity } from 'ts/types/Entities.types';
 
 const formTransferFullEntity = (data: Partial<TTransferFullEntity>[]): TTransferFullEntity[] =>
@@ -21,146 +21,154 @@ const formTransferFullEntity = (data: Partial<TTransferFullEntity>[]): TTransfer
         };
     });
 
+const formPriceInMillions = (integerPart: string, hundredthPart: string) =>
+    EURO + integerPart + DELIMITER + hundredthPart + MILLIONS; // €6.00m
+
+const formPriceInThousands = (integerPart: string) => EURO + integerPart + THOUSANDS; // €600k
+
+const formLoanWithPriceInMillions = (integerPart: string, hundredthPart: string) =>
+    LOAN_FEE + formPriceInMillions(integerPart, hundredthPart);
+
 const data = formTransferFullEntity([
     {
-        marketValue: `6,00 ${MILLIONS} €`, // + 0
-        fee: `2,00 ${MILLIONS} €`,
-        highestMarketValue: `2,00 ${MILLIONS} €`
+        marketValue: formPriceInMillions('6', '00'), // + 0
+        fee: formPriceInMillions('2', '00'),
+        highestMarketValue: formPriceInMillions('2', '00')
     },
     {
-        marketValue: `3,00 ${MILLIONS} €`, // + 1
-        fee: `10,00 ${MILLIONS} €`,
-        highestMarketValue: `2,00 ${MILLIONS} €`
+        marketValue: formPriceInMillions('3', '00'), // + 1
+        fee: formPriceInMillions('10', '00'),
+        highestMarketValue: formPriceInMillions('2', '00')
     },
     {
-        marketValue: `1,00 ${MILLIONS} €`, // - 2
-        fee: `2,00 ${MILLIONS} €`,
-        highestMarketValue: `2,00 ${MILLIONS} €`
+        marketValue: formPriceInMillions('1', '00'), // - 2
+        fee: formPriceInMillions('2', '00'),
+        highestMarketValue: formPriceInMillions('2', '00')
     },
     {
-        marketValue: `5,00 ${MILLIONS} €`, // + 3
-        fee: `2,50 ${MILLIONS} €`,
-        highestMarketValue: `2,00 ${MILLIONS} €`
+        marketValue: formPriceInMillions('5', '00'), // + 3
+        fee: formPriceInMillions('2', '50'),
+        highestMarketValue: formPriceInMillions('2', '00')
     },
     {
-        marketValue: `1,50 ${MILLIONS} €`, // + 4
-        fee: `5,00 ${MILLIONS} €`,
-        highestMarketValue: `2,00 ${MILLIONS} €`
+        marketValue: formPriceInMillions('1', '50'), // + 4
+        fee: formPriceInMillions('5', '00'),
+        highestMarketValue: formPriceInMillions('2', '00')
     },
     {
-        marketValue: `10,50 ${MILLIONS} €`, // + 5
-        fee: `45,00 ${MILLIONS} €`,
-        highestMarketValue: `2,00 ${MILLIONS} €`
+        marketValue: formPriceInMillions('10', '50'), // + 5
+        fee: formPriceInMillions('45', '00'),
+        highestMarketValue: formPriceInMillions('2', '00')
     },
     {
-        marketValue: `1,00 ${MILLIONS} €`, // - 6
+        marketValue: formPriceInMillions('1', '00'), // - 6
         fee: 'Loan',
-        highestMarketValue: `2,00 ${MILLIONS} €`
+        highestMarketValue: formPriceInMillions('2', '00')
     },
     {
-        marketValue: `1,50 ${MILLIONS} €`, // - 7
+        marketValue: formPriceInMillions('1', '50'), // - 7
         fee: 'Free Transfer',
-        highestMarketValue: `2,00 ${MILLIONS} €`
+        highestMarketValue: formPriceInMillions('2', '00')
     },
     {
-        marketValue: `4,90 ${MILLIONS} €`, // - 8
+        marketValue: formPriceInMillions('4', '90'), // - 8
         fee: '?',
-        highestMarketValue: `2,00 ${MILLIONS} €`
+        highestMarketValue: formPriceInMillions('2', '00')
     },
     {
-        marketValue: `5,25 ${MILLIONS} €`, // + 9
+        marketValue: formPriceInMillions('5', '25'), // + 9
         fee: 'Loan',
-        highestMarketValue: `2,00 ${MILLIONS} €`
+        highestMarketValue: formPriceInMillions('2', '00')
     },
     {
-        marketValue: `8,00 ${MILLIONS} €`, // + 10
+        marketValue: formPriceInMillions('8', '00'), // + 10
         fee: 'Free Transfer',
-        highestMarketValue: `2,00 ${MILLIONS} €`
+        highestMarketValue: formPriceInMillions('2', '00')
     },
     {
-        marketValue: `10,30 ${MILLIONS} €`, // + 11
+        marketValue: formPriceInMillions('10', '30'), // + 11
         fee: '?',
-        highestMarketValue: `2,00 ${MILLIONS} €`
+        highestMarketValue: formPriceInMillions('2', '00')
     },
     {
-        marketValue: `1,00 ${MILLIONS} €`, // + 12
-        fee: `${LOAN_FEE}10,00 ${MILLIONS} €`,
-        highestMarketValue: `2,00 ${MILLIONS} €`
+        marketValue: formPriceInMillions('1', '00'), // + 12
+        fee: formLoanWithPriceInMillions('10', '00'),
+        highestMarketValue: formPriceInMillions('2', '00')
     },
     {
-        marketValue: `10,00 ${MILLIONS} €`, // + 13
-        fee: `${LOAN_FEE}10,00 ${MILLIONS} €`,
-        highestMarketValue: `2,00 ${MILLIONS} €`
+        marketValue: formPriceInMillions('10', '00'), // + 13
+        fee: formLoanWithPriceInMillions('10', '00'),
+        highestMarketValue: formPriceInMillions('2', '00')
     },
     {
-        marketValue: `3,70 ${MILLIONS} €`, // - 14
-        fee: `${LOAN_FEE}4,80 ${MILLIONS} €`,
-        highestMarketValue: `2,00 ${MILLIONS} €`
+        marketValue: formPriceInMillions('3', '70'), // - 14
+        fee: formLoanWithPriceInMillions('4', '80'),
+        highestMarketValue: formPriceInMillions('2', '00')
     },
     {
-        marketValue: `500 ${THOUSANDS} €`, // + 15
-        fee: `${LOAN_FEE}10,00 ${MILLIONS} €`,
-        highestMarketValue: `2,00 ${MILLIONS} €`
+        marketValue: formPriceInThousands('500'), // + 15
+        fee: formLoanWithPriceInMillions('10', '00'),
+        highestMarketValue: formPriceInMillions('2', '00')
     },
     {
-        marketValue: `900 ${THOUSANDS} €`, // + 16
-        fee: `25,00 ${MILLIONS} €`,
-        highestMarketValue: `2,00 ${MILLIONS} €`
+        marketValue: formPriceInThousands('900'), // + 16
+        fee: formPriceInMillions('25', '00'),
+        highestMarketValue: formPriceInMillions('2', '00')
     },
     {
-        marketValue: `900 ${THOUSANDS} €`, // - 17
-        fee: '800 Th. €',
-        highestMarketValue: `2,00 ${MILLIONS} €`
+        marketValue: formPriceInThousands('900'), // - 17
+        fee: formPriceInThousands('800'),
+        highestMarketValue: formPriceInMillions('2', '00')
     },
     {
-        marketValue: `900 ${THOUSANDS} €`, // - 18
-        fee: `2,00 ${MILLIONS} €`,
-        highestMarketValue: `2,00 ${MILLIONS} €`
+        marketValue: formPriceInThousands('900'), // - 18
+        fee: formPriceInMillions('2', '00'),
+        highestMarketValue: formPriceInMillions('2', '00')
     },
     {
-        marketValue: `300 ${THOUSANDS} €`, // - 19
+        marketValue: formPriceInThousands('300'), // - 19
         fee: 'Loan',
-        highestMarketValue: `2,00 ${MILLIONS} €`
+        highestMarketValue: formPriceInMillions('2', '00')
     },
     {
-        marketValue: `500 ${THOUSANDS} €`, // - 20
+        marketValue: formPriceInThousands('500'), // - 20
         fee: 'Free Transfer',
-        highestMarketValue: `2,00 ${MILLIONS} €`
+        highestMarketValue: formPriceInMillions('2', '00')
     },
     {
-        marketValue: `400 ${THOUSANDS} €`, // - 21
+        marketValue: formPriceInThousands('400'), // - 21
         fee: '?',
-        highestMarketValue: `2,00 ${MILLIONS} €`
+        highestMarketValue: formPriceInMillions('2', '00')
     },
     {
-        marketValue: `2,00 ${MILLIONS} €`, // - 22
-        fee: `900 ${THOUSANDS} €`,
-        highestMarketValue: `2,00 ${MILLIONS} €`
+        marketValue: formPriceInMillions('2', '00'), // - 22
+        fee: formPriceInThousands('900'),
+        highestMarketValue: formPriceInMillions('2', '00')
     },
     {
-        marketValue: `15,00 ${MILLIONS} €`, // + 23
-        fee: `900 ${THOUSANDS} €`,
-        highestMarketValue: `2,00 ${MILLIONS} €`
+        marketValue: formPriceInMillions('15', '00'), // + 23
+        fee: formPriceInThousands('900'),
+        highestMarketValue: formPriceInMillions('2', '00')
     },
     {
-        marketValue: `400 ${THOUSANDS} €`, // + 24
-        fee: `900 ${THOUSANDS} €`,
-        highestMarketValue: `10,00 ${MILLIONS} €`
+        marketValue: formPriceInThousands('400'), // + 24
+        fee: formPriceInThousands('900'),
+        highestMarketValue: formPriceInMillions('10', '00')
     },
     {
-        marketValue: `400 ${THOUSANDS} €`, // - 25
-        fee: `900 ${THOUSANDS} €`,
-        highestMarketValue: `5,00 ${MILLIONS} €`
+        marketValue: formPriceInThousands('400'), // - 25
+        fee: formPriceInThousands('900'),
+        highestMarketValue: formPriceInMillions('5', '00')
     },
     {
-        marketValue: `2,00 ${MILLIONS} €`, // - 26
-        fee: `2,00 ${MILLIONS} €`,
-        highestMarketValue: `9,00 ${MILLIONS} €`
+        marketValue: formPriceInMillions('2', '00'), // - 26
+        fee: formPriceInMillions('2', '00'),
+        highestMarketValue: formPriceInMillions('9', '00')
     },
     {
-        marketValue: `3,00 ${MILLIONS} €`, // + 27
+        marketValue: formPriceInMillions('3', '00'), // + 27
         fee: 'Free Transfer',
-        highestMarketValue: `10,50 ${MILLIONS} €`
+        highestMarketValue: formPriceInMillions('10', '50')
     }
 ]);
 

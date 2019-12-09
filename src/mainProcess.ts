@@ -39,7 +39,7 @@ export default async (botClient: TelegramBot) => {
     }
 
     if (!_.isEmpty(blockedIds)) {
-        deleteUsersByChatIds(blockedIds);
+        deleteUsersByChatIds(_.uniq(blockedIds));
     }
 
     console.log('transfersToShow', _.reverse(_.cloneDeep(transfersToShow)));

@@ -1,5 +1,5 @@
 {
-    "latest-transfers-url": "https://www.transfermarkt.com/transfers/letztetransfers/statistik?ajax=yw1&land_id=0&page=*&plus=1",
+    "latest-transfers-url": "https://www.transfermarkt.com/transfers/neuestetransfers/statistik?ajax=yw1&land_id=0&page=*&plus=1&wettbewerb_id=alle",
     "search-url": "https://www.transfermarkt.com/schnellsuche/ergebnis/schnellsuche?query=",
     "team-latest-transfers-url": "https://www.transfermarkt.com*link*/plus/1?saison_id=*year*&pos=&detailpos=&w_s=*period*",
     "base-url": "https://www.transfermarkt.com"
