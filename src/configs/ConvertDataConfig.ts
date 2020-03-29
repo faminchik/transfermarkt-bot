@@ -36,7 +36,7 @@ const config: TConvertDataConfig = {
                     const filtered = _.filter(data, (item, index) => index % 2 === 1);
                     return _.map(filtered, item => {
                         const $ = cheerio.load(item);
-                        return $('a').attr('href');
+                        return $('a').attr('href') ?? '';
                     });
                 }
             },
@@ -45,7 +45,7 @@ const config: TConvertDataConfig = {
                 handler: (data: string[]) => {
                     return _.map(_.slice(data, 1), item => {
                         const $ = cheerio.load(item);
-                        return $('img').attr('alt');
+                        return $('img').attr('alt') ?? '';
                     });
                 }
             },
@@ -97,7 +97,7 @@ const config: TConvertDataConfig = {
                 handler: (data: string[]) => {
                     return _.map(_.slice(data, 1), item => {
                         const $ = cheerio.load(item);
-                        return $('a').attr('href');
+                        return $('a').attr('href') ?? '';
                     });
                 }
             },
@@ -106,7 +106,7 @@ const config: TConvertDataConfig = {
                 handler: (data: string[]) => {
                     return _.map(_.slice(data, 1), item => {
                         const $ = cheerio.load(item);
-                        return $('img').attr('alt');
+                        return $('img').attr('alt') ?? '';
                     });
                 }
             }
@@ -136,7 +136,7 @@ const config: TConvertDataConfig = {
                 handler: (data: string[]) => {
                     return _.map(data, item => {
                         const $ = cheerio.load(item);
-                        return $('img').attr('alt');
+                        return $('img').attr('alt') ?? '';
                     });
                 }
             },

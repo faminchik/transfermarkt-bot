@@ -1,4 +1,4 @@
-import { ExtractProps } from 'ts-mongoose';
+import { ExtractShortProps } from 'ts-mongoose';
 import { TransferSchema } from 'models/Transfer';
 import { ClubSchema } from 'models/Club';
 
@@ -7,7 +7,7 @@ type TTransferEntityAdditions = {
     profileLink: string;
 };
 
-export type TTransferEntity = ExtractProps<typeof TransferSchema> & TTransferEntityAdditions;
+export type TTransferEntity = ExtractShortProps<typeof TransferSchema> & TTransferEntityAdditions;
 
 type TTransferFullEntityAdditions = {
     highestMarketValue: string;
@@ -17,7 +17,7 @@ export type TTransferFullEntity = TTransferEntity & TTransferFullEntityAdditions
 // --- END: @Latest Transfer
 
 // START: @Club
-export type TClubEntity = ExtractProps<typeof ClubSchema>;
+export type TClubEntity = ExtractShortProps<typeof ClubSchema>;
 // --- END: @Club
 
 // START: @Team Transfer

@@ -23,7 +23,7 @@ export default (html: string, type: pt): IParsedTable => {
 
     do {
         neededNodeRoot = neededNodeRoot.next();
-        nodeClassName = neededNodeRoot.attr('class');
+        nodeClassName = neededNodeRoot.attr('class') ?? '';
     } while (nodeClassName !== TABLE_CLASS_NAME);
 
     return parseTable($, neededNodeRoot);

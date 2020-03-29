@@ -1,4 +1,4 @@
-require('dotenv').load();
+require('dotenv').config();
 import TelegramBot from 'node-telegram-bot-api';
 import './db';
 import './server';

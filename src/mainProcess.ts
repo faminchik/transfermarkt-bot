@@ -3,11 +3,7 @@ import BPromise from 'bluebird';
 import TelegramBot from 'node-telegram-bot-api';
 import allLatestTransfersProcess from 'helpers/allLatestTransfers';
 import { getUsersIds, getTransfersToShow } from 'db/utils';
-import {
-    upsertTransfers,
-    deleteUsersByChatIds,
-    isNewTransfer as isNewTransferFunc
-} from 'db/helpers';
+import { upsertTransfers, deleteUsersByChatIds, isNewTransfer as isNewTransferFunc } from 'db/helpers';
 import { sendTransferMessage } from 'helpers/telegram/telegramBotHelpers';
 import Statuses from 'constants/Statuses';
 
@@ -32,7 +28,7 @@ export default async (botClient: TelegramBot) => {
         });
     });
 
-    console.log('blockedIds', blockedIds);
+    console.log('blockedIds', _.uniq(blockedIds));
 
     if (!_.isEmpty(transfersToShow)) {
         await upsertTransfers(transfersToShow);

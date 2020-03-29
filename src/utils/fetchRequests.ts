@@ -1,8 +1,8 @@
 import fetch from 'node-fetch';
 
-export const fetchHtmlRequest = async (url: string) => {
+export const fetchHtmlRequest = (url: string) => {
     try {
-        return await fetch(url, {
+        return fetch(url, {
             method: 'GET'
         }).then(response => {
             const { ok } = response;

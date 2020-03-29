@@ -2,31 +2,31 @@ import { createSchema, Type, typedModel } from 'ts-mongoose';
 import { USER } from 'constants/Models';
 
 export const UserSchema = createSchema({
-    chatId: Type.number(),
+    chatId: Type.number({ required: true }),
 
-    chatFirstName: Type.optionalString(),
+    chatFirstName: Type.string(),
 
-    chatLastName: Type.optionalString(),
+    chatLastName: Type.string(),
 
-    chatUserName: Type.optionalString(),
+    chatUserName: Type.string(),
 
-    chatType: Type.optionalString(),
+    chatType: Type.string(),
 
-    fromId: Type.optionalNumber(),
+    fromId: Type.number(),
 
-    fromIsBot: Type.optionalBoolean(),
+    fromIsBot: Type.boolean(),
 
-    fromFirstName: Type.optionalString(),
+    fromFirstName: Type.string(),
 
-    fromLastName: Type.optionalString(),
+    fromLastName: Type.string(),
 
-    fromUserName: Type.optionalString(),
+    fromUserName: Type.string(),
 
-    fromLanguageCode: Type.optionalString(),
+    fromLanguageCode: Type.string(),
 
-    date: Type.optionalNumber(),
+    date: Type.number(),
 
-    command: Type.optionalString()
+    command: Type.string()
 });
 
 export default typedModel(USER, UserSchema);

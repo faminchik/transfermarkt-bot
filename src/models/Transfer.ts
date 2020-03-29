@@ -2,25 +2,25 @@ import { createSchema, Type, typedModel } from 'ts-mongoose';
 import { TRANSFER } from 'constants/Models';
 
 export const TransferSchema = createSchema({
-    name: Type.string(),
+    name: Type.string({ required: true }),
 
-    age: Type.string(),
+    age: Type.string({ required: true }),
 
-    nationality: Type.string(),
+    nationality: Type.string({ required: true }),
 
-    leftTeam: Type.string(),
+    leftTeam: Type.string({ required: true }),
 
-    joinedTeam: Type.string(),
+    joinedTeam: Type.string({ required: true }),
 
-    leftTeamCountry: Type.optionalString(),
+    leftTeamCountry: Type.string(),
 
-    joinedTeamCountry: Type.optionalString(),
+    joinedTeamCountry: Type.string(),
 
-    transferDate: Type.string(),
+    transferDate: Type.string({ required: true }),
 
-    marketValue: Type.string(),
+    marketValue: Type.string({ required: true }),
 
-    fee: Type.string()
+    fee: Type.string({ required: true })
 });
 
 export default typedModel(TRANSFER, TransferSchema);

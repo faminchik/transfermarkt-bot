@@ -2,13 +2,13 @@ import { createSchema, Type, typedModel } from 'ts-mongoose';
 import { CLUB } from 'constants/Models';
 
 export const ClubSchema = createSchema({
-    clubName: Type.string(),
+    clubName: Type.string({ required: true }),
 
-    clubLink: Type.string(),
+    clubLink: Type.string({ required: true }),
 
-    country: Type.optionalString(),
+    country: Type.string(),
 
-    totalMarketValue: Type.optionalString()
+    totalMarketValue: Type.string()
 });
 
 export default typedModel(CLUB, ClubSchema);
