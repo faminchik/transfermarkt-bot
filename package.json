@@ -23,7 +23,7 @@
         "lodash": "^4.17.15",
         "moment": "^2.24.0",
         "mongoose": "^5.9.6",
-        "node-fetch": "^2.6.0",
+        "node-fetch": "^2.6.1",
         "node-telegram-bot-api": "^0.40.0",
         "ts-mongoose": "0.0.21"
     },
