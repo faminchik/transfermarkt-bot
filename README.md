@@ -1,6 +1,6 @@
-# Transfermarkt Bot
+# [Transfermarkt Bot](https://t.me/transfermarktbot)
 
-This is an unofficial [Telegram](https://telegram.org/) bot of the [Transfermarkt](transfermarkt.com) service.
+Unofficial [Telegram](https://telegram.org/) bot of the [Transfermarkt](https://www.transfermarkt.com) service.
 
 ---
 
@@ -13,7 +13,7 @@ The goal of the bot is to inform the user about new happened [**interesting**](#
 -   [**`/start`**](#start)
 -   [**`/simplestart`**](#simplestart)
 -   [**`/stop`**](#stop)
--   [**`/team <team_name>`**](#team-<team_name>)
+-   [**`/team <team_name>`**](#team-team_name)
 
 ### `/start`
 
@@ -35,7 +35,7 @@ The Bot sends to the user maximum 3 found teams according to the `<team_name>` a
 
 After the user has made a choice, the Bot sends all **arrival** and **departure** transfers during the last transfer window.
 
-####Arrivals:
+#### Arrivals:
 
 ![Arrivals](https://user-images.githubusercontent.com/31989569/93117221-2c470c80-f6c7-11ea-9c0f-274d9d2fa2ea.JPG)
 
@@ -45,9 +45,9 @@ After the user has made a choice, the Bot sends all **arrival** and **departure*
 
 ## Interesting Transfers Algorithm
 
-In order to skip tons of redundant transfers, so-called _Interesting transfers algorithm_ were implemented.
+In order to skip tons of redundant transfers, so-called _Interesting Transfers Algorithm_ were implemented.
 
-If one the following conditions is true, the transfer is marked as **Interesting**
+If one the following conditions is true, the transfer is marked as **interesting**:
 
 -   Transfer or loan value ≥ **€5.00m**
 -   Player market value ≥ **€5.00m**
