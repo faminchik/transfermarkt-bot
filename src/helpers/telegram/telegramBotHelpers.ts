@@ -14,7 +14,7 @@ import Statuses from 'constants/Statuses';
 import { TTransferFullEntity, TClubEntity, TTeamTransferEntity } from 'ts/types/Entities.types';
 import { TClubModel, TTransferModel } from 'ts/types/Models.types';
 
-/* eslint @typescript-eslint/camelcase: 0 */
+// /* eslint @typescript-eslint/camelcase: 0 */
 
 const sendMessage = async (
     botClient: TelegramBot,
@@ -30,16 +30,9 @@ const sendMessage = async (
             { parse_mode: 'Markdown', ...options }
         )
         .then(() => Statuses.SUCCESS)
-        .catch(err =>
-            err.response && err.response.statusCode === 403 ? Statuses.BLOCKED : Statuses.ERROR
-        );
+        .catch(err => (err.response && err.response.statusCode === 403 ? Statuses.BLOCKED : Statuses.ERROR));
 
-const joinAndSendMessages = async (
-    botClient: TelegramBot,
-    chatId: Chat['id'],
-    messages: string[],
-    header?: string
-) => {
+const joinAndSendMessages = async (botClient: TelegramBot, chatId: Chat['id'], messages: string[], header?: string) => {
     const joinedMessages = joinMessages(messages, header);
 
     await BPromise.each(joinedMessages, async msg => await sendMessage(botClient, chatId, msg));

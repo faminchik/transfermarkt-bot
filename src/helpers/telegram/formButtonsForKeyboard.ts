@@ -4,13 +4,10 @@ import { TClubEntity } from 'ts/types/Entities.types';
 import cqt from 'constants/CallbackQueryTypes';
 import { CALLBACK_DATA_MAX_SYMBOLS_NUMBER } from 'constants/Telegram';
 
-/* eslint @typescript-eslint/camelcase: 0 */
+// /* eslint @typescript-eslint/camelcase: 0 */
 
 const filterCallbackDataLimitation = (buttons: InlineKeyboardButton[]) =>
-    _.filter(
-        buttons,
-        ({ callback_data }) => _.size(callback_data) <= CALLBACK_DATA_MAX_SYMBOLS_NUMBER
-    );
+    _.filter(buttons, ({ callback_data }) => _.size(callback_data) <= CALLBACK_DATA_MAX_SYMBOLS_NUMBER);
 
 export const formClubsSearchResultButtons = (searchResult: TClubEntity[]) => {
     const buttons: InlineKeyboardButton[] = _.map(searchResult, ({ clubName }, index) => ({
