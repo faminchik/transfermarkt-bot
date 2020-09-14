@@ -14,6 +14,6 @@
         "resolveJsonModule": true,
         "typeRoots": ["./node_modules/@types", "./@types"]
     },
-    "include": ["src/**/*.ts", "src/**/*.js", "tsconfig.json", "package-lock.json"],
+    "include": ["src/**/*.ts", "src/**/*.js", "tsconfig.json", "package-lock.json", "lint-staged.config.js"],
     "exclude": ["node_modules"]
 }
