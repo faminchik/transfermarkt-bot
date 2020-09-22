@@ -8,6 +8,18 @@ The goal of the bot is to inform the user about new happened [**interesting**](#
 
 ![Transfers example](https://user-images.githubusercontent.com/31989569/93109085-462f2200-f6bc-11ea-8ac1-facca8f956a8.JPG)
 
+## Message Structure
+
+The Bot sends messages with information about transfers which have the following structure:
+
+```
+[transfer date]
+[player nationality flag] [player] ([player market value] | [player age])
+
+[country flag of departure team] [departure team] → [arrival team] [country flag of arrival team]
+[transfer fee]
+```
+
 ## Bot Commands
 
 -   [**`/start`**](#start)
@@ -49,6 +61,6 @@ In order to skip tons of redundant transfers, so-called _Interesting Transfers A
 
 If one the following conditions is true, the transfer is marked as **interesting**:
 
--   Transfer or loan value ≥ **€5.00m**
+-   Transfer or loan fee ≥ **€5.00m**
 -   Player market value ≥ **€5.00m**
 -   The highest player market value during the career ≥ **€10.00m**
