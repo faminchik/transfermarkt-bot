@@ -8,7 +8,7 @@ export function transposeArrays<T>(arrays: T[][]): T[][] {
         (acc: T[][], array) => {
             _.each(array, (item, i) => {
                 if (!_.isArray(acc[i])) acc[i] = [];
-                acc[i].push(item);
+                acc[i]?.push(item);
             });
             return acc;
         },
@@ -20,10 +20,12 @@ export function formArrayByKeys<T>(array: T[][], keys: string[]): { [key: string
     return _.map(array, item =>
         _.reduce(
             item,
-            (acc: { [param: string]: T }, param, index) => ({
-                ...acc,
-                [keys[index]]: param
-            }),
+            (acc: { [param: string]: T }, param, index) => {
+                const key = keys[index];
+                if (!key) return acc;
+
+                return { ...acc, [key]: param };
+            },
             {}
         )
     );
