@@ -1,19 +1,16 @@
-import fetch from 'node-fetch';
+import axios from 'axios';
 
-export const fetchHtmlRequest = (url: string) => {
+export const fetchHtmlRequest = async (url: string): Promise<string | null> => {
     try {
-        return fetch(url, {
-            method: 'GET'
-        }).then(response => {
-            const { ok } = response;
-            const { status } = response;
+        const response = await axios.get<string>(url);
 
-            if (!ok) {
-                console.log('GET Html Request status: ', status);
-                return null;
-            }
-            return response.text();
-        });
+        const { status } = response;
+        if (status !== 200) {
+            console.log('GET Html Request status: ', status);
+            return null;
+        }
+
+        return response.data;
     } catch (e) {
         console.log('GET Html Request error', e);
         return null;
