@@ -1,8 +1,5 @@
 import _ from 'lodash';
-import {
-    TConvertDataConfigItem,
-    TConvertDataConfigElement
-} from 'ts/types/ConvertDataConfig.types';
+import { TConvertDataConfigItem, TConvertDataConfigElement } from 'ts/types/ConvertDataConfig.types';
 import { IParsedTable } from 'ts/interfaces/ParseTable.interfaces';
 import { TConvertedData } from 'ts/types/ConvertData.types';
 import { transposeArrays, formArrayByKeys } from 'utils/arrayMethods';
@@ -16,8 +13,10 @@ const convertData = (data: CheerioParsedTable, config: TConvertDataConfigElement
     const parsedData = _.reduce(
         _.keys(config),
         (acc: ParsedData, indexItem) => {
-            const { key, handler } = config[_.toNumber(indexItem)];
+            const { key, handler } = config[_.toNumber(indexItem)] ?? {};
             const data = compactedData[_.toNumber(indexItem)];
+
+            if (!key || !data) return acc;
 
             acc[key] = _.isFunction(handler) ? handler(data) : data;
             return acc;
@@ -29,10 +28,7 @@ const convertData = (data: CheerioParsedTable, config: TConvertDataConfigElement
     return formArrayByKeys(transposedData, _.keys(parsedData));
 };
 
-export default (
-    { textData, htmlData }: IParsedTable,
-    config: TConvertDataConfigItem
-): TConvertedData => {
+export default ({ textData, htmlData }: IParsedTable, config: TConvertDataConfigItem): TConvertedData => {
     const convertedHtmlData = convertData(htmlData, config[tdt.HTML]);
     const convertedTextData = convertData(textData, config[tdt.TEXT]);
 

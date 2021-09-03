@@ -46,6 +46,7 @@ export default (bot: TelegramBot) => {
 
         const chatId = _.get(msg, ['chat', 'id']);
         const query = match[1];
+        if (!query) return;
 
         const { clubs } = await searchProcess(query);
 

@@ -1,10 +1,11 @@
-require('dotenv').config();
 import TelegramBot from 'node-telegram-bot-api';
 import './db';
 import './server';
 import 'utils/formMemoizedFunctions';
 import mainProcess from './mainProcess';
 import botHandlers from './botHandlers';
+
+require('dotenv').config();
 
 const { TELEGRAM_BOT_TOKEN } = process.env;
 
