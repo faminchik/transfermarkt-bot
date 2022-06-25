@@ -57,7 +57,7 @@ const flags: Flags = {
     'Costa Rica': 'flag-cr',
     Cuba: 'flag-cu',
     'Cape Verde': 'flag-cv',
-    Curaçao: 'flag-cw',
+    Curacao: 'flag-cw',
     'Christmas Island': 'flag-cx',
     Cyprus: 'flag-cy',
     'Czech Republic': 'flag-cz',

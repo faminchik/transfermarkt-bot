@@ -10,9 +10,9 @@ import {
     sendMessageOnStop,
     deleteMessages
 } from 'helpers/telegram/telegramBotHelpers';
-import { teamTransfersCallbackQuery } from './callbackQueryProcesses';
 import cqt from 'constants/CallbackQueryTypes';
 import searchProcess from 'helpers/search';
+import { teamTransfersCallbackQuery } from './callbackQueryProcesses';
 
 export default (bot: TelegramBot) => {
     bot.onText(/\/start/, async msg => {
@@ -45,6 +45,7 @@ export default (bot: TelegramBot) => {
 
         const chatId = msg.chat.id;
         const query = match[1];
+        if (!query) return;
 
         const { clubs } = await searchProcess(query);
 

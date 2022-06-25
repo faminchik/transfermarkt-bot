@@ -10,11 +10,6 @@ export type TConvertDataConfig = {
     [cdt.TEAM_TRANSFERS]: TConvertDataConfigItemTeamTransfers;
 };
 
-export type TConvertDataConfigItem =
-    | TConvertDataConfigItemAllLatestTransfers
-    | TConvertDataConfigItemClubsSearch
-    | TConvertDataConfigItemTeamTransfers;
-
 export type TConvertDataConfigElement =
     | TConvertDataConfigElementAllLatestTransfers
     | TConvertDataConfigElementClubsSearch

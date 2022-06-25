@@ -1,4 +1,4 @@
-/* eslint @typescript-eslint/camelcase: 0 */
+// /* eslint @typescript-eslint/camelcase: 0 */
 
 import { InlineKeyboardButton, SendMessageOptions } from 'node-telegram-bot-api';
 

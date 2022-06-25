@@ -1,5 +1,5 @@
-const formatThenLint = ['eslint -c .eslintrc.js --fix', 'git add'];
-const formatOnly = ['prettier --write', 'git add'];
+const formatThenLint = ['eslint -c .eslintrc.js --fix'];
+const formatOnly = ['prettier --write'];
 
 module.exports = {
     '*.{js,json,ts}': formatThenLint,
