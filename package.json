@@ -11,6 +11,7 @@
         "types": "tsc --noEmit",
         "prettier": "prettier --check .",
         "autofix:pretter": "prettier --write .",
+        "autofix:eslint": "npm run eslint -- --fix",
         "lint": "npm-run-all eslint types prettier"
     },
     "author": "",
