@@ -3,5 +3,5 @@ const formatOnly = ['prettier --write'];
 
 module.exports = {
     '*.{js,json,ts}': formatThenLint,
-    '*.{md}': formatOnly,
+    '*.{md}': formatOnly
 };

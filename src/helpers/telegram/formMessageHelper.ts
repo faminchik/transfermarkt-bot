@@ -4,10 +4,7 @@ import { TClubModel, TTransferModel } from 'ts/types/Models.types';
 import getFlagEmoji from 'helpers/getFlagEmoji';
 import { MESSAGE_DELIMITER, ITEMS_COUNT_PER_MESSAGE } from 'constants/Telegram';
 
-export const formTransferMessage = (
-    transferInfo: TTransferFullEntity | TTransferModel,
-    isNewTransfer = true
-) => {
+export const formTransferMessage = (transferInfo: TTransferFullEntity | TTransferModel, isNewTransfer = true) => {
     const {
         name,
         marketValue,
@@ -30,20 +27,8 @@ export const formTransferMessage = (
     return `*${transferDate}*\r\n${flag}*${name}* (${marketValue} | ${age} y.o.)\r\n\r\n${leftTeamFlag}*${leftTeam}* → *${joinedTeam}*${joinedTeamFlag}\r\n*${fee}*${additionalInfo}`;
 };
 
-export const formTeamTransferMessage = (
-    teamTransferInfo: TTeamTransferEntity,
-    arrow = '',
-    index: number
-) => {
-    const {
-        name,
-        age,
-        marketValue,
-        secondPartyTeam,
-        secondPartyTeamCountry,
-        fee,
-        nationality
-    } = teamTransferInfo;
+export const formTeamTransferMessage = (teamTransferInfo: TTeamTransferEntity, arrow = '', index: number) => {
+    const { name, age, marketValue, secondPartyTeam, secondPartyTeamCountry, fee, nationality } = teamTransferInfo;
 
     const flag = getFlagEmoji(nationality);
     const secondPartyFlag = getFlagEmoji(secondPartyTeamCountry);

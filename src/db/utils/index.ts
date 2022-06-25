@@ -21,9 +21,7 @@ export const getRecentTransfers = async () => {
         return transferDate >= bottomDate;
     });
 
-    const sortedRecentTransfers = _.sortBy(recentTransfers, item =>
-        moment(item.transferDate, 'MMM DD, YYYY')
-    );
+    const sortedRecentTransfers = _.sortBy(recentTransfers, item => moment(item.transferDate, 'MMM DD, YYYY'));
 
     return sortedRecentTransfers;
 };

@@ -7,9 +7,12 @@
         "start": "node src/index",
         "dev": "nodemon src/index",
         "unit": "jest --config=\"./jest.config.unit.js\"",
-        "eslint": "eslint -c .eslintrc.js src/**/*.{ts,js}",
+        "eslint": "eslint -c .eslintrc.js \"./src/**/*.{ts,js}\"",
         "types": "tsc --noEmit",
-        "lint": "npm-run-all eslint types"
+        "prettier": "prettier --check .",
+        "autofix:pretter": "prettier --write .",
+        "autofix:eslint": "npm run eslint -- --fix",
+        "lint": "npm-run-all eslint types prettier"
     },
     "author": "",
     "license": "ISC",
@@ -60,6 +63,7 @@
         "mockdate": "^3.0.5",
         "nodemon": "^2.0.12",
         "npm-run-all": "^4.1.5",
+        "prettier": "2.7.1",
         "typescript": "^4.4.2"
     },
     "husky": {
