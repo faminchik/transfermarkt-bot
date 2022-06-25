@@ -18,7 +18,7 @@ export default `
     <div class="row">
 	<div class="large-12 columns">
 		<div class="box">
-			<div class="table-header">
+			<div class="content-box-headline">
 				Transfers 18/19				<div class="header-social">
 					<div class="teilen-desktop-link" name="teilen-desktop" onClick="ga('send','event','teilen-desktop','click','teilen');
 "><ul><li><a href="mailto:?to=&subject=Transfers&body=https%3A%2F%2Fwww.transfermarkt.com%2Ffc-paris-saint-germain%2Ftransfers%2Fverein%2F583%2Fplus%2F1%3Fsaison_id%3D2018%26pos%3D%26detailpos%3D%26w_s%3Ds" class="MailToLink" name="teilen-mail-desktop" onClick="ga('send','event','teilen-mail-desktop','click','teilen');
@@ -165,7 +165,7 @@ This is an overview of all the club's transfers in the chosen season. It may be 
 		</div>
 		
 	<div class="box">
-		<div class="table-header">Transfer activity </div>
+		<div class="content-box-headline">Transfer activity </div>
 		<table>
 			<thead>
 			<tr>
@@ -201,7 +201,7 @@ This is an overview of all the club's transfers in the chosen season. It may be 
 		
 	</div>
 		<div class="box">
-			<div class="table-header"><a name="zugaenge" class="anchor">Arrivals</a></div>
+			<div class="content-box-headline"><a name="zugaenge" class="anchor">Arrivals</a></div>
 
 <div class="kartei-button-bar">
     <a href="/paris-saint-germain/transfers/verein/583/saison_id/2018/pos//detailpos/0/w_s/s#zugaenge"><div class="kartei-button kartei-number-1"><span class="kartei-button-body">Compact</span></div></a><a href="/paris-saint-germain/transfers/verein/583/saison_id/2018/pos//detailpos/0/w_s/s/plus/1#zugaenge"><div class="kartei-button second-kartei kartei-number-2 active-kartei"><span class="kartei-button-body">Detailed</span></div></a></div>
@@ -830,7 +830,7 @@ This is an overview of all the club's transfers in the chosen season. It may be 
 		</div>
 
 		<div class="box">
-			<div class="table-header"><a name="abgaenge" class="anchor">Departures</a></div>
+			<div class="content-box-headline"><a name="abgaenge" class="anchor">Departures</a></div>
 
 <div class="kartei-button-bar">
     <a href="/paris-saint-germain/transfers/verein/583/saison_id/2018/pos//detailpos/0/w_s/s#abgaenge"><div class="kartei-button kartei-number-1"><span class="kartei-button-body">Compact</span></div></a><a href="/paris-saint-germain/transfers/verein/583/saison_id/2018/pos//detailpos/0/w_s/s/plus/1#abgaenge"><div class="kartei-button second-kartei kartei-number-2 active-kartei"><span class="kartei-button-body">Detailed</span></div></a></div>

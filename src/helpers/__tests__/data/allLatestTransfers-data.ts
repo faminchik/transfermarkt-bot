@@ -17,7 +17,7 @@ export default `
 <div class="large-12 columns">
 	<div class="box">
 
-	  <div class="table-header">
+	  <div class="content-box-headline">
 		<h2>Latest Transfers</h2>
 		<div class="header-social">
 		  <div class="teilen-desktop-link" name="teilen-desktop" onclick="ga('send','event','teilen-desktop','click','teilen');
