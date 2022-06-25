@@ -19,7 +19,9 @@ export default async (transfersInfo: TTransferEntity[]): Promise<TTransferFullEn
         return { ...transferInfo, ...profileData };
     });
 
-export const formPlayerProfileData = async (profileLink: TTransferEntity['profileLink']) => {
+export const formPlayerProfileData = async (
+    profileLink: TTransferEntity['profileLink']
+): Promise<Pick<TTransferFullEntity, 'highestMarketValue'>> => {
     const url = BASE_URL + profileLink;
     console.log('url', u++);
 

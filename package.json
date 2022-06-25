@@ -6,10 +6,10 @@
     "scripts": {
         "start": "node src/index",
         "dev": "nodemon src/index",
-        "unit-tests": "jest --config=\"./jest.config.unit.js\"",
+        "unit": "jest --config=\"./jest.config.unit.js\"",
         "eslint": "node_modules/.bin/eslint -c .eslintrc.js src/**/*.{ts,js}",
-        "check-types": "tsc --noEmit",
-        "lint": "npm-run-all eslint check-types"
+        "types": "tsc --noEmit",
+        "lint": "npm-run-all eslint types"
     },
     "author": "",
     "license": "ISC",

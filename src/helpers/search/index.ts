@@ -1,12 +1,11 @@
 import _ from 'lodash';
 import searchProcess from 'helpers/search/searchProcess';
-import pt from 'constants/transfermarkt/ParsingTypes';
+import { TClubEntity } from 'ts/types/Entities.types';
 
-export default async (query: string) => {
-    const types = [pt.SEARCH_CLUBS] as const;
-    const searchResult = await searchProcess(query, types);
+export default async (query: string): Promise<{ clubs: TClubEntity[] }> => {
+    const searchResult = await searchProcess(query);
 
-    const clubs = _.take(searchResult[pt.SEARCH_CLUBS], 3);
+    const clubs = _.take(searchResult, 3);
 
     return { clubs };
 };

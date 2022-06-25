@@ -5,13 +5,13 @@ import { fetchHtmlRequest } from 'utils/fetchRequests';
 import { getTransferPeriodType, getYearForTransferPeriod } from 'helpers/dateHelper';
 import parsingProcess from 'helpers/parsingProcess';
 import { START_PAGE, TRANSFERS } from 'constants/Transfermarkt';
+import { TTeamTransferEntity } from 'ts/types/Entities.types';
 
 const URL: string = config.get('team-latest-transfers-url');
 
 export default async (
-    clubLink: string,
-    types: readonly [pt.TEAM_TRANSFERS_ARRIVALS, pt.TEAM_TRANSFERS_DEPARTURES]
-) => {
+    clubLink: string
+): Promise<{ arrivals: TTeamTransferEntity[]; departures: TTeamTransferEntity[] }> => {
     const year = getYearForTransferPeriod();
     const transferPeriodType = getTransferPeriodType();
 
@@ -23,7 +23,10 @@ export default async (
         .value();
 
     const html = await fetchHtmlRequest(url);
-    if (!html) return {};
+    if (!html) return { arrivals: [], departures: [] };
 
-    return parsingProcess(html, types);
+    return {
+        arrivals: parsingProcess(html, pt.TEAM_TRANSFERS_ARRIVALS),
+        departures: parsingProcess(html, pt.TEAM_TRANSFERS_DEPARTURES)
+    };
 };

@@ -1,6 +1,6 @@
-enum TableDataTypes {
+enum TableDataType {
     TEXT = 'text',
     HTML = 'html'
 }
 
-export default TableDataTypes;
+export default TableDataType;

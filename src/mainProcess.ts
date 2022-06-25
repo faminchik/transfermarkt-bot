@@ -5,7 +5,7 @@ import allLatestTransfersProcess from 'helpers/allLatestTransfers';
 import { getUsersIds, getTransfersToShow } from 'db/utils';
 import { upsertTransfers, deleteUsersByChatIds, isNewTransfer as isNewTransferFunc } from 'db/helpers';
 import { sendTransferMessage } from 'helpers/telegram/telegramBotHelpers';
-import Statuses from 'constants/Statuses';
+import Status from 'constants/Statuses';
 
 export default async (botClient: TelegramBot) => {
     const transfers = await allLatestTransfersProcess();
@@ -24,7 +24,7 @@ export default async (botClient: TelegramBot) => {
         await BPromise.each(usersIds, async id => {
             const status = await sendTransferMessage(botClient, id, transferInfo, isNewTransfer);
 
-            if (status === Statuses.BLOCKED) blockedIds.push(id);
+            if (status === Status.BLOCKED) blockedIds.push(id);
         });
     });
 

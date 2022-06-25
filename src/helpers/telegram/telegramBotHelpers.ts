@@ -10,7 +10,7 @@ import {
 } from 'helpers/telegram/formMessageHelper';
 import { formClubsSearchResultButtons } from 'helpers/telegram/formButtonsForKeyboard';
 import { formInlineKeyboard } from 'helpers/telegram/formKeyboards';
-import Statuses from 'constants/Statuses';
+import Status from 'constants/Statuses';
 import { TTransferFullEntity, TClubEntity, TTeamTransferEntity } from 'ts/types/Entities.types';
 import { TClubModel, TTransferModel } from 'ts/types/Models.types';
 
@@ -29,8 +29,8 @@ const sendMessage = async (
             message,
             { parse_mode: 'Markdown', ...options }
         )
-        .then(() => Statuses.SUCCESS)
-        .catch(err => (err.response && err.response.statusCode === 403 ? Statuses.BLOCKED : Statuses.ERROR));
+        .then(() => Status.SUCCESS)
+        .catch(err => (err.response && err.response.statusCode === 403 ? Status.BLOCKED : Status.ERROR));
 
 const joinAndSendMessages = async (botClient: TelegramBot, chatId: Chat['id'], messages: string[], header?: string) => {
     const joinedMessages = joinMessages(messages, header);

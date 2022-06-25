@@ -43,7 +43,7 @@ jobs:
         steps:
             - checkout
             - <<: *cache_restore
-            - run: npm run unit-tests
+            - run: npm run unit
 
 workflows:
     version: 2

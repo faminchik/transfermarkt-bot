@@ -44,7 +44,7 @@ export default (bot: TelegramBot) => {
     bot.onText(/\/team (.+)/, async (msg, match) => {
         if (!match) return;
 
-        const chatId = _.get(msg, ['chat', 'id']);
+        const chatId = msg.chat.id;
         const query = match[1];
         if (!query) return;
 
