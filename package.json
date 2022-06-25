@@ -7,7 +7,7 @@
         "start": "node src/index",
         "dev": "nodemon src/index",
         "unit": "jest --config=\"./jest.config.unit.js\"",
-        "eslint": "eslint -c .eslintrc.js src/**/*.{ts,js}",
+        "eslint": "eslint -c .eslintrc.js \"./src/**/*.{ts,js}\"",
         "types": "tsc --noEmit",
         "prettier": "prettier --check .",
         "autofix:pretter": "prettier --write .",

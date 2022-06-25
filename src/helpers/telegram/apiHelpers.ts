@@ -2,8 +2,6 @@ import _ from 'lodash';
 import TelegramBot, { SendMessageOptions, Chat, Message } from 'node-telegram-bot-api';
 import Status from 'constants/Statuses';
 
-/* eslint @typescript-eslint/camelcase: 0 */
-
 export const sendMessage = (
     botClient: TelegramBot,
     chatId: Chat['id'],
