@@ -1,14 +1,21 @@
-import { createSchema, Type, typedModel } from 'ts-mongoose';
+import { model, Schema } from 'mongoose';
 import { CLUB } from 'constants/Models';
+import type { Document } from 'mongoose';
 
-export const ClubSchema = createSchema({
-    clubName: Type.string({ required: true }),
+export interface IClubProps {
+    clubName: string;
+    clubLink: string;
+    country?: string;
+    totalMarketValue?: string;
+}
 
-    clubLink: Type.string({ required: true }),
+export type TClub = IClubProps & Document;
 
-    country: Type.string(),
-
-    totalMarketValue: Type.string()
+const ClubSchema = new Schema<TClub>({
+    clubName: { type: String, required: true },
+    clubLink: { type: String, required: true },
+    country: { type: String },
+    totalMarketValue: { type: String }
 });
 
-export default typedModel(CLUB, ClubSchema);
+export default model<TClub>(CLUB, ClubSchema);
