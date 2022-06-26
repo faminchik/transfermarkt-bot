@@ -1,6 +1,6 @@
 {
     "compilerOptions": {
-        "target": "esnext",
+        "target": "ESNext",
         "module": "commonjs",
         "allowJs": true,
         // "declaration": true,
@@ -15,8 +15,7 @@
         "noImplicitReturns": true,
         "noUncheckedIndexedAccess": true,
         "noImplicitOverride": true,
-        "skipLibCheck": true,
-        "typeRoots": ["./node_modules/@types", "./@types"]
+        "skipLibCheck": true
     },
     "include": ["**/*"],
     "exclude": ["node_modules"]
