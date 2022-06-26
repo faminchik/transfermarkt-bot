@@ -25,18 +25,15 @@ export const parseTable = ($: cheerio.Root, context: cheerio.Cheerio, options: O
                         columns[currentY + y] = [];
                     }
 
-                    while (columns[currentY + y][currentX + x] !== undefined) {
+                    while (columns[currentY + y]?.[currentX + x] !== undefined) {
                         currentY += 1;
                         if (columns[currentY + y] === undefined) {
                             columns[currentY + y] = [];
                         }
                     }
 
-                    if ((x === 0 || dupRows) && (y === 0 || dupCols)) {
-                        columns[currentY + y][currentX + x] = content;
-                    } else {
-                        columns[currentY + y][currentX + x] = '';
-                    }
+                    /* eslint-disable-next-line @typescript-eslint/no-non-null-assertion */
+                    columns[currentY + y]![currentX + x] = (x === 0 || dupRows) && (y === 0 || dupCols) ? content : '';
                 }
             }
             currentY += 1;
