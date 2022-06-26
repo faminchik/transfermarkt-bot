@@ -1,6 +1,6 @@
-import { ExtractShortProps } from 'ts-mongoose';
-import { TransferSchema } from 'models/Transfer';
-import { ClubSchema } from 'models/Club';
+import type { ExtractShortProps } from 'ts-mongoose';
+import type { TransferSchema } from 'models/Transfer';
+import type { ClubSchema } from 'models/Club';
 
 // START: @Latest Transfer
 type TTransferEntityAdditions = {

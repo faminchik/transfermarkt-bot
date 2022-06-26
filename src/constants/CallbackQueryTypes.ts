@@ -1,5 +1,5 @@
-enum CallbackQueryTypes {
+enum CallbackQueryType {
     CLUB = 'CLUB'
 }
 
-export default CallbackQueryTypes;
+export default CallbackQueryType;

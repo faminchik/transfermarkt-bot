@@ -1,29 +1,27 @@
 import _ from 'lodash';
 import moment from 'moment';
 import BPromise from 'bluebird';
-import { TTransferFullEntity } from 'ts/types/Entities.types';
 import User from 'models/User';
 import Transfer from 'models/Transfer';
-import { getBottomDate } from 'helpers/dateHelper';
+import { getLowerDate } from 'helpers/dateHelper';
+import type { TTransferFullEntity } from 'ts/EntitiesTS';
 
 export const getUsersIds = async () => {
     const users = await User.find({}).select(['chatId', '-_id']);
-    const usersIds = _.map(users, 'chatId');
+    const usersIds = _.map(users, item => item.chatId);
     return usersIds;
 };
 
 export const getRecentTransfers = async () => {
     const transfers = await Transfer.find({}).select(['-_id', '-__v']);
 
-    const bottomDate = getBottomDate();
+    const lowerDate = getLowerDate();
     const recentTransfers = _.filter(transfers, transferInfo => {
         const transferDate = moment(transferInfo.transferDate, 'MMM DD, YYYY');
-        return transferDate >= bottomDate;
+        return transferDate >= lowerDate;
     });
 
-    const sortedRecentTransfers = _.sortBy(recentTransfers, item =>
-        moment(item.transferDate, 'MMM DD, YYYY')
-    );
+    const sortedRecentTransfers = _.sortBy(recentTransfers, item => moment(item.transferDate, 'MMM DD, YYYY'));
 
     return sortedRecentTransfers;
 };
@@ -41,4 +39,4 @@ export const getTransfersToShow = async (transfers: TTransferFullEntity[]) =>
         return !transferToShow;
     });
 
-export const getUserCount = async () => await User.countDocuments();
+export const getUserCount = () => User.countDocuments();

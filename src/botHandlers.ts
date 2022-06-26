@@ -1,5 +1,4 @@
 import _ from 'lodash';
-import TelegramBot from 'node-telegram-bot-api';
 import { addUser, deleteUser } from 'db/helpers';
 import { insertClubs } from 'db/utils/clubCollectionUtils';
 import { getClubInfo } from 'db/helpers/clubCollectionHelpers';
@@ -14,6 +13,7 @@ import {
 import cqt from 'constants/CallbackQueryTypes';
 import searchProcess from 'helpers/search';
 import teamTransfersProcess from 'helpers/teamTransfers';
+import type TelegramBot from 'node-telegram-bot-api';
 
 export default (bot: TelegramBot) => {
     bot.onText(/\/start/, async msg => {
@@ -21,17 +21,13 @@ export default (bot: TelegramBot) => {
         if (!id) return;
 
         await sendMessageOnStart(bot, id);
-        const recentTransfers = await getRecentTransfers();
-
-        // send messages with recently transfers
-        await sendJoinedTransferMessages(bot, id, recentTransfers);
     });
 
-    bot.onText(/\/simplestart/, async msg => {
-        const id = await addUser(msg);
-        if (!id) return;
+    bot.onText(/\/recent/, async msg => {
+        const chatId = msg.chat.id;
 
-        await sendMessageOnStart(bot, id);
+        const recentTransfers = await getRecentTransfers();
+        await sendJoinedTransferMessages(bot, chatId, recentTransfers);
     });
 
     bot.onText(/\/stop/, async msg => {
@@ -44,7 +40,7 @@ export default (bot: TelegramBot) => {
     bot.onText(/\/team (.+)/, async (msg, match) => {
         if (!match) return;
 
-        const chatId = _.get(msg, ['chat', 'id']);
+        const chatId = msg.chat.id;
         const query = match[1];
         if (!query) return;
 

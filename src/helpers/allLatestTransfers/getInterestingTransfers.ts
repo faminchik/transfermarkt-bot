@@ -1,8 +1,8 @@
 import _ from 'lodash';
-import { TTransferFullEntity } from 'ts/types/Entities.types';
 import { MINIMUM_VALUE, MILLIONS, LOAN_FEE, EURO } from 'constants/Transfermarkt';
+import type { TTransferFullEntity } from 'ts/EntitiesTS';
 
-export default (transfersInfo: TTransferFullEntity[]) =>
+export default (transfersInfo: TTransferFullEntity[]): TTransferFullEntity[] =>
     _.filter(transfersInfo, transferInfo => {
         const { marketValue, fee, highestMarketValue } = transferInfo;
 
@@ -28,7 +28,7 @@ export default (transfersInfo: TTransferFullEntity[]) =>
             return true;
         } catch (error) {
             console.error(error);
-            console.log(transferInfo);
+            console.info(transferInfo);
             return false;
         }
     });

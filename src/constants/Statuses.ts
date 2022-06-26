@@ -1,7 +1,7 @@
-enum Statuses {
+enum Status {
     SUCCESS = 'success',
     ERROR = 'error',
     BLOCKED = 'blocked'
 }
 
-export default Statuses;
+export default Status;

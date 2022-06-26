@@ -6,19 +6,14 @@ const DAYS_NUMBER = 2;
 
 const getCurrentDate = () => moment(moment().format('ll'), 'MMM DD, YYYY');
 
-export const getBottomDate = (daysNumber = DAYS_NUMBER): moment.Moment => {
-    if (daysNumber < 0) daysNumber = DAYS_NUMBER;
+export const getLowerDate = (daysNumber = DAYS_NUMBER): moment.Moment => {
+    const finalDaysNumber = daysNumber < 0 ? DAYS_NUMBER : daysNumber;
 
     const currentDate = getCurrentDate();
     console.log('currentDate', currentDate);
-    const bottomDate = moment(
-        _.cloneDeep(currentDate)
-            .subtract(daysNumber, 'day')
-            .format('ll'),
-        'MMM DD, YYYY'
-    );
-    console.log('bottomDate', bottomDate);
-    return bottomDate;
+    const lowerDate = moment(_.cloneDeep(currentDate).subtract(finalDaysNumber, 'day').format('ll'), 'MMM DD, YYYY');
+    console.log('lowerDate', lowerDate);
+    return lowerDate;
 };
 
 export const getTransferPeriodType = () => {

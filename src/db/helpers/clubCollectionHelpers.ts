@@ -1,5 +1,4 @@
 import Club from 'models/Club';
-import { TClubEntity } from 'ts/types/Entities.types';
+import type { TClubEntity } from 'ts/EntitiesTS';
 
-export const getClubInfo = async (clubName: TClubEntity['clubName']) =>
-    await Club.findOne({ clubName });
+export const getClubInfo = async (clubName: TClubEntity['clubName']) => Club.findOne({ clubName });

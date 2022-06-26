@@ -1,6 +1,6 @@
 import BPromise from 'bluebird';
 import Club from 'models/Club';
-import { TClubEntity } from 'ts/types/Entities.types';
+import type { TClubEntity } from 'ts/EntitiesTS';
 
 export const insertClubs = async (clubs: TClubEntity[]) => {
     await BPromise.each(clubs, async club => {
@@ -18,8 +18,8 @@ export const insertClubs = async (clubs: TClubEntity[]) => {
 
             newClub
                 .save()
-                .then(club => console.log(club.clubName))
-                .catch(err => console.log(err));
+                .then(club => console.info(club.clubName))
+                .catch(err => console.error(err));
         });
     });
 };

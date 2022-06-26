@@ -1,9 +1,9 @@
 import _ from 'lodash';
 import cheerio from 'cheerio';
-import { TConvertDataConfig } from 'ts/types/ConvertDataConfig.types';
 import cdt from 'constants/transfermarkt/ConvertDataTypes';
 import tdt from 'constants/transfermarkt/TableDataTypes';
 import { END_OF_LOAN } from 'constants/Transfermarkt';
+import type { TConvertDataConfig } from 'ts/ConvertDataConfigTS';
 
 const config: TConvertDataConfig = {
     [cdt.ALL_LATEST_TRANSFERS]: {

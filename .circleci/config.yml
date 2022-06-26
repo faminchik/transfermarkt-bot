@@ -7,15 +7,15 @@ version: 2
 defaults: &defaults
     working_directory: ~/faminchik/transfermarkt-bot
     docker:
-        - image: circleci/node:10.15.3
+        - image: cimg/node:16.15.0
 
 cache_restore: &cache_restore
     restore_cache:
         keys:
             # fallback to using the latest cache if no exact match is found
-            - node-v7-{{ .Branch }}-{{ checksum "package-lock.json" }}
-            - node-v7-{{ .Branch }}-
-            - node-v7-
+            - node-v16-{{ .Branch }}-{{ checksum "package-lock.json" }}
+            - node-v16-{{ .Branch }}-
+            - node-v16-
 
 jobs:
     build:
@@ -29,7 +29,7 @@ jobs:
             - save_cache:
                   paths:
                       - node_modules
-                  key: node-v7-{{ .Branch }}-{{ checksum "package-lock.json" }}
+                  key: node-v16-{{ .Branch }}-{{ checksum "package-lock.json" }}
 
     lint:
         <<: *defaults
@@ -43,7 +43,7 @@ jobs:
         steps:
             - checkout
             - <<: *cache_restore
-            - run: npm run unit-tests
+            - run: npm run unit
 
 workflows:
     version: 2

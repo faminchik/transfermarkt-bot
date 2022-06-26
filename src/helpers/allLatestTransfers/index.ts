@@ -1,8 +1,6 @@
 import transfersProcess from 'helpers/allLatestTransfers/transfersProcess';
-import pt from 'constants/transfermarkt/ParsingTypes';
+import type { TTransferFullEntity } from 'ts/EntitiesTS';
 
-export default async () => {
-    const types = [pt.ALL_LATEST_TRANSFERS] as const;
-
-    return await transfersProcess(types);
+export default async (): Promise<TTransferFullEntity[]> => {
+    return transfersProcess();
 };

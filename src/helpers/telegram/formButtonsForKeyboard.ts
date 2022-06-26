@@ -1,10 +1,8 @@
 import _ from 'lodash';
-import { InlineKeyboardButton } from 'node-telegram-bot-api';
-import { TClubEntity } from 'ts/types/Entities.types';
 import cqt from 'constants/CallbackQueryTypes';
 import { CALLBACK_DATA_MAX_SYMBOLS_NUMBER } from 'constants/Telegram';
-
-// /* eslint @typescript-eslint/camelcase: 0 */
+import type { InlineKeyboardButton } from 'node-telegram-bot-api';
+import type { TClubEntity } from 'ts/EntitiesTS';
 
 const filterCallbackDataLimitation = (buttons: InlineKeyboardButton[]) =>
     _.filter(buttons, ({ callback_data }) => _.size(callback_data) <= CALLBACK_DATA_MAX_SYMBOLS_NUMBER);
