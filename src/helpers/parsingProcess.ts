@@ -5,7 +5,6 @@ import type pt from 'constants/transfermarkt/ParsingTypes';
 
 export default <T extends pt>(html: string, type: T): TConvertedDataMapper[T] => {
     const { textData, htmlData } = getTableDataFromHTML(html, type);
-    if (!textData && !htmlData) return [];
 
     return convertData({ textData, htmlData }, type);
 };
