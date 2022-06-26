@@ -1,6 +1,6 @@
-import cdt from 'constants/transfermarkt/ConvertDataTypes';
-import tdt from 'constants/transfermarkt/TableDataTypes';
-import { TClubEntity, TTransferEntity, TTeamTransferEntity } from 'ts/types/Entities.types';
+import type cdt from 'constants/transfermarkt/ConvertDataTypes';
+import type tdt from 'constants/transfermarkt/TableDataTypes';
+import type { TClubEntity, TTransferEntity, TTeamTransferEntity } from 'ts/EntitiesTS';
 
 type Handler = (arg: string[]) => string[];
 

@@ -1,12 +1,9 @@
-import _ from 'lodash';
 import BPromise from 'bluebird';
 import cheerio from 'cheerio';
-import config from 'config';
-import { TTransferEntity, TTransferFullEntity } from 'ts/types/Entities.types';
 import { memoizedFormPlayerProfileData } from 'utils/formMemoizedFunctions';
 import { fetchHtmlRequest } from 'utils/fetchRequests';
-
-const BASE_URL: string = config.get('base-url');
+import { BASE_URL } from 'constants/Config';
+import type { TTransferEntity, TTransferFullEntity } from 'ts/EntitiesTS';
 
 let u = 0;
 let r = 0;
@@ -32,8 +29,8 @@ export const formPlayerProfileData = async (
     const $ = cheerio.load(html);
 
     // highestMarketValue
-    $('.zeile-unten > .right-td > br, span').remove();
-    const highestMarketValue = _.trim($('.zeile-unten > .right-td').text());
+    const highestMarketValue = $('.tm-player-market-value-development__max-value').text().trim();
+    console.log('highestMarketValue', profileLink, highestMarketValue);
 
     return { highestMarketValue };
 };

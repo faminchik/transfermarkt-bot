@@ -1,6 +1,6 @@
 import transfersProcess from 'helpers/teamTransfers/transfersProcess';
 import pt from 'constants/transfermarkt/ParsingTypes';
-import { TTeamTransferEntity } from 'ts/types/Entities.types';
+import type { TTeamTransferEntity } from 'ts/EntitiesTS';
 
 export default async (
     clubLink: string

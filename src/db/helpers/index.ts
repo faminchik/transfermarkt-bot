@@ -1,9 +1,9 @@
 import _ from 'lodash';
 import BPromise from 'bluebird';
-import { Message } from 'node-telegram-bot-api';
-import { TTransferFullEntity } from 'ts/types/Entities.types';
 import User from 'models/User';
 import Transfer from 'models/Transfer';
+import type { Message } from 'node-telegram-bot-api';
+import type { TTransferFullEntity } from 'ts/EntitiesTS';
 
 export const addUser = async (msg: Message) => {
     const { chat, from, date, text: command } = msg;
@@ -42,11 +42,11 @@ export const addUser = async (msg: Message) => {
     return newUser
         .save()
         .then(user => {
-            console.log('add', user.chatId, user.chatFirstName, user.chatLastName, user.chatUserName);
+            console.info('add', user.chatId, user.chatFirstName, user.chatLastName, user.chatUserName);
             return user.chatId;
         })
         .catch(err => {
-            console.log(err);
+            console.error(err);
             return null;
         });
 };
@@ -60,7 +60,7 @@ export const deleteUser = async (msg: Message) => {
     if (!user) return null;
 
     return user.remove().then(user => {
-        console.log('remove', user.chatId, user.chatFirstName, user.chatLastName, user.chatUserName);
+        console.info('remove', user.chatId, user.chatFirstName, user.chatLastName, user.chatUserName);
         return user.chatId;
     });
 };
@@ -108,9 +108,9 @@ export const upsertTransfers = async (transfersToUpsert: TTransferFullEntity[]) 
                 transfer
                     .save()
                     .then(transfer =>
-                        console.log('updated', transfer.name, transfer.leftTeam, transfer.joinedTeam, transfer.fee)
+                        console.info('updated', transfer.name, transfer.leftTeam, transfer.joinedTeam, transfer.fee)
                     )
-                    .catch(err => console.log(err));
+                    .catch(err => console.error(err));
             } else {
                 const newTransfer = new Transfer({
                     name,
@@ -127,8 +127,8 @@ export const upsertTransfers = async (transfersToUpsert: TTransferFullEntity[]) 
 
                 newTransfer
                     .save()
-                    .then(transfer => console.log(transfer.name, transfer.leftTeam, transfer.joinedTeam, transfer.fee))
-                    .catch(err => console.log(err));
+                    .then(transfer => console.info(transfer.name, transfer.leftTeam, transfer.joinedTeam, transfer.fee))
+                    .catch(err => console.error(err));
             }
         });
     });

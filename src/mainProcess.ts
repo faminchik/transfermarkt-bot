@@ -1,11 +1,11 @@
 import _ from 'lodash';
 import BPromise from 'bluebird';
-import TelegramBot from 'node-telegram-bot-api';
 import allLatestTransfersProcess from 'helpers/allLatestTransfers';
 import { getUsersIds, getTransfersToShow } from 'db/utils';
 import { upsertTransfers, deleteUsersByChatIds, isNewTransfer as isNewTransferFunc } from 'db/helpers';
 import { sendTransferMessage } from 'helpers/telegram/telegramBotHelpers';
 import Status from 'constants/Statuses';
+import type TelegramBot from 'node-telegram-bot-api';
 
 export default async (botClient: TelegramBot) => {
     const transfers = await allLatestTransfersProcess();

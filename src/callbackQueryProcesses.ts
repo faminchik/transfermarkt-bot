@@ -1,8 +1,9 @@
 import _ from 'lodash';
-import TelegramBot, { CallbackQuery } from 'node-telegram-bot-api';
 import { getClubInfo } from 'db/helpers/clubCollectionHelpers';
 import teamTransfersProcess from 'helpers/teamTransfers';
 import { sendTeamTransfersMessages, deleteMessages } from 'helpers/telegram/telegramBotHelpers';
+import type TelegramBot from 'node-telegram-bot-api';
+import type { CallbackQuery } from 'node-telegram-bot-api';
 
 export const teamTransfersCallbackQuery = async (bot: TelegramBot, response: CallbackQuery, clubName: string) => {
     const clubInfo = await getClubInfo(clubName);
