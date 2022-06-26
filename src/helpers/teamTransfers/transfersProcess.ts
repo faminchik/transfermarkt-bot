@@ -1,13 +1,11 @@
 import _ from 'lodash';
-import config from 'config';
 import pt from 'constants/transfermarkt/ParsingTypes';
 import { fetchHtmlRequest } from 'utils/fetchRequests';
 import { getTransferPeriodType, getYearForTransferPeriod } from 'helpers/dateHelper';
 import parsingProcess from 'helpers/parsingProcess';
 import { START_PAGE, TRANSFERS } from 'constants/Transfermarkt';
-import { TTeamTransferEntity } from 'ts/types/Entities.types';
-
-const URL: string = config.get('team-latest-transfers-url');
+import { TEAM_LATEST_TRANSFERS_URL } from 'constants/Config';
+import type { TTeamTransferEntity } from 'ts/EntitiesTS';
 
 export default async (
     clubLink: string
@@ -15,7 +13,7 @@ export default async (
     const year = getYearForTransferPeriod();
     const transferPeriodType = getTransferPeriodType();
 
-    const url = _.chain(URL)
+    const url = _.chain(TEAM_LATEST_TRANSFERS_URL)
         .replace('*link*', clubLink)
         .replace('*year*', _.toString(year))
         .replace('*period*', transferPeriodType)

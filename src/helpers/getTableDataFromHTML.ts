@@ -1,11 +1,11 @@
 import _ from 'lodash';
 import cheerio from 'cheerio';
-import { IParsedTable } from 'ts/interfaces/ParseTable.interfaces';
-import pt from 'constants/transfermarkt/ParsingTypes';
 import parseTable from 'helpers/parseTable';
 import { TABLE_CLASS_NAME } from 'constants/Transfermarkt';
 import TableHeadersConfig from 'configs/TableHeadersConfig';
 import TableHeaderClassConfig from 'configs/TableHeaderClassConfig';
+import type pt from 'constants/transfermarkt/ParsingTypes';
+import type { IParsedTable } from 'ts/ParseTableTS';
 
 export default (html: string, type: pt): IParsedTable => {
     const $ = cheerio.load(html);

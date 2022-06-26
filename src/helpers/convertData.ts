@@ -1,16 +1,16 @@
 import _ from 'lodash';
-import { TConvertDataConfigElement } from 'ts/types/ConvertDataConfig.types';
-import { IParsedTable } from 'ts/interfaces/ParseTable.interfaces';
-import { TConvertedDataMapper } from 'ts/types/ConvertData.types';
 import { transposeArrays, formArrayByKeys } from 'utils/arrayMethods';
 import tdt from 'constants/transfermarkt/TableDataTypes';
-import pt from 'constants/transfermarkt/ParsingTypes';
 import ConvertDataConfig from 'configs/ConvertDataConfig';
 import ConvertDataStrategies from 'configs/ConvertDataStrategies';
+import type { TConvertDataConfigElement } from 'ts/ConvertDataConfigTS';
+import type { IParsedTable } from 'ts/ParseTableTS';
+import type { TConvertedDataMapper } from 'ts/ConvertDataTS';
+import type pt from 'constants/transfermarkt/ParsingTypes';
 
 type ParsedData = { [key: string]: string[] };
 
-const convertData = (data: CheerioParsedTable, config: TConvertDataConfigElement) => {
+const convertData = (data: string[][], config: TConvertDataConfigElement) => {
     const compactedData = _.map(data, _.compact);
 
     const parsedData = _.reduce(

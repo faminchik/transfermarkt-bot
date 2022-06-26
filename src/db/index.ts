@@ -1,14 +1,15 @@
 import mongoose from 'mongoose';
+import type { Connection } from 'mongoose';
 
-require('dotenv').config();
-
-const { MONGO_URI } = process.env;
-
-if (!MONGO_URI) {
-    throw new Error('Seems like you forgot to pass Mongo Uri. I can not proceed...');
-}
-
-mongoose
-    .connect(MONGO_URI)
-    .then(() => console.log('Connected to DB'))
-    .catch(err => console.log(err, 'Failed to connect to DB'));
+export const connectDataBase = (uri: string): Promise<Connection> => {
+    return mongoose
+        .connect(uri)
+        .then(() => {
+            console.info('Connected to DB:', uri);
+            return mongoose.connection;
+        })
+        .catch((err: Error) => {
+            console.error(err);
+            throw new Error('Failed to connect to DB');
+        });
+};

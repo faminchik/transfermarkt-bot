@@ -1,8 +1,8 @@
 import _ from 'lodash';
-import { TTransferFullEntity, TTeamTransferEntity, TClubEntity } from 'ts/types/Entities.types';
-import { TClubModel, TTransferModel } from 'ts/types/Models.types';
 import getFlagEmoji from 'helpers/getFlagEmoji';
 import { MESSAGE_DELIMITER, ITEMS_COUNT_PER_MESSAGE } from 'constants/Telegram';
+import type { TTransferFullEntity, TTeamTransferEntity, TClubEntity } from 'ts/EntitiesTS';
+import type { TClubModel, TTransferModel } from 'ts/ModelsTS';
 
 export const formTransferMessage = (transferInfo: TTransferFullEntity | TTransferModel, isNewTransfer = true) => {
     const {

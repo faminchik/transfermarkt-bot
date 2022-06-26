@@ -1,5 +1,5 @@
-import pt from 'constants/transfermarkt/ParsingTypes';
-import { TTransferEntity, TClubEntity, TTeamTransferEntity } from './Entities.types';
+import type pt from 'constants/transfermarkt/ParsingTypes';
+import type { TTransferEntity, TClubEntity, TTeamTransferEntity } from 'ts/EntitiesTS';
 
 export type TConvertedDataMapper = {
     [pt.ALL_LATEST_TRANSFERS]: TTransferEntity[];

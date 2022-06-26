@@ -6,13 +6,13 @@ export const fetchHtmlRequest = async (url: string): Promise<string | null> => {
 
         const { status } = response;
         if (status !== 200) {
-            console.log('GET Html Request status: ', status);
+            console.info('GET Html Request status: ', status);
             return null;
         }
 
         return response.data;
     } catch (e) {
-        console.log('GET Html Request error', e);
+        console.error('GET Html Request error', e);
         return null;
     }
 };

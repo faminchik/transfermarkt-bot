@@ -1,6 +1,5 @@
 import _ from 'lodash';
 import BPromise from 'bluebird';
-import TelegramBot, { SendMessageOptions, Chat } from 'node-telegram-bot-api';
 import {
     formTransferMessage,
     formTeamTransferMessage,
@@ -10,35 +9,19 @@ import {
 } from 'helpers/telegram/formMessageHelper';
 import { formClubsSearchResultButtons } from 'helpers/telegram/formButtonsForKeyboard';
 import { formInlineKeyboard } from 'helpers/telegram/formKeyboards';
-import Status from 'constants/Statuses';
-import { TTransferFullEntity, TClubEntity, TTeamTransferEntity } from 'ts/types/Entities.types';
-import { TClubModel, TTransferModel } from 'ts/types/Models.types';
+import { sendMessage } from 'helpers/telegram/apiHelpers';
+import type TelegramBot from 'node-telegram-bot-api';
+import type { SendMessageOptions, Chat } from 'node-telegram-bot-api';
+import type { TTransferFullEntity, TClubEntity, TTeamTransferEntity } from 'ts/EntitiesTS';
+import type { TClubModel, TTransferModel } from 'ts/ModelsTS';
 
-// /* eslint @typescript-eslint/camelcase: 0 */
-
-const sendMessage = async (
-    botClient: TelegramBot,
-    chatId: Chat['id'],
-    message: string,
-    options: SendMessageOptions = {}
-) =>
-    await botClient
-        .sendMessage(
-            // '@transfers_transfermarkt',
-            chatId,
-            message,
-            { parse_mode: 'Markdown', ...options }
-        )
-        .then(() => Status.SUCCESS)
-        .catch(err => (err.response && err.response.statusCode === 403 ? Status.BLOCKED : Status.ERROR));
-
-const joinAndSendMessages = async (botClient: TelegramBot, chatId: Chat['id'], messages: string[], header?: string) => {
+const joinAndSendMessages = (botClient: TelegramBot, chatId: Chat['id'], messages: string[], header?: string) => {
     const joinedMessages = joinMessages(messages, header);
 
-    await BPromise.each(joinedMessages, async msg => await sendMessage(botClient, chatId, msg));
+    return BPromise.mapSeries(joinedMessages, msg => sendMessage(botClient, chatId, msg));
 };
 
-export const sendTransferMessage = async (
+export const sendTransferMessage = (
     botClient: TelegramBot,
     chatId: Chat['id'],
     transferInfo: TTransferFullEntity,
@@ -46,21 +29,17 @@ export const sendTransferMessage = async (
 ) => {
     const message = formTransferMessage(transferInfo, isNewTransfer);
 
-    return await sendMessage(botClient, chatId, message);
+    return sendMessage(botClient, chatId, message);
 };
 
-export const sendJoinedTransferMessages = async (
-    botClient: TelegramBot,
-    chatId: Chat['id'],
-    transfers: TTransferModel[]
-) => {
+export const sendJoinedTransferMessages = (botClient: TelegramBot, chatId: Chat['id'], transfers: TTransferModel[]) => {
     const transfersMessages = _.map(transfers, transferInfo => formTransferMessage(transferInfo));
 
-    await joinAndSendMessages(botClient, chatId, transfersMessages);
+    return joinAndSendMessages(botClient, chatId, transfersMessages);
 };
 
 // TODO make this method more general (not only for clubs)
-export const sendClubsSearchResultWithOptions = async (
+export const sendClubsSearchResultWithOptions = (
     botClient: TelegramBot,
     chatId: Chat['id'],
     searchResult: TClubEntity[]
@@ -68,8 +47,8 @@ export const sendClubsSearchResultWithOptions = async (
     const message = formClubsSearchResultMessage(searchResult);
     const keyboardButtons = formClubsSearchResultButtons(searchResult);
 
-    const options = { ...formInlineKeyboard(keyboardButtons) };
-    await sendMessage(botClient, chatId, message, options);
+    const options: SendMessageOptions = { ...formInlineKeyboard(keyboardButtons) };
+    return sendMessage(botClient, chatId, message, options);
 };
 
 export const sendTeamTransfersMessages = async (
@@ -95,17 +74,19 @@ export const sendTeamTransfersMessages = async (
     );
     const departuresHeader = formTeamTransferHeader(clubInfo, 'Departures');
 
-    await joinAndSendMessages(botClient, chatId, arrivalsMessages, arrivalsHeader);
-    await joinAndSendMessages(botClient, chatId, departuresMessages, departuresHeader);
+    const arrivalMessagesResult = await joinAndSendMessages(botClient, chatId, arrivalsMessages, arrivalsHeader);
+    const departureMessagesResult = await joinAndSendMessages(botClient, chatId, departuresMessages, departuresHeader);
+
+    return _.concat(arrivalMessagesResult, departureMessagesResult);
 };
 
-export const sendMessageOnStart = async (botClient: TelegramBot, chatId: Chat['id']) => {
+export const sendMessageOnStart = (botClient: TelegramBot, chatId: Chat['id']) => {
     const START_MESSAGE = `You've been successfully subscribed`;
 
-    await sendMessage(botClient, chatId, START_MESSAGE);
+    return sendMessage(botClient, chatId, START_MESSAGE);
 };
-export const sendMessageOnStop = async (botClient: TelegramBot, chatId: Chat['id']) => {
+export const sendMessageOnStop = (botClient: TelegramBot, chatId: Chat['id']) => {
     const STOP_MESSAGE = `You've been successfully unsubscribed`;
 
-    await sendMessage(botClient, chatId, STOP_MESSAGE);
+    return sendMessage(botClient, chatId, STOP_MESSAGE);
 };

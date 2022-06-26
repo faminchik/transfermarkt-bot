@@ -1,7 +1,7 @@
 import emoji from 'constants/Emoji';
 import flags from 'constants/Flags';
 
-export default (country?: string | null, isSpaceOnTheRight = true) => {
+export default (country?: string | null, isSpaceOnTheRight = true): string => {
     let flag = '';
     const space = ' ';
 

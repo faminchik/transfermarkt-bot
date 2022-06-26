@@ -1,13 +1,11 @@
-import config from 'config';
 import pt from 'constants/transfermarkt/ParsingTypes';
 import { fetchHtmlRequest } from 'utils/fetchRequests';
 import parsingProcess from 'helpers/parsingProcess';
-import { TClubEntity } from 'ts/types/Entities.types';
-
-const URL: string = config.get('search-url');
+import { SEARCH_URL } from 'constants/Config';
+import type { TClubEntity } from 'ts/EntitiesTS';
 
 export default async (query = ''): Promise<TClubEntity[]> => {
-    const url = URL + query;
+    const url = SEARCH_URL + query;
 
     const html = await fetchHtmlRequest(url);
     if (!html) return [];
