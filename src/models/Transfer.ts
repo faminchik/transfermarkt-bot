@@ -13,6 +13,7 @@ export interface ITransferProps {
     transferDate: string;
     marketValue: string;
     fee: string;
+    position: string;
 }
 
 export type TTransfer = ITransferProps & Document;
@@ -27,7 +28,8 @@ const TransferSchema = new Schema<TTransfer>({
     joinedTeamCountry: { type: String },
     transferDate: { type: String, required: true },
     marketValue: { type: String, required: true },
-    fee: { type: String, required: true }
+    fee: { type: String, required: true },
+    position: { type: String, required: true }
 });
 
 export default model<TTransfer>(TRANSFER, TransferSchema);

@@ -9,7 +9,7 @@ import {
 } from 'helpers/telegram/formMessageHelper';
 import { formClubsSearchResultButtons } from 'helpers/telegram/formButtonsForKeyboard';
 import { formInlineKeyboard } from 'helpers/telegram/formKeyboards';
-import { sendMessage } from 'helpers/telegram/apiHelpers';
+import { sendMessage, sendPhoto } from 'helpers/telegram/apiHelpers';
 import type TelegramBot from 'node-telegram-bot-api';
 import type { SendMessageOptions, Chat } from 'node-telegram-bot-api';
 import type { TTransferFullEntity, TClubEntity, TTeamTransferEntity } from 'ts/EntitiesTS';
@@ -28,6 +28,11 @@ export const sendTransferMessage = (
     isNewTransfer: boolean
 ) => {
     const message = formTransferMessage(transferInfo, isNewTransfer);
+    const { photoSrc } = transferInfo;
+
+    if (photoSrc.length !== 0) {
+        return sendPhoto(botClient, chatId, photoSrc, { caption: message });
+    }
 
     return sendMessage(botClient, chatId, message);
 };

@@ -17,7 +17,9 @@ const formTransferFullEntity = (data: Partial<TTransferFullEntity>[]): TTransfer
             leftTeam: '',
             joinedTeam: '',
             transferDate: '',
-            profileLink: ''
+            profileLink: '',
+            position: '',
+            photoSrc: ''
         };
     });
 

@@ -15,7 +15,8 @@ export const formTransferMessage = (transferInfo: TTransferFullEntity | TTransfe
         fee,
         transferDate,
         age,
-        nationality
+        nationality,
+        position
     } = transferInfo;
 
     const additionalInfo = isNewTransfer ? '' : '\r\n(transfer info has been updated)';
@@ -24,17 +25,18 @@ export const formTransferMessage = (transferInfo: TTransferFullEntity | TTransfe
     const leftTeamFlag = getFlagEmoji(leftTeamCountry);
     const joinedTeamFlag = getFlagEmoji(joinedTeamCountry, false);
 
-    return `*${transferDate}*\r\n${flag}*${name}* (${marketValue} | ${age} y.o.)\r\n\r\n${leftTeamFlag}*${leftTeam}* → *${joinedTeam}*${joinedTeamFlag}\r\n*${fee}*${additionalInfo}`;
+    return `*${transferDate}*\r\n\r\n${flag}*${name}*\r\n${marketValue} | ${position} | ${age} y.o.\r\n\r\n${leftTeamFlag}*${leftTeam}* → *${joinedTeam}*${joinedTeamFlag}\r\n*${fee}*${additionalInfo}`;
 };
 
 export const formTeamTransferMessage = (teamTransferInfo: TTeamTransferEntity, arrow = '', index: number) => {
-    const { name, age, marketValue, secondPartyTeam, secondPartyTeamCountry, fee, nationality } = teamTransferInfo;
+    const { name, age, marketValue, secondPartyTeam, secondPartyTeamCountry, fee, nationality, position } =
+        teamTransferInfo;
 
     const flag = getFlagEmoji(nationality);
     const secondPartyFlag = getFlagEmoji(secondPartyTeamCountry);
     const indexStr = _.isNumber(index) ? `*${index}*. ` : '';
 
-    return `${indexStr}${flag}*${name}* (${marketValue} | ${age} y.o.)\r\n\r\n${arrow}${secondPartyFlag}*${secondPartyTeam}* | *${fee}*`;
+    return `${indexStr}${flag}*${name}*\r\n${marketValue} | ${position} | ${age} y.o.\r\n\r\n${arrow}${secondPartyFlag}*${secondPartyTeam}* | *${fee}*`;
 };
 
 export const joinMessages = (messages: string[], header = '') => {

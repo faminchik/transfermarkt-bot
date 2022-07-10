@@ -87,7 +87,8 @@ export const upsertTransfers = async (transfersToUpsert: TTransferFullEntity[]) 
             joinedTeamCountry,
             transferDate = '',
             marketValue = '',
-            fee = ''
+            fee = '',
+            position = ''
         } = transfer;
 
         await Transfer.findOne({ name, leftTeam, joinedTeam }).then(transfer => {
@@ -102,7 +103,8 @@ export const upsertTransfers = async (transfersToUpsert: TTransferFullEntity[]) 
                     joinedTeamCountry,
                     transferDate,
                     marketValue,
-                    fee
+                    fee,
+                    position
                 });
 
                 transfer
@@ -122,7 +124,8 @@ export const upsertTransfers = async (transfersToUpsert: TTransferFullEntity[]) 
                     joinedTeamCountry,
                     transferDate,
                     marketValue,
-                    fee
+                    fee,
+                    position
                 });
 
                 newTransfer
