@@ -4,6 +4,7 @@ import type { IClubProps } from 'models/Club';
 // START: @Latest Transfer
 type TTransferEntityAdditions = {
     profileLink: string;
+    photoSrc: string;
 };
 
 export type TTransferEntity = ITransferProps & TTransferEntityAdditions;
@@ -28,5 +29,6 @@ export type TTeamTransferEntity = {
     secondPartyTeamCountry?: string;
     marketValue: string;
     fee: string;
+    position: string;
 };
 // --- END: @Team Transfer
