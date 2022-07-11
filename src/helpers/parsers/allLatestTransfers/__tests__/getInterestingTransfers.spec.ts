@@ -1,10 +1,9 @@
-import _ from 'lodash';
-import getInterestingTransfers from 'helpers/allLatestTransfers/getInterestingTransfers';
+import getInterestingTransfers from 'helpers/parsers/allLatestTransfers/getInterestingTransfers';
 import { MILLIONS, THOUSANDS, LOAN_FEE, EURO, DELIMITER } from 'constants/Transfermarkt';
 import type { TTransferFullEntity } from 'ts/EntitiesTS';
 
 const formTransferFullEntity = (data: Partial<TTransferFullEntity>[]): TTransferFullEntity[] =>
-    _.map(data, item => {
+    data.map((item) => {
         const { marketValue = '', fee = '', highestMarketValue = '' } = item;
 
         return {

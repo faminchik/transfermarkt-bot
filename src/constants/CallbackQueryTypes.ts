@@ -1,5 +1,6 @@
 enum CallbackQueryType {
-    CLUB = 'CLUB'
+    CLUB = 'CLUB',
+    PLAYER = 'PLAYER'
 }
 
 export default CallbackQueryType;

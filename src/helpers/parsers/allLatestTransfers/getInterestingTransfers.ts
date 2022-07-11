@@ -3,7 +3,7 @@ import { MINIMUM_VALUE, MILLIONS, LOAN_FEE, EURO } from 'constants/Transfermarkt
 import type { TTransferFullEntity } from 'ts/EntitiesTS';
 
 export default (transfersInfo: TTransferFullEntity[]): TTransferFullEntity[] =>
-    _.filter(transfersInfo, transferInfo => {
+    _.filter(transfersInfo, (transferInfo) => {
         const { marketValue, fee, highestMarketValue } = transferInfo;
 
         try {

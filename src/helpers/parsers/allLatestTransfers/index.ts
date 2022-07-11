@@ -1,4 +1,4 @@
-import transfersProcess from 'helpers/allLatestTransfers/transfersProcess';
+import transfersProcess from 'helpers/parsers/allLatestTransfers/transfersProcess';
 import type { TTransferFullEntity } from 'ts/EntitiesTS';
 
 export default async (): Promise<TTransferFullEntity[]> => {

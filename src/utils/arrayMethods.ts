@@ -17,7 +17,7 @@ export function transposeArrays<T>(arrays: T[][]): T[][] {
 }
 
 export function formArrayByKeys<T>(array: T[][], keys: string[]): { [key: string]: T }[] {
-    return _.map(array, item =>
+    return _.map(array, (item) =>
         _.reduce(
             item,
             (acc: { [param: string]: T }, param, index) => {

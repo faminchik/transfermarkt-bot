@@ -10,11 +10,11 @@ const config: TConvertDataConfig = {
         [tdt.TEXT]: {
             2: {
                 key: 'name',
-                handler: (data: string[]) => _.filter(data, (player, index) => index % 2 === 1)
+                handler: (data) => _.filter(data, (player, index) => index % 2 === 1)
             },
             4: {
                 key: 'age',
-                handler: (data: string[]) => _.slice(data, 1)
+                handler: (data) => _.slice(data, 1)
             },
             8: {
                 key: 'leftTeam'
@@ -32,9 +32,9 @@ const config: TConvertDataConfig = {
         [tdt.HTML]: {
             2: {
                 key: 'profileLink',
-                handler: (data: string[]) => {
+                handler: (data) => {
                     const filtered = _.filter(data, (item, index) => index % 2 === 1);
-                    return _.map(filtered, item => {
+                    return _.map(filtered, (item) => {
                         const $ = cheerio.load(item);
                         return $('a').attr('href') ?? '';
                     });
@@ -42,8 +42,8 @@ const config: TConvertDataConfig = {
             },
             5: {
                 key: 'nationality',
-                handler: (data: string[]) => {
-                    return _.map(_.slice(data, 1), item => {
+                handler: (data) => {
+                    return _.map(_.slice(data, 1), (item) => {
                         const $ = cheerio.load(item);
                         return $('img').attr('alt') ?? '';
                     });
@@ -51,8 +51,8 @@ const config: TConvertDataConfig = {
             },
             9: {
                 key: 'leftTeamCountry',
-                handler: (data: string[]) => {
-                    return _.map(data, item => {
+                handler: (data) => {
+                    return _.map(data, (item) => {
                         const $ = cheerio.load(item);
                         const result = $('img').attr('alt');
                         return result ? result : '';
@@ -61,8 +61,8 @@ const config: TConvertDataConfig = {
             },
             13: {
                 key: 'joinedTeamCountry',
-                handler: (data: string[]) => {
-                    return _.map(data, item => {
+                handler: (data) => {
+                    return _.map(data, (item) => {
                         const $ = cheerio.load(item);
                         const result = $('img').attr('alt');
                         return result ? result : '';
@@ -71,8 +71,8 @@ const config: TConvertDataConfig = {
             },
             16: {
                 key: 'fee',
-                handler: (data: string[]) => {
-                    return _.map(data, item => {
+                handler: (data) => {
+                    return _.map(data, (item) => {
                         const $ = cheerio.load(item);
                         return $('a').text();
                     });
@@ -84,18 +84,18 @@ const config: TConvertDataConfig = {
         [tdt.TEXT]: {
             2: {
                 key: 'clubName',
-                handler: (data: string[]) => _.slice(data, 1)
+                handler: (data) => _.slice(data, 1)
             },
             6: {
                 key: 'totalMarketValue',
-                handler: (data: string[]) => _.slice(data, 1)
+                handler: (data) => _.slice(data, 1)
             }
         },
         [tdt.HTML]: {
             2: {
                 key: 'clubLink',
-                handler: (data: string[]) => {
-                    return _.map(_.slice(data, 1), item => {
+                handler: (data) => {
+                    return _.map(_.slice(data, 1), (item) => {
                         const $ = cheerio.load(item);
                         return $('a').attr('href') ?? '';
                     });
@@ -103,8 +103,48 @@ const config: TConvertDataConfig = {
             },
             4: {
                 key: 'country',
-                handler: (data: string[]) => {
-                    return _.map(_.slice(data, 1), item => {
+                handler: (data) => {
+                    return _.map(_.slice(data, 1), (item) => {
+                        const $ = cheerio.load(item);
+                        return $('img').attr('alt') ?? '';
+                    });
+                }
+            }
+        }
+    },
+    [cdt.PLAYERS_SEARCH]: {
+        [tdt.TEXT]: {
+            2: {
+                key: 'name',
+                handler: (data) => _.filter(data, (item, index) => index % 2 === 1)
+            },
+            3: {
+                key: 'clubName',
+                handler: (data) => _.slice(data, 1)
+            },
+            6: {
+                key: 'age',
+                handler: (data) => _.slice(data, 1)
+            },
+            8: {
+                key: 'marketValue'
+            }
+        },
+        [tdt.HTML]: {
+            2: {
+                key: 'playerLink',
+                handler: (data) => {
+                    const filtered = _.filter(data, (item, index) => index % 2 === 1);
+                    return _.map(filtered, (item) => {
+                        const $ = cheerio.load(item);
+                        return $('a').attr('href') ?? '';
+                    });
+                }
+            },
+            7: {
+                key: 'nationality',
+                handler: (data) => {
+                    return _.map(data, (item) => {
                         const $ = cheerio.load(item);
                         return $('img').attr('alt') ?? '';
                     });
@@ -116,15 +156,15 @@ const config: TConvertDataConfig = {
         [tdt.TEXT]: {
             3: {
                 key: 'name',
-                handler: (data: string[]) => _.slice(data, 1)
+                handler: (data) => _.slice(data, 1)
             },
             5: {
                 key: 'age',
-                handler: (data: string[]) => _.slice(data, 1)
+                handler: (data) => _.slice(data, 1)
             },
             6: {
                 key: 'marketValue',
-                handler: (data: string[]) => _.slice(data, 1)
+                handler: (data) => _.slice(data, 1)
             },
             10: {
                 key: 'secondPartyTeam'
@@ -133,8 +173,8 @@ const config: TConvertDataConfig = {
         [tdt.HTML]: {
             7: {
                 key: 'nationality',
-                handler: (data: string[]) => {
-                    return _.map(data, item => {
+                handler: (data) => {
+                    return _.map(data, (item) => {
                         const $ = cheerio.load(item);
                         return $('img').attr('alt') ?? '';
                     });
@@ -142,8 +182,8 @@ const config: TConvertDataConfig = {
             },
             11: {
                 key: 'secondPartyTeamCountry',
-                handler: (data: string[]) => {
-                    return _.map(data, item => {
+                handler: (data) => {
+                    return _.map(data, (item) => {
                         const $ = cheerio.load(item);
                         const result = $('img').attr('alt');
                         return result ? result : '';
@@ -152,8 +192,8 @@ const config: TConvertDataConfig = {
             },
             12: {
                 key: 'fee',
-                handler: (data: string[]) => {
-                    return _.map(data, item => {
+                handler: (data) => {
+                    return _.map(data, (item) => {
                         const $ = cheerio.load(item);
                         const text = $('a').text();
                         if (_.includes(text, END_OF_LOAN)) {

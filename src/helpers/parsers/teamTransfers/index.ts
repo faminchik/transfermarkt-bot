@@ -1,4 +1,4 @@
-import transfersProcess from 'helpers/teamTransfers/transfersProcess';
+import transfersProcess from 'helpers/parsers/teamTransfers/transfersProcess';
 import pt from 'constants/transfermarkt/ParsingTypes';
 import type { TTeamTransferEntity } from 'ts/EntitiesTS';
 

@@ -13,7 +13,7 @@ export default (html: string, type: pt): IParsedTable => {
     const headerClassName = TableHeaderClassConfig[type];
 
     const nodes = $(headerClassName);
-    const headerNode = _.find(nodes, node => {
+    const headerNode = _.find(nodes, (node) => {
         const text = $(node).text();
         return _.includes(text, header);
     });

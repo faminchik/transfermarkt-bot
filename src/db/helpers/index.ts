@@ -41,11 +41,11 @@ export const addUser = async (msg: Message) => {
 
     return newUser
         .save()
-        .then(user => {
+        .then((user) => {
             console.info('add', user.chatId, user.chatFirstName, user.chatLastName, user.chatUserName);
             return user.chatId;
         })
-        .catch(err => {
+        .catch((err) => {
             console.error(err);
             return null;
         });
@@ -59,15 +59,15 @@ export const deleteUser = async (msg: Message) => {
     const user = await User.findOne({ chatId });
     if (!user) return null;
 
-    return user.remove().then(user => {
+    return user.remove().then((user) => {
         console.info('remove', user.chatId, user.chatFirstName, user.chatLastName, user.chatUserName);
         return user.chatId;
     });
 };
 
 export const deleteUsersByChatIds = (ids: number[]) => {
-    _.each(ids, id => {
-        User.findOne({ chatId: id }).then(user => {
+    _.each(ids, (id) => {
+        User.findOne({ chatId: id }).then((user) => {
             if (user) {
                 user.remove();
             }
@@ -76,7 +76,7 @@ export const deleteUsersByChatIds = (ids: number[]) => {
 };
 
 export const upsertTransfers = async (transfersToUpsert: TTransferFullEntity[]) => {
-    await BPromise.each(transfersToUpsert, async transfer => {
+    await BPromise.each(transfersToUpsert, async (transfer) => {
         const {
             name = '',
             age = '',
@@ -90,7 +90,7 @@ export const upsertTransfers = async (transfersToUpsert: TTransferFullEntity[]) 
             fee = ''
         } = transfer;
 
-        await Transfer.findOne({ name, leftTeam, joinedTeam }).then(transfer => {
+        await Transfer.findOne({ name, leftTeam, joinedTeam }).then((transfer) => {
             if (transfer) {
                 transfer.set({
                     name,
@@ -107,10 +107,10 @@ export const upsertTransfers = async (transfersToUpsert: TTransferFullEntity[]) 
 
                 transfer
                     .save()
-                    .then(transfer =>
+                    .then((transfer) =>
                         console.info('updated', transfer.name, transfer.leftTeam, transfer.joinedTeam, transfer.fee)
                     )
-                    .catch(err => console.error(err));
+                    .catch((err) => console.error(err));
             } else {
                 const newTransfer = new Transfer({
                     name,
@@ -127,8 +127,10 @@ export const upsertTransfers = async (transfersToUpsert: TTransferFullEntity[]) 
 
                 newTransfer
                     .save()
-                    .then(transfer => console.info(transfer.name, transfer.leftTeam, transfer.joinedTeam, transfer.fee))
-                    .catch(err => console.error(err));
+                    .then((transfer) =>
+                        console.info(transfer.name, transfer.leftTeam, transfer.joinedTeam, transfer.fee)
+                    )
+                    .catch((err) => console.error(err));
             }
         });
     });

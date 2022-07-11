@@ -8,7 +8,7 @@ import type { TTransferFullEntity } from 'ts/EntitiesTS';
 
 export const getUsersIds = async () => {
     const users = await User.find({}).select(['chatId', '-_id']);
-    const usersIds = _.map(users, item => item.chatId);
+    const usersIds = _.map(users, (item) => item.chatId);
     return usersIds;
 };
 
@@ -16,18 +16,18 @@ export const getRecentTransfers = async () => {
     const transfers = await Transfer.find({}).select(['-_id', '-__v']);
 
     const lowerDate = getLowerDate();
-    const recentTransfers = _.filter(transfers, transferInfo => {
+    const recentTransfers = _.filter(transfers, (transferInfo) => {
         const transferDate = moment(transferInfo.transferDate, 'MMM DD, YYYY');
         return transferDate >= lowerDate;
     });
 
-    const sortedRecentTransfers = _.sortBy(recentTransfers, item => moment(item.transferDate, 'MMM DD, YYYY'));
+    const sortedRecentTransfers = _.sortBy(recentTransfers, (item) => moment(item.transferDate, 'MMM DD, YYYY'));
 
     return sortedRecentTransfers;
 };
 
 export const getTransfersToShow = async (transfers: TTransferFullEntity[]) =>
-    await BPromise.filter(transfers, async transfer => {
+    await BPromise.filter(transfers, async (transfer) => {
         const { name, leftTeam, joinedTeam, transferDate, fee } = transfer;
         const transferToShow = await Transfer.findOne({
             name,

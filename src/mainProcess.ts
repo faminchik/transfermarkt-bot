@@ -1,14 +1,14 @@
 import _ from 'lodash';
 import BPromise from 'bluebird';
-import allLatestTransfersProcess from 'helpers/allLatestTransfers';
+import { allLatestTransfersParser } from 'helpers/parsers';
 import { getUsersIds, getTransfersToShow } from 'db/utils';
 import { upsertTransfers, deleteUsersByChatIds, isNewTransfer as isNewTransferFunc } from 'db/helpers';
-import { sendTransferMessage } from 'helpers/telegram/telegramBotHelpers';
+import { sendTransferMessage } from 'helpers/telegram/sendMessage';
 import Status from 'constants/Statuses';
 import type TelegramBot from 'node-telegram-bot-api';
 
 export default async (botClient: TelegramBot) => {
-    const transfers = await allLatestTransfersProcess();
+    const transfers = await allLatestTransfersParser();
     if (_.isEmpty(transfers)) return;
 
     const blockedIds: number[] = [];
@@ -18,10 +18,10 @@ export default async (botClient: TelegramBot) => {
 
     const usersIds = await getUsersIds();
 
-    await BPromise.each(_.reverse(_.cloneDeep(transfersToShow)), async transferInfo => {
+    await BPromise.each(_.reverse(_.cloneDeep(transfersToShow)), async (transferInfo) => {
         const isNewTransfer = await isNewTransferFunc(transferInfo);
 
-        await BPromise.each(usersIds, async id => {
+        await BPromise.each(usersIds, async (id) => {
             const { status } = await sendTransferMessage(botClient, id, transferInfo, isNewTransfer);
 
             if (status === Status.BLOCKED) blockedIds.push(id);

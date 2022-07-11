@@ -9,7 +9,7 @@ let u = 0;
 let r = 0;
 
 export default async (transfersInfo: TTransferEntity[]): Promise<TTransferFullEntity[]> =>
-    await BPromise.map(transfersInfo, async transferInfo => {
+    await BPromise.map(transfersInfo, async (transferInfo) => {
         const { profileLink } = transferInfo;
         const profileData = await memoizedFormPlayerProfileData(profileLink);
 
