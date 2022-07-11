@@ -9,9 +9,9 @@ import {
 } from 'helpers/telegram/formMessageHelper';
 import { formClubsSearchResultButtons } from 'helpers/telegram/formButtonsForKeyboard';
 import { formInlineKeyboard } from 'helpers/telegram/formKeyboards';
-import { sendMessage } from 'helpers/telegram/apiHelpers';
+import { sendMessage, deleteMessage } from 'helpers/telegram/apiHelpers';
 import type TelegramBot from 'node-telegram-bot-api';
-import type { SendMessageOptions, Chat } from 'node-telegram-bot-api';
+import type { SendMessageOptions, Chat, Message } from 'node-telegram-bot-api';
 import type { TTransferFullEntity, TClubEntity, TTeamTransferEntity } from 'ts/EntitiesTS';
 import type { TClubModel, TTransferModel } from 'ts/ModelsTS';
 
@@ -89,4 +89,14 @@ export const sendMessageOnStop = (botClient: TelegramBot, chatId: Chat['id']) =>
     const STOP_MESSAGE = `You've been successfully unsubscribed`;
 
     return sendMessage(botClient, chatId, STOP_MESSAGE);
+};
+
+export const deleteMessages = (
+    botClient: TelegramBot,
+    chatId: Chat['id'],
+    messageId: Message['message_id'] | Message['message_id'][]
+) => {
+    const messageIds = _.castArray<Message['message_id']>(messageId);
+
+    return BPromise.map(messageIds, msgId => deleteMessage(botClient, chatId, msgId));
 };
