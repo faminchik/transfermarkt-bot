@@ -1,4 +1,4 @@
-import { getClubInfo } from 'db/helpers/clubs';
+import { fetchClubInfo } from 'db/helpers/clubs';
 import { sendTeamTransfersMessages } from 'helpers/telegram/sendMessage';
 import { teamTransfersParser } from 'helpers/parsers';
 import type TelegramBot from 'node-telegram-bot-api';
@@ -9,7 +9,7 @@ const teamTransfersCallbackHandler = async (
     query: CallbackQuery,
     clubName: string
 ): Promise<void> => {
-    const clubInfo = await getClubInfo(clubName);
+    const clubInfo = await fetchClubInfo(clubName);
     if (!clubInfo) return;
 
     bot.answerCallbackQuery(query.id, { text: clubName });

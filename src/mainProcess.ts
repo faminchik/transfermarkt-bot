@@ -1,8 +1,8 @@
 import _ from 'lodash';
 import BPromise from 'bluebird';
 import { allLatestTransfersParser } from 'helpers/parsers';
-import { getUsersIds, getTransfersToShow } from 'db/utils';
-import { upsertTransfers, deleteUsersByChatIds, isNewTransfer as isNewTransferFunc } from 'db/helpers';
+import { fetchUsersIds, deleteUsersByChatIds } from 'db/helpers/users';
+import { fetchTransfersToShow, upsertTransfers, fetchIsNewTransfer } from 'db/helpers/transfers';
 import { sendTransferMessage } from 'helpers/telegram/sendMessage';
 import Status from 'constants/Statuses';
 import type TelegramBot from 'node-telegram-bot-api';
@@ -12,14 +12,14 @@ export default async (botClient: TelegramBot) => {
     if (_.isEmpty(transfers)) return;
 
     const blockedIds: number[] = [];
-    const transfersToShow = await getTransfersToShow(transfers);
+    const transfersToShow = await fetchTransfersToShow(transfers);
 
     if (_.isEmpty(transfersToShow)) return;
 
-    const usersIds = await getUsersIds();
+    const usersIds = await fetchUsersIds();
 
     await BPromise.each(_.reverse(_.cloneDeep(transfersToShow)), async (transferInfo) => {
-        const isNewTransfer = await isNewTransferFunc(transferInfo);
+        const isNewTransfer = await fetchIsNewTransfer(transferInfo);
 
         await BPromise.each(usersIds, async (id) => {
             const { status } = await sendTransferMessage(botClient, id, transferInfo, isNewTransfer);
