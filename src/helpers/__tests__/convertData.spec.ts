@@ -1,9 +1,9 @@
 import parsingProcess from 'helpers/parsingProcess';
 import pt from 'constants/transfermarkt/ParsingTypes';
 
-import allLatestTransfersHtml from './data/allLatestTransfers-data';
-import searchResultHtml from './data/searchResult-data';
-import teamTransfersHtml from './data/teamTransfers-data';
+import allLatestTransfersHtml from './data/allLatestTransfers.data';
+import searchResultHtml from './data/searchResult.data';
+import teamTransfersHtml from './data/teamTransfers.data';
 
 describe('convertData', () => {
     describe('allLatestTransfers', () => {
@@ -18,6 +18,14 @@ describe('convertData', () => {
         describe('clubsSearch', () => {
             test('should convert html data in a correct way', () => {
                 const clubs = parsingProcess(searchResultHtml, pt.SEARCH_CLUBS);
+
+                expect(clubs).toMatchSnapshot();
+            });
+        });
+
+        describe('playersSearch', () => {
+            test('should convert html data in a correct way', () => {
+                const clubs = parsingProcess(searchResultHtml, pt.SEARCH_PLAYERS);
 
                 expect(clubs).toMatchSnapshot();
             });

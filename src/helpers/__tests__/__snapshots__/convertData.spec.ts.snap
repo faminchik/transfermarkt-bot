@@ -395,6 +395,91 @@ Array [
 ]
 `;
 
+exports[`convertData search playersSearch should convert html data in a correct way 1`] = `
+Array [
+  Object {
+    "age": "27",
+    "clubName": "Manchester City",
+    "marketValue": "€80.00m",
+    "name": "Bernardo Silva",
+    "nationality": "Portugal",
+    "playerLink": "/bernardo-silva/profil/spieler/241641",
+  },
+  Object {
+    "age": "36",
+    "clubName": "Real Sociedad",
+    "marketValue": "€4.00m",
+    "name": "David Silva",
+    "nationality": "Spain",
+    "playerLink": "/david-silva/profil/spieler/35518",
+  },
+  Object {
+    "age": "37",
+    "clubName": "Chelsea FC",
+    "marketValue": "€2.50m",
+    "name": "Thiago Silva",
+    "nationality": "Brazil",
+    "playerLink": "/thiago-silva/profil/spieler/29241",
+  },
+  Object {
+    "age": "26",
+    "clubName": "RB Leipzig",
+    "marketValue": "€32.00m",
+    "name": "André Silva",
+    "nationality": "Portugal",
+    "playerLink": "/andre-silva/profil/spieler/198008",
+  },
+  Object {
+    "age": "29",
+    "clubName": "SL Benfica",
+    "marketValue": "€20.00m",
+    "name": "Rafa Silva",
+    "nationality": "Portugal",
+    "playerLink": "/rafa-silva/profil/spieler/238055",
+  },
+  Object {
+    "age": "45",
+    "clubName": "Retired",
+    "marketValue": "-",
+    "name": "Gilberto Silva",
+    "nationality": "Brazil",
+    "playerLink": "/gilberto-silva/profil/spieler/3194",
+  },
+  Object {
+    "age": "33",
+    "clubName": "Al-Wahda FC Abu Dhabi",
+    "marketValue": "€2.00m",
+    "name": "Adrien Silva",
+    "nationality": "Portugal",
+    "playerLink": "/adrien-silva/profil/spieler/56810",
+  },
+  Object {
+    "age": "19",
+    "clubName": "Wolverhampton Wanderers",
+    "marketValue": "€15.00m",
+    "name": "Fábio Silva",
+    "nationality": "Portugal",
+    "playerLink": "/fabio-silva/profil/spieler/505653",
+  },
+  Object {
+    "age": "47",
+    "clubName": "Retired",
+    "marketValue": "-",
+    "name": "Pedro Emanuel",
+    "nationality": "Portugal",
+    "playerLink": "/pedro-emanuel/profil/spieler/9812",
+  },
+  Object {
+    "age": "54",
+    "clubName": "Retired",
+    "marketValue": "-",
+    "name": "Mauro Silva",
+    "nationality": "Brazil",
+    "playerLink": "/mauro-silva/profil/spieler/15476",
+  },
+]
+`;
+
 exports[`convertData teamTransfers arrivals transfers should convert html data in a correct way 1`] = `
 Array [
   Object {
