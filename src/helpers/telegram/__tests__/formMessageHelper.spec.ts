@@ -1,11 +1,19 @@
 import {
     formTransferMessage,
     formTeamTransferMessage,
-    formTeamTransferHeader,
+    formTeamTransfersHeader,
     formClubsSearchResultMessage,
-    formPlayersSearchResultMessage
+    formPlayersSearchResultMessage,
+    formPlayerTranferHistoryHeader,
+    formPlayerTranferMessage
 } from 'helpers/telegram/formMessageHelper';
-import type { TClubEntity, TTeamTransferEntity, TTransferFullEntity, TPlayerEntity } from 'ts/EntitiesTS';
+import type {
+    TClubEntity,
+    TTeamTransferEntity,
+    TTransferFullEntity,
+    TPlayerEntity,
+    TPlayerTransferEntity
+} from 'ts/EntitiesTS';
 
 describe('formMessageHelper', () => {
     describe('#formTransferMessage', () => {
@@ -84,8 +92,8 @@ describe('formMessageHelper', () => {
         });
     });
 
-    describe('#formTeamTransferHeader', () => {
-        test('should return team transfer header correctly', () => {
+    describe('#formTeamTransfersHeader', () => {
+        test('should return team transfers header correctly', () => {
             const clubInfo: TClubEntity = {
                 clubName: 'Tottenham Hotspur',
                 clubLink: '/tottenham-hotspur/startseite/verein/148',
@@ -93,7 +101,7 @@ describe('formMessageHelper', () => {
                 totalMarketValue: '€750.00m'
             };
 
-            const result = formTeamTransferHeader(clubInfo, 'Arrivals');
+            const result = formTeamTransfersHeader(clubInfo, 'Arrivals');
             expect(result).toMatchInlineSnapshot(`
                 "🏴󠁧󠁢󠁥󠁮󠁧󠁿 *Tottenham Hotspur* | *Arrivals*:
 
@@ -184,6 +192,90 @@ describe('formMessageHelper', () => {
                 *2. 🇪🇸 David Silva* (€4.00m | 36 y.o.)
                 *3. 🇧🇷 Thiago Silva* (37 y.o.)
                 *4. 🇵🇹 André Silva* (€32.00m | 26 y.o.)"
+            `);
+        });
+    });
+
+    describe('#formPlayerTranferHistoryHeader', () => {
+        test('should return player tranfer history header correctly', () => {
+            let playerInfo: TPlayerEntity = {
+                name: 'Kevin De Bruyne',
+                age: '31',
+                clubName: 'Manchester City',
+                marketValue: '€85.00m',
+                nationality: 'Belgium',
+                playerLink: '/kevin-de-bruyne/profil/spieler/88755'
+            };
+
+            let result = formPlayerTranferHistoryHeader(playerInfo);
+            expect(result).toMatchInlineSnapshot(`
+                "🇧🇪 *Kevin De Bruyne* (€85.00m | 31 y.o.)
+                *Manchester City*
+
+                *Transfer History*:
+
+                "
+            `);
+
+            // -------------
+
+            playerInfo = {
+                name: 'Ronaldo',
+                age: '45',
+                clubName: 'Retired',
+                marketValue: '-',
+                nationality: 'Brazil',
+                playerLink: '/ronaldo/profil/spieler/3140'
+            };
+
+            result = formPlayerTranferHistoryHeader(playerInfo);
+            expect(result).toMatchInlineSnapshot(`
+                "🇧🇷 *Ronaldo* (45 y.o.)
+                *Retired*
+
+                *Transfer History*:
+
+                "
+            `);
+        });
+    });
+
+    describe('#formPlayerTranferMessage', () => {
+        test('should return player transfer message correctly', () => {
+            let playerTransferInfo: TPlayerTransferEntity = {
+                season: '15/16',
+                date: 'Aug 30, 2015',
+                leftTeam: 'VfL Wolfsburg',
+                joinedTeam: 'Man City',
+                marketValue: '€45.00m',
+                fee: '€76.00m'
+            };
+
+            let result = formPlayerTranferMessage(playerTransferInfo, 3);
+            expect(result).toMatchInlineSnapshot(`
+                "*3*. *15/16* | *Aug 30, 2015* (€45.00m)
+
+                *VfL Wolfsburg* → *Man City*
+                *€76.00m*"
+            `);
+
+            // -------------
+
+            playerTransferInfo = {
+                season: '08/09',
+                date: 'Jul 1, 2008',
+                leftTeam: 'KRC Genk U19',
+                joinedTeam: 'KRC Genk',
+                marketValue: '-',
+                fee: '-'
+            };
+
+            result = formPlayerTranferMessage(playerTransferInfo, 3);
+            expect(result).toMatchInlineSnapshot(`
+                "*3*. *08/09* | *Jul 1, 2008*
+
+                *KRC Genk U19* → *KRC Genk*
+                *-*"
             `);
         });
     });

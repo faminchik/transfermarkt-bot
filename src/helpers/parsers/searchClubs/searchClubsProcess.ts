@@ -1,4 +1,5 @@
 import pt from 'constants/transfermarkt/ParsingTypes';
+import ptm from 'constants/transfermarkt/ParsingTableModes';
 import { fetchHtmlRequest } from 'utils/fetchRequests';
 import parsingProcess from 'helpers/parsingProcess';
 import { SEARCH_URL } from 'constants/Config';
@@ -10,5 +11,5 @@ export default async (query: string): Promise<TClubEntity[]> => {
     const html = await fetchHtmlRequest(url);
     if (!html) return [];
 
-    return parsingProcess(html, pt.SEARCH_CLUBS);
+    return parsingProcess(html, pt.SEARCH_CLUBS, ptm.TABLE);
 };

@@ -330,6 +330,91 @@ Array [
 ]
 `;
 
+exports[`convertData playerProfile transfer history should convert html data in a correct way 1`] = `
+Array [
+  Object {
+    "date": "Aug 31, 2021",
+    "fee": "€15.00m",
+    "joinedTeam": "Man Utd",
+    "leftTeam": "Juventus",
+    "marketValue": "€45.00m",
+    "season": "21/22",
+  },
+  Object {
+    "date": "Jul 10, 2018",
+    "fee": "€117.00m",
+    "joinedTeam": "Juventus",
+    "leftTeam": "Real Madrid",
+    "marketValue": "€100.00m",
+    "season": "18/19",
+  },
+  Object {
+    "date": "Jul 6, 2009",
+    "fee": "€94.00m",
+    "joinedTeam": "Real Madrid",
+    "leftTeam": "Man Utd",
+    "marketValue": "€60.00m",
+    "season": "09/10",
+  },
+  Object {
+    "date": "Aug 12, 2003",
+    "fee": "€19.00m",
+    "joinedTeam": "Man Utd",
+    "leftTeam": "Sporting CP",
+    "marketValue": "-",
+    "season": "03/04",
+  },
+  Object {
+    "date": "Jul 1, 2002",
+    "fee": "-",
+    "joinedTeam": "Sporting CP",
+    "leftTeam": "Sporting U19",
+    "marketValue": "-",
+    "season": "02/03",
+  },
+  Object {
+    "date": "Jul 1, 2000",
+    "fee": "-",
+    "joinedTeam": "Sporting U19",
+    "leftTeam": "Sporting U17",
+    "marketValue": "-",
+    "season": "00/01",
+  },
+  Object {
+    "date": "Jul 1, 1998",
+    "fee": "-",
+    "joinedTeam": "Sporting U17",
+    "leftTeam": "Sporting Sub-15",
+    "marketValue": "-",
+    "season": "98/99",
+  },
+  Object {
+    "date": "Jul 1, 1997",
+    "fee": "?",
+    "joinedTeam": "Sporting Sub-15",
+    "leftTeam": "Nacional U15",
+    "marketValue": "-",
+    "season": "97/98",
+  },
+  Object {
+    "date": "Jul 1, 1996",
+    "fee": "-",
+    "joinedTeam": "Nacional U15",
+    "leftTeam": "Nacional Yth.",
+    "marketValue": "-",
+    "season": "96/97",
+  },
+  Object {
+    "date": "Jul 1, 1995",
+    "fee": "free transfer",
+    "joinedTeam": "Nacional Yth.",
+    "leftTeam": "Andorinha Yth.",
+    "marketValue": "-",
+    "season": "95/96",
+  },
+]
+`;
+
 exports[`convertData search clubsSearch should convert html data in a correct way 1`] = `
 Array [
   Object {

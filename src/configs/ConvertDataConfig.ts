@@ -205,6 +205,35 @@ const config: TConvertDataConfig = {
                 }
             }
         }
+    },
+    [cdt.PLAYER_TRANSFERS_HISTORY]: {
+        [tdt.TEXT]: {
+            0: {
+                key: 'season',
+                handler: (data) => _.slice(data, 1, data.length - 1)
+            },
+            1: {
+                key: 'date',
+                handler: (data) => _.slice(data, 1, data.length - 1)
+            },
+            2: {
+                key: 'leftTeam',
+                handler: (data) => _.slice(data, 1)
+            },
+            3: {
+                key: 'joinedTeam',
+                handler: (data) => _.slice(data, 1)
+            },
+            4: {
+                key: 'marketValue',
+                handler: (data) => _.slice(data, 1)
+            },
+            5: {
+                key: 'fee',
+                handler: (data) => _.slice(data, 1)
+            }
+        },
+        [tdt.HTML]: {}
     }
 };
 

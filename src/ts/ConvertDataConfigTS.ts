@@ -1,6 +1,12 @@
 import type cdt from 'constants/transfermarkt/ConvertDataTypes';
 import type tdt from 'constants/transfermarkt/TableDataTypes';
-import type { TClubEntity, TTransferEntity, TTeamTransferEntity, TPlayerEntity } from 'ts/EntitiesTS';
+import type {
+    TClubEntity,
+    TTransferEntity,
+    TTeamTransferEntity,
+    TPlayerEntity,
+    TPlayerTransferEntity
+} from 'ts/EntitiesTS';
 
 type Handler = (arg: string[]) => string[];
 
@@ -9,13 +15,15 @@ export type TConvertDataConfig = {
     [cdt.CLUBS_SEARCH]: TConvertDataConfigItemClubsSearch;
     [cdt.PLAYERS_SEARCH]: TConvertDataConfigItemPlayersSearch;
     [cdt.TEAM_TRANSFERS]: TConvertDataConfigItemTeamTransfers;
+    [cdt.PLAYER_TRANSFERS_HISTORY]: TConvertDataConfigItemPlayerTransfers;
 };
 
 export type TConvertDataConfigElement =
     | TConvertDataConfigElementAllLatestTransfers
     | TConvertDataConfigElementClubsSearch
     | TConvertDataConfigElementPlayersSearch
-    | TConvertDataConfigElementTeamTransfers;
+    | TConvertDataConfigElementTeamTransfers
+    | TConvertDataConfigElementPlayerTransfers;
 
 // START: @AllLatestTransfers
 type TConvertDataConfigItemAllLatestTransfers = {
@@ -68,3 +76,16 @@ type TConvertDataConfigElementTeamTransfers = {
     };
 };
 // --- END: @TeamTransfers
+
+// START: @PlayerTransfers
+type TConvertDataConfigItemPlayerTransfers = {
+    [key in tdt]: TConvertDataConfigElementPlayerTransfers;
+};
+
+type TConvertDataConfigElementPlayerTransfers = {
+    [param: number]: {
+        key: keyof TPlayerTransferEntity;
+        handler?: Handler;
+    };
+};
+// --- END: @PlayerTransfers

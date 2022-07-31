@@ -1,5 +1,6 @@
 import _ from 'lodash';
 import pt from 'constants/transfermarkt/ParsingTypes';
+import ptm from 'constants/transfermarkt/ParsingTableModes';
 import { fetchHtmlRequest } from 'utils/fetchRequests';
 import { getTransferPeriodType, getYearForTransferPeriod } from 'helpers/dateHelper';
 import parsingProcess from 'helpers/parsingProcess';
@@ -24,7 +25,7 @@ export default async (
     if (!html) return { arrivals: [], departures: [] };
 
     return {
-        arrivals: parsingProcess(html, pt.TEAM_TRANSFERS_ARRIVALS),
-        departures: parsingProcess(html, pt.TEAM_TRANSFERS_DEPARTURES)
+        arrivals: parsingProcess(html, pt.TEAM_TRANSFERS_ARRIVALS, ptm.TABLE),
+        departures: parsingProcess(html, pt.TEAM_TRANSFERS_DEPARTURES, ptm.TABLE)
     };
 };

@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import { formTeamTransferMessage, formTeamTransferHeader } from 'helpers/telegram/formMessageHelper';
+import { formTeamTransferMessage, formTeamTransfersHeader } from 'helpers/telegram/formMessageHelper';
 import { sendJoinedMessages } from 'helpers/telegram/sendMessage/helpers';
 import type TelegramBot from 'node-telegram-bot-api';
 import type { Chat } from 'node-telegram-bot-api';
@@ -19,15 +19,15 @@ export const sendTeamTransfersMessages = async (
         clubInfo: TClubEntity | TClubModel;
     }
 ) => {
-    const arrivalsMessages = _.map(teamTransfersArrivals, (info: TTeamTransferEntity, index) =>
+    const arrivalsMessages = _.map(teamTransfersArrivals, (info, index) =>
         formTeamTransferMessage(info, '←', index + 1)
     );
-    const arrivalsHeader = formTeamTransferHeader(clubInfo, 'Arrivals');
+    const arrivalsHeader = formTeamTransfersHeader(clubInfo, 'Arrivals');
 
-    const departuresMessages = _.map(teamTransfersDepartures, (info: TTeamTransferEntity, index) =>
+    const departuresMessages = _.map(teamTransfersDepartures, (info, index) =>
         formTeamTransferMessage(info, '→', index + 1)
     );
-    const departuresHeader = formTeamTransferHeader(clubInfo, 'Departures');
+    const departuresHeader = formTeamTransfersHeader(clubInfo, 'Departures');
 
     const arrivalMessagesResult = await sendJoinedMessages(botClient, chatId, arrivalsMessages, arrivalsHeader);
     const departureMessagesResult = await sendJoinedMessages(botClient, chatId, departuresMessages, departuresHeader);

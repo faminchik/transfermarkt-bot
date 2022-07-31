@@ -1,8 +1,14 @@
 import _ from 'lodash';
 import getFlagEmoji from 'helpers/getFlagEmoji';
 import { MESSAGE_DELIMITER, ITEMS_COUNT_PER_MESSAGE } from 'constants/Telegram';
-import type { TTransferFullEntity, TTeamTransferEntity, TClubEntity, TPlayerEntity } from 'ts/EntitiesTS';
-import type { TClubModel, TTransferModel } from 'ts/ModelsTS';
+import type {
+    TTransferFullEntity,
+    TTeamTransferEntity,
+    TClubEntity,
+    TPlayerEntity,
+    TPlayerTransferEntity
+} from 'ts/EntitiesTS';
+import type { TClubModel, TTransferModel, TPlayerModel } from 'ts/ModelsTS';
 
 export const formTransferMessage = (
     transferInfo: TTransferFullEntity | TTransferModel,
@@ -39,9 +45,8 @@ export const formTeamTransferMessage = (
 
     const flag = getFlagEmoji(nationality);
     const secondPartyFlag = getFlagEmoji(secondPartyTeamCountry);
-    const indexStr = _.isNumber(index) ? `*${index}*. ` : '';
 
-    return `${indexStr}${flag} *${name}* (${marketValue} | ${age} y.o.)\r\n\r\n${direction} ${secondPartyFlag} *${secondPartyTeam}* | *${fee}*`;
+    return `*${index}*. ${flag} *${name}* (${marketValue} | ${age} y.o.)\r\n\r\n${direction} ${secondPartyFlag} *${secondPartyTeam}* | *${fee}*`;
 };
 
 export const joinMessages = (messages: string[], header = ''): string[] => {
@@ -72,9 +77,29 @@ export const formPlayersSearchResultMessage = (searchPlayersResult: TPlayerEntit
     return _.join(messageArray, '\r\n');
 };
 
-export const formTeamTransferHeader = (clubInfo: TClubEntity | TClubModel, type: 'Arrivals' | 'Departures'): string => {
+export const formTeamTransfersHeader = (
+    clubInfo: TClubEntity | TClubModel,
+    type: 'Arrivals' | 'Departures'
+): string => {
     const { clubName, country } = clubInfo;
     const flag = getFlagEmoji(country);
 
     return `${flag} *${clubName}* | *${type}*:\r\n\r\n`;
+};
+
+export const formPlayerTranferHistoryHeader = (playerInfo: TPlayerEntity | TPlayerModel): string => {
+    const { name, age, marketValue, clubName, nationality } = playerInfo;
+
+    const flag = getFlagEmoji(nationality);
+    const marketValueStr = marketValue === '-' ? '' : `${marketValue} | `;
+
+    return `${flag} *${name}* (${marketValueStr}${age} y.o.)\r\n\*${clubName}*\r\n\r\n*Transfer History*:\r\n\r\n`;
+};
+
+export const formPlayerTranferMessage = (playerTranfer: TPlayerTransferEntity, index: number): string => {
+    const { season, date, leftTeam, joinedTeam, marketValue, fee } = playerTranfer;
+
+    const marketValueStr = marketValue === '-' ? '' : ` (${marketValue})`;
+
+    return `*${index}*. *${season}* | *${date}*${marketValueStr}\r\n\r\n*${leftTeam}* → *${joinedTeam}*\r\n*${fee}*`;
 };

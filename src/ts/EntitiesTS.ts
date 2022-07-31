@@ -37,3 +37,16 @@ export type TTeamTransferEntity = {
     fee: string;
 };
 // --- END: @Team Transfer
+
+// START: @Player Transfer
+export type TPlayerTransferEntity = {
+    season: string;
+    date: string;
+    leftTeam: string;
+    joinedTeam: string;
+    leftTeamCountry?: string;
+    joinedTeamCountry?: string;
+    marketValue: string;
+    fee: string;
+};
+// --- END: @Player Transfer

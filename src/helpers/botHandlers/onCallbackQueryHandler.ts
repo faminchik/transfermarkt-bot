@@ -1,6 +1,8 @@
-import _ from 'lodash';
 import cqt from 'constants/CallbackQueryTypes';
-import { teamTransfersCallbackHandler } from 'helpers/botHandlers/callbackQueryHandlers';
+import {
+    teamTransfersCallbackHandler,
+    playerTransfersCallbackHandler
+} from 'helpers/botHandlers/callbackQueryHandlers';
 import type TelegramBot from 'node-telegram-bot-api';
 import type { CallbackQuery } from 'node-telegram-bot-api';
 
@@ -8,12 +10,17 @@ const onCallbackQueryHandler = async (bot: TelegramBot, query: CallbackQuery): P
     const { data: responseData } = query;
     if (!responseData) return;
 
-    const splittedResponse = _.split(responseData, ' ');
+    const splittedResponse = responseData.split(' ');
     const type = splittedResponse.shift();
 
+    const responseValue = splittedResponse.join(' ');
+
     if (type === cqt.CLUB) {
-        const clubName = _.join(splittedResponse, ' ');
-        await teamTransfersCallbackHandler(bot, query, clubName);
+        await teamTransfersCallbackHandler(bot, query, responseValue);
+    }
+
+    if (type === cqt.PLAYER) {
+        await playerTransfersCallbackHandler(bot, query, responseValue);
     }
 };
 

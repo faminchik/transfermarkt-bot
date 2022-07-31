@@ -5,6 +5,7 @@ import parsingProcess from 'helpers/parsingProcess';
 import getInterestingTransfers from 'helpers/parsers/allLatestTransfers/getInterestingTransfers';
 import addPlayerProfileData from 'helpers/parsers/allLatestTransfers/addPlayerProfileData';
 import pt from 'constants/transfermarkt/ParsingTypes';
+import ptm from 'constants/transfermarkt/ParsingTableModes';
 import { LATEST_TRANSFERS_URL } from 'constants/Config';
 import type { TTransferFullEntity } from 'ts/EntitiesTS';
 
@@ -14,7 +15,7 @@ export default async (): Promise<TTransferFullEntity[]> => {
         const html = await fetchHtmlRequest(url);
         if (!html) return [];
 
-        const transfersInfo = parsingProcess(html, pt.ALL_LATEST_TRANSFERS);
+        const transfersInfo = parsingProcess(html, pt.ALL_LATEST_TRANSFERS, ptm.TABLE);
         const fullTransfersInfo = await addPlayerProfileData(transfersInfo);
 
         return getInterestingTransfers(fullTransfersInfo);

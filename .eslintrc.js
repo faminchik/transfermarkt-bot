@@ -57,7 +57,8 @@ module.exports = {
                     { moduleNameSubstr: 'ConvertDataTypes', expectedVariableName: 'cdt' },
                     { moduleNameSubstr: 'TableDataTypes', expectedVariableName: 'tdt' },
                     { moduleNameSubstr: 'CallbackQueryTypes', expectedVariableName: 'cqt' },
-                    { expectedVariableName: 'env', moduleNameSubstr: 'EnvironmentVariables' }
+                    { moduleNameSubstr: 'EnvironmentVariables', expectedVariableName: 'env' },
+                    { moduleNameSubstr: 'ParsingTableModes', expectedVariableName: 'ptm' }
                 ]
             }
         ],
