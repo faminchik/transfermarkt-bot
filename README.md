@@ -23,21 +23,21 @@ The Bot sends messages with information about transfers which have the following
 ## Bot Commands
 
 -   [**`/start`**](#start)
--   [**`/simplestart`**](#simplestart)
 -   [**`/stop`**](#stop)
+-   [**`/recent`**](#recent)
 -   [**`/team <team_name>`**](#team-team_name)
 
 ### `/start`
 
-The Bot subscribes the user to updates and sends **interesting** transfers for the last 2 days.
-
-### `/simplestart`
-
-The Bot just subscribes the user to updates.
+The Bot subscribes the user to updates.
 
 ### `/stop`
 
 The Bot unsubscribes the user from updates.
+
+### `/recent`
+
+The Bot sends **interesting** transfers for the last 2 days.
 
 ### `/team <team_name>`
 

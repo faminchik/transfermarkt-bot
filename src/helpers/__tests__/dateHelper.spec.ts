@@ -37,7 +37,7 @@ describe('dateHelper', () => {
 
     describe('#getTransferPeriodType', () => {
         test('should return Winter Transfer Period type for [Jan-May] months', () => {
-            _.each(_.range(0, 5), monthNumber => {
+            _.each(_.range(0, 5), (monthNumber) => {
                 MockDate.set(`2018-${monthNumber + 1}-20`);
                 const result = getTransferPeriodType();
                 expect(result).toEqual(WINTER_TRANSFERS);
@@ -45,7 +45,7 @@ describe('dateHelper', () => {
         });
 
         test('should return Summer Transfer Period type for [Jun-Dec] months', () => {
-            _.each(_.range(5, 12), monthNumber => {
+            _.each(_.range(5, 12), (monthNumber) => {
                 MockDate.set(`2018-${monthNumber + 1}-20`);
                 const result = getTransferPeriodType();
                 expect(result).toEqual(SUMMER_TRANSFERS);

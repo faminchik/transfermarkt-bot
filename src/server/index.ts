@@ -1,5 +1,5 @@
 import express from 'express';
-import { getUserCount } from 'db/utils';
+import { fetchUserCount } from 'db/helpers/users';
 import packageInfo from '../../package.json';
 
 const port = process.env.PORT || 5000;
@@ -9,7 +9,7 @@ export const runServer = async (): Promise<void> => {
     app.use(express.json());
 
     app.get('/', async (req, res) => {
-        const userCount = await getUserCount();
+        const userCount = await fetchUserCount();
 
         res.json({ version: packageInfo.version, x: userCount });
     });

@@ -1,10 +1,19 @@
 import _ from 'lodash';
 import getFlagEmoji from 'helpers/getFlagEmoji';
 import { MESSAGE_DELIMITER, ITEMS_COUNT_PER_MESSAGE } from 'constants/Telegram';
-import type { TTransferFullEntity, TTeamTransferEntity, TClubEntity } from 'ts/EntitiesTS';
-import type { TClubModel, TTransferModel } from 'ts/ModelsTS';
+import type {
+    TTransferFullEntity,
+    TTeamTransferEntity,
+    TClubEntity,
+    TPlayerEntity,
+    TPlayerTransferEntity
+} from 'ts/EntitiesTS';
+import type { TClubModel, TTransferModel, TPlayerModel } from 'ts/ModelsTS';
 
-export const formTransferMessage = (transferInfo: TTransferFullEntity | TTransferModel, isNewTransfer = true) => {
+export const formTransferMessage = (
+    transferInfo: TTransferFullEntity | TTransferModel,
+    isNewTransfer = true
+): string => {
     const {
         name,
         marketValue,
@@ -22,42 +31,76 @@ export const formTransferMessage = (transferInfo: TTransferFullEntity | TTransfe
 
     const flag = getFlagEmoji(nationality);
     const leftTeamFlag = getFlagEmoji(leftTeamCountry);
-    const joinedTeamFlag = getFlagEmoji(joinedTeamCountry, false);
+    const joinedTeamFlag = getFlagEmoji(joinedTeamCountry);
 
-    return `*${transferDate}*\r\n${flag}*${name}* (${marketValue} | ${age} y.o.)\r\n\r\n${leftTeamFlag}*${leftTeam}* → *${joinedTeam}*${joinedTeamFlag}\r\n*${fee}*${additionalInfo}`;
+    return `*${transferDate}*\r\n${flag} *${name}* (${marketValue} | ${age} y.o.)\r\n\r\n${leftTeamFlag} *${leftTeam}* → *${joinedTeam}* ${joinedTeamFlag}\r\n*${fee}*${additionalInfo}`;
 };
 
-export const formTeamTransferMessage = (teamTransferInfo: TTeamTransferEntity, arrow = '', index: number) => {
+export const formTeamTransferMessage = (
+    teamTransferInfo: TTeamTransferEntity,
+    direction: '→' | '←',
+    index: number
+): string => {
     const { name, age, marketValue, secondPartyTeam, secondPartyTeamCountry, fee, nationality } = teamTransferInfo;
 
     const flag = getFlagEmoji(nationality);
     const secondPartyFlag = getFlagEmoji(secondPartyTeamCountry);
-    const indexStr = _.isNumber(index) ? `*${index}*. ` : '';
 
-    return `${indexStr}${flag}*${name}* (${marketValue} | ${age} y.o.)\r\n\r\n${arrow}${secondPartyFlag}*${secondPartyTeam}* | *${fee}*`;
+    return `*${index}*. ${flag} *${name}* (${marketValue} | ${age} y.o.)\r\n\r\n${direction} ${secondPartyFlag} *${secondPartyTeam}* | *${fee}*`;
 };
 
-export const joinMessages = (messages: string[], header = '') => {
-    const messageArrays = _.chunk(messages, ITEMS_COUNT_PER_MESSAGE);
-    return _.map(messageArrays, (msgArray, index) => {
-        const msg = _.join(msgArray, MESSAGE_DELIMITER);
-        return index === 0 ? header + msg : msg;
+export const joinMessages = (messages: string[], header = ''): string[] => {
+    const messageChunks = _.chunk(messages, ITEMS_COUNT_PER_MESSAGE);
+
+    return _.map(messageChunks, (msgChunk, index) => {
+        const msg = _.join(msgChunk, MESSAGE_DELIMITER);
+        return index === 0 ? header + '\r\n\r\n' + msg : msg;
     });
 };
 
-export const formClubsSearchResultMessage = (searchResult: TClubEntity[]) => {
-    const messageArray = _.map(searchResult, ({ clubName, country, totalMarketValue }, index) => {
+export const formClubsSearchResultMessage = (searchClubsResult: TClubEntity[]): string => {
+    const messageArray = _.map(searchClubsResult, ({ clubName, country, totalMarketValue }, index) => {
         const flag = getFlagEmoji(country);
         const totalMarketValueStr = totalMarketValue === '-' ? '' : `(${totalMarketValue})`;
-        return `*${index + 1}. ${flag}${clubName}* ${totalMarketValueStr}`;
+        return `*${index + 1}. ${flag} ${clubName}* ${totalMarketValueStr}`;
     });
 
     return _.join(messageArray, '\r\n');
 };
 
-export const formTeamTransferHeader = (clubInfo: TClubEntity | TClubModel, type: string) => {
+export const formPlayersSearchResultMessage = (searchPlayersResult: TPlayerEntity[]): string => {
+    const messageArray = _.map(searchPlayersResult, ({ name, age, nationality, marketValue }, index) => {
+        const flag = getFlagEmoji(nationality);
+        const marketValueStr = marketValue === '-' ? '' : `${marketValue} | `;
+        return `*${index + 1}. ${flag} ${name}* (${marketValueStr}${age} y.o.)`;
+    });
+
+    return _.join(messageArray, '\r\n');
+};
+
+export const formTeamTransfersHeader = (
+    clubInfo: TClubEntity | TClubModel,
+    type: 'Arrivals' | 'Departures'
+): string => {
     const { clubName, country } = clubInfo;
     const flag = getFlagEmoji(country);
 
-    return `${flag}*${clubName}* | *${type}*:\r\n\r\n`;
+    return `${flag} *${clubName}* | *${type}*:`;
+};
+
+export const formPlayerTranferHistoryHeader = (playerInfo: TPlayerEntity | TPlayerModel): string => {
+    const { name, age, marketValue, clubName, nationality } = playerInfo;
+
+    const flag = getFlagEmoji(nationality);
+    const marketValueStr = marketValue === '-' ? '' : `${marketValue} | `;
+
+    return `${flag} *${name}* (${marketValueStr}${age} y.o.)\r\n\*${clubName}*\r\n\r\n*Transfer History*:`;
+};
+
+export const formPlayerTranferMessage = (playerTranfer: TPlayerTransferEntity, index: number): string => {
+    const { season, date, leftTeam, joinedTeam, marketValue, fee } = playerTranfer;
+
+    const marketValueStr = marketValue === '-' ? '' : ` (${marketValue})`;
+
+    return `*${index}*. *${season}* | *${date}*${marketValueStr}\r\n\r\n*${leftTeam}* → *${joinedTeam}*\r\n*${fee}*`;
 };
