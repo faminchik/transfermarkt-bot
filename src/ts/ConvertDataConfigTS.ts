@@ -7,6 +7,7 @@ import type {
     TPlayerEntity,
     TPlayerTransferEntity
 } from 'ts/EntitiesTS';
+import type { ValueOf } from 'ts/UtilsTS';
 
 export type TConvertDataConfig = {
     [cdt.ALL_LATEST_TRANSFERS]: TConvertDataAllLatestTransfersItem;
@@ -16,50 +17,33 @@ export type TConvertDataConfig = {
     [cdt.PLAYER_TRANSFERS_HISTORY]: TConvertDataPlayerTransfersItem;
 };
 
-export type TConvertDataConfigElement =
-    | TConvertDataAllLatestTransfersElement
-    | TConvertDataClubsSearchElement
-    | TConvertDataPlayersSearchElement
-    | TConvertDataTeamTransfersElement
-    | TConvertDataPlayerTransfersElement;
+export type TConvertDataConfigElement = ValueOf<ValueOf<TConvertDataConfig>>;
 
 type TConvertDataItem<T> = {
-    [key in tdt]: T;
-};
-
-type TConvertDataElement<T> = {
-    [param: number]: {
-        key: keyof T;
-        handler?: (arg: string[]) => string[];
+    [key in tdt]: {
+        [param: number]: {
+            key: keyof T;
+            handler?: (arg: string[]) => string[];
+        };
     };
 };
 
 // START: @AllLatestTransfers
-type TConvertDataAllLatestTransfersItem = TConvertDataItem<TConvertDataAllLatestTransfersElement>;
-
-type TConvertDataAllLatestTransfersElement = TConvertDataElement<TTransferEntity>;
+type TConvertDataAllLatestTransfersItem = TConvertDataItem<TTransferEntity>;
 // --- END: @AllLatestTransfers
 
 // START: @ClubsSearch
-type TConvertDataClubsSearchItem = TConvertDataItem<TConvertDataClubsSearchElement>;
-
-type TConvertDataClubsSearchElement = TConvertDataElement<TClubEntity>;
+type TConvertDataClubsSearchItem = TConvertDataItem<TClubEntity>;
 // --- END: @ClubsSearch
 
 // START: @PlayersSearch
-type TConvertDataPlayersSearchItem = TConvertDataItem<TConvertDataPlayersSearchElement>;
-
-type TConvertDataPlayersSearchElement = TConvertDataElement<TPlayerEntity>;
+type TConvertDataPlayersSearchItem = TConvertDataItem<TPlayerEntity>;
 // --- END: @PlayersSearch
 
 // START: @TeamTransfers
-type TConvertDataTeamTransfersItem = TConvertDataItem<TConvertDataTeamTransfersElement>;
-
-type TConvertDataTeamTransfersElement = TConvertDataElement<TTeamTransferEntity>;
+type TConvertDataTeamTransfersItem = TConvertDataItem<TTeamTransferEntity>;
 // --- END: @TeamTransfers
 
 // START: @PlayerTransfers
-type TConvertDataPlayerTransfersItem = TConvertDataItem<TConvertDataPlayerTransfersElement>;
-
-type TConvertDataPlayerTransfersElement = TConvertDataElement<TPlayerTransferEntity>;
+type TConvertDataPlayerTransfersItem = TConvertDataItem<TPlayerTransferEntity>;
 // --- END: @PlayerTransfers

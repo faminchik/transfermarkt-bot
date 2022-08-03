@@ -8,20 +8,18 @@ import type { IParsedTable } from 'ts/ParseTableTS';
 import type { TConvertedDataMapper } from 'ts/ConvertDataTS';
 import type pt from 'constants/transfermarkt/ParsingTypes';
 
-type ParsedData = { [key: string]: string[] };
-
-const convertData = (data: string[][], config: TConvertDataConfigElement) => {
+const convertData = (data: string[][], config: TConvertDataConfigElement): { [key: string]: string }[] => {
     const compactedData = _.map(data, _.compact);
 
     const parsedData = _.reduce(
         _.keys(config),
-        (acc: ParsedData, indexItem) => {
+        (acc: { [key: string]: string[] }, indexItem) => {
             const { key, handler } = config[_.toNumber(indexItem)] ?? {};
             const data = compactedData[_.toNumber(indexItem)];
 
             if (!key || !data) return acc;
 
-            acc[key] = _.isFunction(handler) ? handler(data) : data;
+            acc[key] = handler ? handler(data) : data;
             return acc;
         },
         {}
