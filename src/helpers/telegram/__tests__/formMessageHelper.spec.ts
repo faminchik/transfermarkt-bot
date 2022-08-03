@@ -102,11 +102,7 @@ describe('formMessageHelper', () => {
             };
 
             const result = formTeamTransfersHeader(clubInfo, 'Arrivals');
-            expect(result).toMatchInlineSnapshot(`
-                "🏴󠁧󠁢󠁥󠁮󠁧󠁿 *Tottenham Hotspur* | *Arrivals*:
-
-                "
-            `);
+            expect(result).toMatchInlineSnapshot(`"🏴󠁧󠁢󠁥󠁮󠁧󠁿 *Tottenham Hotspur* | *Arrivals*:"`);
         });
     });
 
@@ -212,9 +208,7 @@ describe('formMessageHelper', () => {
                 "🇧🇪 *Kevin De Bruyne* (€85.00m | 31 y.o.)
                 *Manchester City*
 
-                *Transfer History*:
-
-                "
+                *Transfer History*:"
             `);
 
             // -------------
@@ -233,9 +227,7 @@ describe('formMessageHelper', () => {
                 "🇧🇷 *Ronaldo* (45 y.o.)
                 *Retired*
 
-                *Transfer History*:
-
-                "
+                *Transfer History*:"
             `);
         });
     });

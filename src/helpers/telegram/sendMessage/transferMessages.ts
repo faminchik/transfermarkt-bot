@@ -18,7 +18,7 @@ export const sendTransferMessage = (
 };
 
 export const sendJoinedTransferMessages = (botClient: TelegramBot, chatId: Chat['id'], transfers: TTransferModel[]) => {
-    const transfersMessages = transfers.map((transferInfo) => formTransferMessage(transferInfo));
+    const transferMessages = transfers.map((transferInfo) => formTransferMessage(transferInfo));
 
-    return sendJoinedMessages(botClient, chatId, transfersMessages);
+    return sendJoinedMessages(botClient, chatId, transferMessages);
 };

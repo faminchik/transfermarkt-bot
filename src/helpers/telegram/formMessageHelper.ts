@@ -50,10 +50,11 @@ export const formTeamTransferMessage = (
 };
 
 export const joinMessages = (messages: string[], header = ''): string[] => {
-    const messageArrays = _.chunk(messages, ITEMS_COUNT_PER_MESSAGE);
-    return _.map(messageArrays, (msgArray, index) => {
-        const msg = _.join(msgArray, MESSAGE_DELIMITER);
-        return index === 0 ? header + msg : msg;
+    const messageChunks = _.chunk(messages, ITEMS_COUNT_PER_MESSAGE);
+
+    return _.map(messageChunks, (msgChunk, index) => {
+        const msg = _.join(msgChunk, MESSAGE_DELIMITER);
+        return index === 0 ? header + '\r\n\r\n' + msg : msg;
     });
 };
 
@@ -84,7 +85,7 @@ export const formTeamTransfersHeader = (
     const { clubName, country } = clubInfo;
     const flag = getFlagEmoji(country);
 
-    return `${flag} *${clubName}* | *${type}*:\r\n\r\n`;
+    return `${flag} *${clubName}* | *${type}*:`;
 };
 
 export const formPlayerTranferHistoryHeader = (playerInfo: TPlayerEntity | TPlayerModel): string => {
@@ -93,7 +94,7 @@ export const formPlayerTranferHistoryHeader = (playerInfo: TPlayerEntity | TPlay
     const flag = getFlagEmoji(nationality);
     const marketValueStr = marketValue === '-' ? '' : `${marketValue} | `;
 
-    return `${flag} *${name}* (${marketValueStr}${age} y.o.)\r\n\*${clubName}*\r\n\r\n*Transfer History*:\r\n\r\n`;
+    return `${flag} *${name}* (${marketValueStr}${age} y.o.)\r\n\*${clubName}*\r\n\r\n*Transfer History*:`;
 };
 
 export const formPlayerTranferMessage = (playerTranfer: TPlayerTransferEntity, index: number): string => {

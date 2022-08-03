@@ -8,84 +8,58 @@ import type {
     TPlayerTransferEntity
 } from 'ts/EntitiesTS';
 
-type Handler = (arg: string[]) => string[];
-
 export type TConvertDataConfig = {
-    [cdt.ALL_LATEST_TRANSFERS]: TConvertDataConfigItemAllLatestTransfers;
-    [cdt.CLUBS_SEARCH]: TConvertDataConfigItemClubsSearch;
-    [cdt.PLAYERS_SEARCH]: TConvertDataConfigItemPlayersSearch;
-    [cdt.TEAM_TRANSFERS]: TConvertDataConfigItemTeamTransfers;
-    [cdt.PLAYER_TRANSFERS_HISTORY]: TConvertDataConfigItemPlayerTransfers;
+    [cdt.ALL_LATEST_TRANSFERS]: TConvertDataAllLatestTransfersItem;
+    [cdt.CLUBS_SEARCH]: TConvertDataClubsSearchItem;
+    [cdt.PLAYERS_SEARCH]: TConvertDataPlayersSearchItem;
+    [cdt.TEAM_TRANSFERS]: TConvertDataTeamTransfersItem;
+    [cdt.PLAYER_TRANSFERS_HISTORY]: TConvertDataPlayerTransfersItem;
 };
 
 export type TConvertDataConfigElement =
-    | TConvertDataConfigElementAllLatestTransfers
-    | TConvertDataConfigElementClubsSearch
-    | TConvertDataConfigElementPlayersSearch
-    | TConvertDataConfigElementTeamTransfers
-    | TConvertDataConfigElementPlayerTransfers;
+    | TConvertDataAllLatestTransfersElement
+    | TConvertDataClubsSearchElement
+    | TConvertDataPlayersSearchElement
+    | TConvertDataTeamTransfersElement
+    | TConvertDataPlayerTransfersElement;
 
-// START: @AllLatestTransfers
-type TConvertDataConfigItemAllLatestTransfers = {
-    [key in tdt]: TConvertDataConfigElementAllLatestTransfers;
+type TConvertDataItem<T> = {
+    [key in tdt]: T;
 };
 
-type TConvertDataConfigElementAllLatestTransfers = {
+type TConvertDataElement<T> = {
     [param: number]: {
-        key: keyof TTransferEntity;
-        handler?: Handler;
+        key: keyof T;
+        handler?: (arg: string[]) => string[];
     };
 };
+
+// START: @AllLatestTransfers
+type TConvertDataAllLatestTransfersItem = TConvertDataItem<TConvertDataAllLatestTransfersElement>;
+
+type TConvertDataAllLatestTransfersElement = TConvertDataElement<TTransferEntity>;
 // --- END: @AllLatestTransfers
 
 // START: @ClubsSearch
-type TConvertDataConfigItemClubsSearch = {
-    [key in tdt]: TConvertDataConfigElementClubsSearch;
-};
+type TConvertDataClubsSearchItem = TConvertDataItem<TConvertDataClubsSearchElement>;
 
-type TConvertDataConfigElementClubsSearch = {
-    [param: number]: {
-        key: keyof TClubEntity;
-        handler?: Handler;
-    };
-};
+type TConvertDataClubsSearchElement = TConvertDataElement<TClubEntity>;
 // --- END: @ClubsSearch
 
 // START: @PlayersSearch
-type TConvertDataConfigItemPlayersSearch = {
-    [key in tdt]: TConvertDataConfigElementPlayersSearch;
-};
+type TConvertDataPlayersSearchItem = TConvertDataItem<TConvertDataPlayersSearchElement>;
 
-type TConvertDataConfigElementPlayersSearch = {
-    [param: number]: {
-        key: keyof TPlayerEntity;
-        handler?: Handler;
-    };
-};
+type TConvertDataPlayersSearchElement = TConvertDataElement<TPlayerEntity>;
 // --- END: @PlayersSearch
 
 // START: @TeamTransfers
-type TConvertDataConfigItemTeamTransfers = {
-    [key in tdt]: TConvertDataConfigElementTeamTransfers;
-};
+type TConvertDataTeamTransfersItem = TConvertDataItem<TConvertDataTeamTransfersElement>;
 
-type TConvertDataConfigElementTeamTransfers = {
-    [param: number]: {
-        key: keyof TTeamTransferEntity;
-        handler?: Handler;
-    };
-};
+type TConvertDataTeamTransfersElement = TConvertDataElement<TTeamTransferEntity>;
 // --- END: @TeamTransfers
 
 // START: @PlayerTransfers
-type TConvertDataConfigItemPlayerTransfers = {
-    [key in tdt]: TConvertDataConfigElementPlayerTransfers;
-};
+type TConvertDataPlayerTransfersItem = TConvertDataItem<TConvertDataPlayerTransfersElement>;
 
-type TConvertDataConfigElementPlayerTransfers = {
-    [param: number]: {
-        key: keyof TPlayerTransferEntity;
-        handler?: Handler;
-    };
-};
+type TConvertDataPlayerTransfersElement = TConvertDataElement<TPlayerTransferEntity>;
 // --- END: @PlayerTransfers

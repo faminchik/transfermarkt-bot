@@ -20,7 +20,7 @@ interface Options {
 }
 
 export const parseTable = ($: cheerio.Root, context: cheerio.Cheerio, options: Options): string[][] => {
-    const { mode, dupCols = false, dupRows = false, textMode = false } = options ?? {};
+    const { mode, dupCols = false, dupRows = false, textMode = false } = options;
 
     const { rowTags, cellTags, innerRowTag, innerColTag } = prepareParseParams(mode);
 
